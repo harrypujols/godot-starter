@@ -12,8 +12,8 @@ config_version=3
 
 config/name="Godot Starter"
 run/main_scene="res://Rooms/intro.tscn"
-config/icon="res://icon.png"
+config/icon="res://sprites/icon.png"
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true
