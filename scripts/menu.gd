@@ -12,4 +12,4 @@ func _ready():
 		self.add_child(button)
 		button.add_child(title)
 		
-	self.get_child(1).grab_focus()
+	self.get_child(0).grab_focus()
