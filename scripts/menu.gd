@@ -17,7 +17,6 @@ func get_data(url):
 func _ready():
 	var url = "res://data/menu.json"
 	var data = get_data(url)
-	print(data["menu"][0]["title"])
 	
 	for item in data["menu"]:
 		var title = Label.new()
