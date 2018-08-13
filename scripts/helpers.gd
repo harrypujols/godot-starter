@@ -1,7 +1,7 @@
 extends Node
 
 # load json file
-func get_json(path):
+static func get_json(path):
 	var file = File.new()
 	file.open(path, file.READ)
 	var text = file.get_as_text()

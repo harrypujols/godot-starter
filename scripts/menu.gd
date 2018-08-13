@@ -1,7 +1,6 @@
 extends VBoxContainer
 
-var get_helpers = load("res://interface/helpers.tscn")
-var helpers = get_helpers.instance()
+var helpers = preload("res://scripts/helpers.gd")
 export var data_file = "res://data/menu.json"
 
 func _ready():
