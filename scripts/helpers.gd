@@ -1,8 +1,9 @@
 extends Node
 
-func get_data(url):
+# load json file
+func get_json(path):
 	var file = File.new()
-	file.open(url, file.READ)
+	file.open(path, file.READ)
 	var text = file.get_as_text()
 	file.close()
 	var result_json = JSON.parse(text)

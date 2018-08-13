@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/menu.gd" type="Script" id=1]
 
-[node name="intro" type="Node2D" index="0"]
+[node name="intro" type="Node2D"]
 
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
@@ -42,5 +42,6 @@ custom_constants/separation = 10
 alignment = 0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Visibility", "custom_constants" ]
+data_file = "res://data/menu.json"
 
 

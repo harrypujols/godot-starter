@@ -2,10 +2,10 @@ extends VBoxContainer
 
 var get_helpers = load("res://interface/helpers.tscn")
 var helpers = get_helpers.instance()
-var data_file = "res://data/menu.json"
+export var data_file = "res://data/menu.json"
 
 func _ready():
-	var data = helpers.get_data(data_file)
+	var data = helpers.get_json(data_file)
 	
 	for item in data.menu:
 		var title = Label.new()
