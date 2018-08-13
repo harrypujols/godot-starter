@@ -1,10 +1,9 @@
 extends VBoxContainer
 
-var helpers = preload("res://scripts/helpers.gd")
 export var data_file = "res://data/menu.json"
 
 func _ready():
-	var data = helpers.get_json(data_file)
+	var data = global.get_json(data_file)
 	
 	for item in data.menu:
 		var title = Label.new()

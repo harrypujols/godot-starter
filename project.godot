@@ -14,6 +14,10 @@ config/name="Godot Starter"
 run/main_scene="res://rooms/intro.tscn"
 config/icon="res://sprites/icon.png"
 
+[autoload]
+
+global="*res://scripts/global.gd"
+
 [rendering]
 
 quality/2d/use_pixel_snap=true
