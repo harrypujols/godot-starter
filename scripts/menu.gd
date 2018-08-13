@@ -22,9 +22,9 @@ func _ready():
 		var title = Label.new()
 		var menu_item = load("res://interface/menu_item.tscn")
 		var button = menu_item.instance()
-		title.set_text(item["title"])
+		title.set_text(item.title)
 		self.add_child(button)
 		button.add_child(title)
-		button.call = item["call"]
+		button.call = item.call
 		
 	self.get_child(0).grab_focus()
