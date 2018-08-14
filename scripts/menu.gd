@@ -15,3 +15,12 @@ func _ready():
 		menu_item.call = item.call
 		
 	self.get_child(0).grab_focus()
+
+func menu_select(selection):
+		match selection:
+			"start":
+				get_tree().change_scene("res://rooms/start.tscn")		
+			"quit":
+				get_tree().quit()		
+			_:
+				print(selection)

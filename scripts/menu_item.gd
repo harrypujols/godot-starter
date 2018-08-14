@@ -1,12 +1,10 @@
 extends Button
 
 var call = "unassigned"
+onready var menu = get_node("../")
 
+func _ready():
+	self.connect("pressed", menu, "menu_select")
+	
 func _on_menu_item_pressed():
-	match call:
-		"start":
-			get_tree().change_scene("res://rooms/start.tscn")		
-		"quit":
-			get_tree().quit()		
-		_:
-			print(call)
+	emit_signal("pressed", call)
