@@ -1,9 +1,9 @@
 extends VBoxContainer
 
-export var data_file = "res://data/menu.json"
+var data_file = "res://data/menu.json"
+var data = global.get_json(data_file)
 
 func _ready():
-	var data = global.get_json(data_file)
 	
 	for item in data.menu:
 		var title = Label.new()

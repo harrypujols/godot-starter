@@ -42,6 +42,5 @@ custom_constants/separation = 10
 alignment = 0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Visibility", "custom_constants" ]
-data_file = "res://data/menu.json"
 
 
