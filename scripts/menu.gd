@@ -14,4 +14,4 @@ func _ready():
 		menu_item.add_child(title)
 		menu_item.call = item.call
 		
-	self.get_child(0).grab_focus() 
+	self.get_child(0).grab_focus()
