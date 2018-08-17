@@ -1,8 +1,7 @@
 extends VBoxContainer
 
-var data_file = "res://data/menu.json"
-var data = global.get_json(data_file)
-onready var get_menu_item = load("res://interface/menu_item.tscn")
+var data = global.get_json("res://data/menu.json")
+var get_menu_item = load("res://interface/menu_item.tscn")
 
 func _ready():
 	
