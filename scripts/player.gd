@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 export var speed = 200
 var velocity = Vector2()
-#var movement = preload("res://scripts/movement.gd")
 
 func top_down_move():
     velocity = Vector2()
