@@ -1,0 +1,9 @@
+{
+  "menu": [{
+    "title": "Start",
+    "call": "start"
+  }, {
+    "title": "Quit",
+    "call": "quit"
+  }]
+}
