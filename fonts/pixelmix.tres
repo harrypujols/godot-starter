@@ -3,6 +3,6 @@
 [resource]
 
 hinting = 2
-font_path = "res://fonts/pixelmix.ttf"
+font_path = "res://fonts/pixelmix/pixelmix.ttf"
 _sections_unfolded = [ "Resource" ]
 
