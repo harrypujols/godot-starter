@@ -11,6 +11,6 @@ static func get_json(path):
 		var result = result_json.result
 		return(result)
 	else:
-    	print("Error: ", result_json.error)
-    	print("Error Line: ", result_json.error_line)
-    	print("Error String: ", result_json.error_string)
+    	print('Error: ', result_json.error)
+    	print('Error Line: ', result_json.error_line)
+    	print('Error String: ', result_json.error_string)
