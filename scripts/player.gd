@@ -8,6 +8,8 @@ var velocity = Vector2()
 var direction = 'down'
 var frame = 'idle'
 var state = 'move'
+signal open_global_dialog
+signal close_global_dialog
 
 func _ready():
 	npc.connect('enter_dialog_space', self, '_on_npc_enter')
@@ -43,9 +45,9 @@ func frame_animation():
 		player_animation.play(current_animation)
 
 func _on_npc_enter():
-	global.dialog('open')
+	emit_signal('open_global_dialog')
 func _on_npc_exit():
-	global.dialog('closed')
+	emit_signal('close_global_dialog')
 
 func _physics_process(delta):
 	match state:

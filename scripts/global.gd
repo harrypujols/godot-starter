@@ -14,12 +14,3 @@ static func get_json(path):
     	print('Error: ', result_json.error)
     	print('Error Line: ', result_json.error_line)
     	print('Error String: ', result_json.error_string)
-
-func dialog(state):
-	match state:
-		'open':
-			print('entered npc zone')
-		'closed':
-			print('exited npc zone')
-		_:
-			print(state)

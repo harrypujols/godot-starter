@@ -6,7 +6,7 @@
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=5]
 
-[node name="start" type="Node2D"]
+[node name="stage" type="Node2D"]
 
 [node name="walls" type="TileMap" parent="." index="0"]
 
@@ -53,8 +53,6 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="dialog" parent="interface" index="0" instance=ExtResource( 5 )]
 
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 143.0
 margin_top = 175.0
 margin_right = 143.0
