@@ -7,6 +7,7 @@ export var speed = 200
 var velocity = Vector2()
 var direction = 'down'
 var frame = 'idle'
+var state = 'move'
 
 func _ready():
 	npc.connect('enter_dialog_space', self, '_on_npc_enter')
@@ -47,6 +48,11 @@ func _on_npc_exit():
 	print('exited npc zone')
 
 func _physics_process(delta):
-	top_down_move()
-	move_and_slide(velocity)
-	frame_animation()
+	match state:
+		'move':
+			top_down_move()
+			move_and_slide(velocity)
+			frame_animation()
+		_:
+			print(state)
+
