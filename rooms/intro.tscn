@@ -3,7 +3,7 @@
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/menu.gd" type="Script" id=2]
 
-[node name="intro" type="Node2D"]
+[node name="intro" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 

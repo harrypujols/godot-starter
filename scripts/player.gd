@@ -43,9 +43,9 @@ func frame_animation():
 		player_animation.play(current_animation)
 
 func _on_npc_enter():
-	print('entered npc zone')
+	global.dialog('open')
 func _on_npc_exit():
-	print('exited npc zone')
+	global.dialog('closed')
 
 func _physics_process(delta):
 	match state:
