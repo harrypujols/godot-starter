@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/player.gd" type="Script" id=3]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/dialog_box.gd" type="Script" id=5]
-[ext_resource path="res://fonts/main_font.tres" type="Theme" id=6]
+[ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=5]
 
 [node name="start" type="Node2D" index="0"]
 
@@ -43,7 +42,7 @@ speed = 200
 
 position = Vector2( 1462.57, 202.394 )
 
-[node name="hud" type="CanvasLayer" parent="." index="3"]
+[node name="interface" type="CanvasLayer" parent="." index="3"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -52,7 +51,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="dialog" type="Container" parent="hud" index="0"]
+[node name="hud" type="CenterContainer" parent="interface" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -60,54 +59,19 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
-grow_horizontal = 0
-grow_vertical = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Anchor", "Grow Direction", "Rect" ]
+use_top_left = false
 
-[node name="dialog_box" type="Polygon2D" parent="hud" index="1"]
+[node name="dialog_box" parent="interface/hud" index="0" instance=ExtResource( 5 )]
 
-position = Vector2( 16, -112 )
-polygon = PoolVector2Array( 64, 240, 64, 560, 944, 560, 944, 240 )
-uv = PoolVector2Array(  )
-color = Color( 0.0390625, 0.0387475, 0.0387475, 1 )
-vertex_colors = PoolColorArray(  )
-offset = Vector2( 0, 0 )
-antialiased = false
-texture = null
-texture_offset = Vector2( 0, 0 )
-texture_scale = Vector2( 1, 1 )
-texture_rotation_degrees = 0.0
-invert_enable = false
-invert_border = 100.0
-script = ExtResource( 5 )
-
-[node name="dialog_text" type="Label" parent="hud/dialog_box" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -16.0
-margin_top = 122.0
-margin_right = 320.0
-margin_bottom = 142.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-theme = ExtResource( 6 )
-text = "Hello, welcome to the dialog!"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Grow Direction", "Hint", "Rect", "Theme" ]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 20.0
 
 
