@@ -6,7 +6,7 @@ onready var npc = get_node('../npc/npc_dialog')
 export var speed = 200
 var velocity = Vector2()
 var direction = 'down'
-var state = 'idle'
+var frame = 'idle'
 
 func _ready():
 	npc.connect('enter_dialog_space', self, '_on_npc_enter')
@@ -32,11 +32,11 @@ func top_down_move():
 
 func frame_animation():
 	if velocity != Vector2(0,0):
-		state = 'walk'
+		frame = 'walk'
 	else:
-		state = 'idle'
+		frame = 'idle'
 		
-	var current_animation = state + '_' + direction
+	var current_animation = frame + '_' + direction
 	
 	if player_animation.current_animation != current_animation:
 		player_animation.play(current_animation)

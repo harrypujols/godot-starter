@@ -66,8 +66,9 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 use_top_left = false
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility" ]
 
-[node name="dialog_box" parent="interface/hud" index="0" instance=ExtResource( 5 )]
+[node name="dialog" parent="interface/hud" index="0" instance=ExtResource( 5 )]
 
 margin_left = 20.0
 margin_top = 20.0
