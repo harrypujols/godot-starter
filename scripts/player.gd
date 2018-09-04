@@ -6,7 +6,10 @@ onready var npc = get_node('../npc/npc_dialog')
 export var speed = 200
 var velocity = Vector2()
 var direction = 'down'
-var state = 'idle'
+var frame = 'idle'
+var state = 'move'
+signal open_global_dialog
+signal close_global_dialog
 
 func _ready():
 	npc.connect('enter_dialog_space', self, '_on_npc_enter')
@@ -32,21 +35,26 @@ func top_down_move():
 
 func frame_animation():
 	if velocity != Vector2(0,0):
-		state = 'walk'
+		frame = 'walk'
 	else:
-		state = 'idle'
+		frame = 'idle'
 		
-	var current_animation = state + '_' + direction
+	var current_animation = frame + '_' + direction
 	
 	if player_animation.current_animation != current_animation:
 		player_animation.play(current_animation)
 
 func _on_npc_enter():
-	print('entered npc zone')
+	emit_signal('open_global_dialog')
 func _on_npc_exit():
-	print('exited npc zone')
+	emit_signal('close_global_dialog')
 
 func _physics_process(delta):
-	top_down_move()
-	move_and_slide(velocity)
-	frame_animation()
+	match state:
+		'move':
+			top_down_move()
+			move_and_slide(velocity)
+			frame_animation()
+#		_:
+#			print(state)
+
