@@ -18,6 +18,12 @@ config/icon="res://sprites/icon.png"
 
 global="*res://scripts/global.gd"
 
+[display]
+
+window/size/resizable=false
+window/size/fullscreen=true
+window/size/always_on_top=true
+
 [rendering]
 
 quality/2d/use_pixel_snap=true

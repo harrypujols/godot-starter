@@ -55,6 +55,6 @@ func _physics_process(delta):
 			top_down_move()
 			move_and_slide(velocity)
 			frame_animation()
-		_:
-			print(state)
+#		_:
+#			print(state)
 
