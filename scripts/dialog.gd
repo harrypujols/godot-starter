@@ -1,7 +1,9 @@
 extends Container
 
 onready var player = get_node('../../../player')
-var dialog = 'closed'
+onready var content_size = $dialog_text.content.size()
+var dialog_open = 0
+var next_page = 0
 var entered_dialog_zone = false
 
 func _ready():
@@ -18,15 +20,20 @@ func _close():
 	
 func _input(event):
 	if Input.is_action_pressed('ui_accept') && entered_dialog_zone == true:
-		match dialog:
-			'open':
+		match dialog_open:
+			1:
 				self.visible = false
-				dialog = 'closed'
+				dialog_open = 0
 				player.state = 'move'
-			'closed':
+			0:
 				self.visible = true
-				dialog = 'open'
 				player.state = 'interact'
+				$dialog_text.page = next_page
+				$dialog_text.reset()
 				$typing_effect.start()
-			_:
-				print(dialog)
+				next_page += 1
+						
+				if next_page >= content_size:
+					next_page = 0
+					$dialog_text.reset()
+					dialog_open = 1
