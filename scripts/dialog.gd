@@ -11,11 +11,9 @@ func _ready():
 
 func _open():
 	entered_dialog_zone = true
-	print('entered dialog area')
 
 func _close():
 	entered_dialog_zone = false
-	print('exited dialog area')
 	
 func _input(event):
 	if Input.is_action_pressed('ui_accept') && entered_dialog_zone == true:

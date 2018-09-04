@@ -12,6 +12,10 @@ func _ready():
 
 func _open():
 	dialog_text.content = content
+	$alert_bubble.visible = true
+
+func _close():
+	$alert_bubble.visible = false
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

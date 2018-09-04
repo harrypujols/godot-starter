@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/npc.gd" type="Script" id=1]
 [ext_resource path="res://sprites/sprite.png" type="Texture" id=2]
 [ext_resource path="res://scripts/npc_dialog.gd" type="Script" id=3]
+[ext_resource path="res://sprites/alert_bubble.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -14,7 +15,7 @@ radius = 150.0
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="npc" type="StaticBody2D"]
+[node name="npc" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -38,6 +39,7 @@ _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 
 [node name="npc_dialog" type="Area2D" parent="." index="1"]
 
+editor/display_folded = true
 scale = Vector2( 0.999999, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -59,6 +61,14 @@ _sections_unfolded = [ "Transform" ]
 scale = Vector2( 3, 4 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="alert_bubble" type="Sprite" parent="." index="3"]
+
+visible = false
+position = Vector2( 0.864548, -66.5457 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="area_entered" from="npc_dialog" to="npc_dialog" method="_on_npc_dialog_area_entered"]
 
