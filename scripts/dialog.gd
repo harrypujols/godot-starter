@@ -3,7 +3,7 @@ extends Container
 onready var player = get_node('../../../player')
 onready var content_size = $dialog_text.content.size()
 var dialog_open = 0
-var next_page = 0
+var current_page = 0
 var entered_dialog_zone = false
 
 func _ready():
@@ -23,17 +23,17 @@ func _input(event):
 		match dialog_open:
 			1:
 				self.visible = false
-				dialog_open = 0
 				player.state = 'move'
+				dialog_open = 0	
 			0:
 				self.visible = true
 				player.state = 'interact'
-				$dialog_text.page = next_page
+				$dialog_text.page = current_page
 				$dialog_text.reset()
 				$typing_effect.start()
-				next_page += 1
+				current_page += 1
 						
-				if next_page >= content_size:
-					next_page = 0
+				if current_page >= content_size:
+					current_page = 0
 					$dialog_text.reset()
 					dialog_open = 1
