@@ -1,7 +1,6 @@
 extends Container
 
 onready var player = get_node('../../../player')
-onready var content_size = $dialog_text.content.size()
 var dialog_open = 0
 var current_page = 0
 var entered_dialog_zone = false
@@ -12,11 +11,9 @@ func _ready():
 
 func _open():
 	entered_dialog_zone = true
-	print('entered dialog area')
 
 func _close():
 	entered_dialog_zone = false
-	print('exited dialog area')
 	
 func _input(event):
 	if Input.is_action_pressed('ui_accept') && entered_dialog_zone == true:
@@ -28,6 +25,7 @@ func _input(event):
 			0:
 				self.visible = true
 				player.state = 'interact'
+				var content_size = $dialog_text.content.size()
 				$dialog_text.page = current_page
 				$dialog_text.reset()
 				$typing_effect.start()

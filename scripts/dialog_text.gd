@@ -1,6 +1,6 @@
 extends Label
 
-var content = ['Hello, welcome to the dialog!', 'I am evil you.']
+var content = ['Hello, welcome to the dialog!']
 var page = 0
 
 func reset():
