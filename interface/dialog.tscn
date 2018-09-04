@@ -65,7 +65,7 @@ _sections_unfolded = [ "Grow Direction", "Hint", "Margin", "Rect", "Theme" ]
 process_mode = 1
 wait_time = 0.05
 one_shot = false
-autostart = true
+autostart = false
 
 [connection signal="timeout" from="typing_effect" to="dialog_text" method="_on_typing_effect_timeout"]
 
