@@ -3,20 +3,12 @@ extends Container
 onready var player = get_node('../../../player')
 var dialog_open = 0
 var current_page = 0
-var entered_dialog_zone = false
 
 func _ready():
-	player.connect('open_global_dialog', self, '_open')
-	player.connect('close_global_dialog', self, '_close')
-
-func _open():
-	entered_dialog_zone = true
-
-func _close():
-	entered_dialog_zone = false
+	pass
 	
 func _input(event):
-	if Input.is_action_pressed('ui_accept') && entered_dialog_zone == true:
+	if Input.is_action_pressed('ui_accept') && global.entered_dialog_zone:
 		match dialog_open:
 			1:
 				self.visible = false

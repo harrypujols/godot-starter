@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-var data = global.get_json('res://data/menu.json')
+var data = functions.get_json('res://data/menu.json')
 var get_menu_item = load('res://interface/menu_item.tscn')
 
 func _ready():

@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 onready var player_sprite = get_node('./player_sprite')
 onready var player_animation = get_node('./player_animation')
-onready var npc = get_node('../npc/npc_dialog')
 export var speed = 200
 var velocity = Vector2()
 var direction = 'down'
@@ -12,8 +11,7 @@ signal open_global_dialog
 signal close_global_dialog
 
 func _ready():
-	npc.connect('enter_dialog_space', self, '_on_npc_enter')
-	npc.connect('exit_dialog_space', self, '_on_npc_exit')
+	pass
 
 func top_down_move():
 	velocity = Vector2()
@@ -44,17 +42,10 @@ func frame_animation():
 	if player_animation.current_animation != current_animation:
 		player_animation.play(current_animation)
 
-func _on_npc_enter():
-	emit_signal('open_global_dialog')
-func _on_npc_exit():
-	emit_signal('close_global_dialog')
-
 func _physics_process(delta):
 	match state:
 		'move':
 			top_down_move()
 			move_and_slide(velocity)
 			frame_animation()
-#		_:
-#			print(state)
 
