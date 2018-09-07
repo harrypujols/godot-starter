@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/npc.gd" type="Script" id=1]
 [ext_resource path="res://sprites/sprite.png" type="Texture" id=2]
-[ext_resource path="res://scripts/npc_dialog.gd" type="Script" id=3]
-[ext_resource path="res://sprites/alert_bubble.png" type="Texture" id=4]
+[ext_resource path="res://sprites/alert_bubble.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -15,7 +14,7 @@ radius = 150.0
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="npc" type="StaticBody2D" index="0"]
+[node name="npc" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -37,9 +36,8 @@ hframes = 8
 frame = 6
 _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 
-[node name="npc_dialog" type="Area2D" parent="." index="1"]
+[node name="dialog_zone" type="Area2D" parent="." index="1"]
 
-editor/display_folded = true
 scale = Vector2( 0.999999, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -48,10 +46,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 3 )
 _sections_unfolded = [ "Collision" ]
 
-[node name="dialog_area" type="CollisionShape2D" parent="npc_dialog" index="0"]
+[node name="area" type="CollisionShape2D" parent="dialog_zone" index="0"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -67,11 +64,11 @@ _sections_unfolded = [ "Transform" ]
 visible = false
 position = Vector2( 0.864548, -66.5457 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[connection signal="area_entered" from="npc_dialog" to="npc_dialog" method="_on_npc_dialog_area_entered"]
+[connection signal="area_entered" from="dialog_zone" to="." method="_on_dialog_zone_area_entered"]
 
-[connection signal="area_exited" from="npc_dialog" to="npc_dialog" method="_on_npc_dialog_area_exited"]
+[connection signal="area_exited" from="dialog_zone" to="." method="_on_dialog_zone_area_exited"]
 
 

@@ -5,3 +5,10 @@ signal menu_selection
 	
 func _on_menu_item_pressed():
 	emit_signal('menu_selection')
+
+func _on_menu_item_focus_entered():
+	$indicator.visible = true
+
+
+func _on_menu_item_focus_exited():
+	$indicator.visible = false
