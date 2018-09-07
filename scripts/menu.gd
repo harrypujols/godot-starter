@@ -10,7 +10,6 @@ func _ready():
 		self.add_child(menu_item)
 		var title = menu_item.get_node('title')
 		title.set_text(item.title)
-#		menu_item.add_child(title)
 		menu_item.call = item.call
 		menu_item.connect('menu_selection', self, '_on_menu_select', [menu_item.call])
 		
