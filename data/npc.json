@@ -3,11 +3,11 @@
     {
       "name": "hello",
       "dialog": "Hello...",
-      "link": "story"
+      "link": "welcome"
     },
 
     {
-      "name": "story",
+      "name": "welcome",
       "dialog": "Welcome to the dialog system.",
       "link": "end"
     }
