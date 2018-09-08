@@ -17,7 +17,7 @@ func _input(event):
 			0:
 				self.visible = true
 				player.state = 'interact'
-				var content_size = $dialog_text.content.size()
+				var content_size = $dialog_text.dialog.size()
 				$dialog_text.page = current_page
 				$dialog_text.reset()
 				$typing_effect.start()

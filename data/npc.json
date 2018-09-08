@@ -1,0 +1,16 @@
+{
+  "passages": [
+    {
+      "name": "hello",
+      "dialog": "Hello...",
+      "link": "story"
+    },
+
+    {
+      "name": "story",
+      "dialog": "Welcome to the dialog system.",
+      "link": "end"
+    }
+
+   ]
+}
