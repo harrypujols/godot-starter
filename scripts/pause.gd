@@ -1,4 +1,4 @@
-extends Container
+extends Control
 
 func _input(event):
 	if Input.is_action_pressed('ui_pause'):
