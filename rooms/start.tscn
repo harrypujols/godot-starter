@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/player.gd" type="Script" id=3]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=5]
-[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scripts/pause.gd" type="Script" id=7]
+[ext_resource path="res://scripts/dialog.gd" type="Script" id=6]
+[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/pause.gd" type="Script" id=8]
 
 [node name="stage" type="Node2D" index="0"]
 
@@ -44,42 +45,51 @@ speed = 200
 
 position = Vector2( 1462.57, 202.394 )
 
-[node name="hud" type="CenterContainer" parent="." index="3"]
+[node name="hud" type="CanvasLayer" parent="." index="3"]
 
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="dialog" type="Control" parent="hud" index="0" instance=ExtResource( 5 )]
+
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = 143.0
+margin_top = 175.0
+margin_right = 143.0
+margin_bottom = 175.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-use_top_left = false
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
+script = ExtResource( 6 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Visibility" ]
 
-[node name="interface" type="CanvasLayer" parent="hud" index="0"]
-
-layer = 1
-offset = Vector2( 1, 1 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 1, 1 )
-_sections_unfolded = [ "Pause" ]
-
-[node name="dialog" parent="hud/interface" index="0" instance=ExtResource( 5 )]
-
-margin_left = 143.0
-margin_top = 175.0
-margin_right = 143.0
-margin_bottom = 175.0
-
-[node name="pause" parent="hud/interface" index="1" instance=ExtResource( 6 )]
+[node name="pause" type="Control" parent="hud" index="1" instance=ExtResource( 7 )]
 
 pause_mode = 2
 visible = false
-script = ExtResource( 7 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 8 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Pause", "Rect", "Size Flags" ]
 
 

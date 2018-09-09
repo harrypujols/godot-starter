@@ -1,6 +1,6 @@
 extends Container
 
-onready var player = get_node('../../../player')
+onready var player = get_node('../../player')
 var dialog_open = 0
 
 func _ready():
