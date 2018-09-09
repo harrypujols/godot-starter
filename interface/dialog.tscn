@@ -71,4 +71,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
+[connection signal="popup_hide" from="dialog_box" to="." method="_on_dialog_box_popup_hide"]
+
 

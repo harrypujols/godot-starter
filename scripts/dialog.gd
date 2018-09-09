@@ -8,3 +8,8 @@ func _input(event):
 		if is_dialog_open == false:
 			player.state = 'interact'
 			$dialog_box.popup_centered()
+			is_dialog_open = true
+
+
+func _on_dialog_box_popup_hide():
+	is_dialog_open = false
