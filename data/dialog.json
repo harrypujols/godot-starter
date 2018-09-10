@@ -1,0 +1,23 @@
+{
+  "passages": [
+    {
+      "name": "start",
+      "dialog": [
+        {
+          "title": "Hello.",
+          "call": "welcome"
+        }
+      ]
+    },
+
+    {
+      "name": "welcome",
+      "dialog": [
+        {
+          "title": "Welcome to the dialog system.",
+          "call": "nice"
+        }
+      ]
+    }
+   ]
+}

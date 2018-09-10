@@ -4,7 +4,6 @@ var data = functions.get_json('res://data/menu.json')
 var get_menu_item = load('res://interface/menu_item.tscn')
 
 func _ready():
-	
 	for item in data.menu:
 		var menu_item = get_menu_item.instance()
 		self.add_child(menu_item)

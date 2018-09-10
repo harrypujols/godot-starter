@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/dialog.gd" type="Script" id=1]
+[ext_resource path="res://scripts/dialog_box.gd" type="Script" id=2]
+[ext_resource path="res://scripts/dialog_text.gd" type="Script" id=3]
 
 [node name="dialog" type="Control" index="0"]
 
@@ -17,14 +19,7 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Visibility" ]
 
-[node name="typing_effect" type="Timer" parent="." index="0"]
-
-process_mode = 1
-wait_time = 0.05
-one_shot = false
-autostart = false
-
-[node name="dialog_box" type="PopupDialog" parent="." index="1"]
+[node name="dialog_box" type="PopupDialog" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -39,6 +34,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = false
+script = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Margin", "Popup", "Rect" ]
 
 [node name="background" type="ColorRect" parent="dialog_box" index="0"]
@@ -70,6 +66,14 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
+script = ExtResource( 3 )
+
+[node name="typing_effect" type="Timer" parent="dialog_box" index="2"]
+
+process_mode = 1
+wait_time = 0.05
+one_shot = false
+autostart = false
 
 [connection signal="popup_hide" from="dialog_box" to="." method="_on_dialog_box_popup_hide"]
 

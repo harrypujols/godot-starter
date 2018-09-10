@@ -6,9 +6,10 @@ var is_dialog_open = false
 func _input(event):
 	if Input.is_action_pressed('ui_accept') && global.entered_dialog_zone:
 		if is_dialog_open == false:
+			is_dialog_open = true
 			player.state = 'interact'
 			$dialog_box.popup_centered()
-			is_dialog_open = true
+			$dialog_box.init()
 
 
 func _on_dialog_box_popup_hide():
