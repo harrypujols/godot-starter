@@ -15,7 +15,7 @@
       "dialog": [
         {
           "title": "Welcome to the dialog system.",
-          "call": "nice"
+          "call": "end"
         }
       ]
     }

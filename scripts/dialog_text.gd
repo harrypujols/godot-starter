@@ -16,12 +16,16 @@ func init():
 	
 	if self.get_children().size() == 1:
 #		self.get_child(0).get_node('title').set_visible_characters(0)
-		pass
-	else:
-		self.get_child(0).grab_focus()
+		print('only one item')
+	
+	self.get_child(0).grab_focus()
 
 func _on_menu_select(selection):
 	dialog_box.next_page = selection
+	
+	for child in get_children():
+		child.queue_free()
+		
 	dialog_box.init()
 
 func _on_typing_effect_timeout():

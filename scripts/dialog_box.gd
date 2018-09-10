@@ -8,17 +8,16 @@ var next_page = page
 var dialog_text = '...'
 
 func init():
-	print('current_page' + current_page)
-	print('next_page' + next_page)
 	if next_page == 'end':
 		self.hide()
 	else:
-		current_page = next_page
-		
 		for passage in data.passages:
 			if passage.name == current_page:
 				$dialog_text.dialog = passage.dialog
 				$dialog_text.init()
 				$typing_effect.start()
+				current_page = next_page
+	print('current_page ' + current_page)
+	print('next_page ' + next_page)
 
 
