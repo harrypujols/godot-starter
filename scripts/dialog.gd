@@ -37,10 +37,8 @@ func set_dialog():
 
 				if dialog_options.get_children().size() > 0:
 					for child in dialog_options.get_children():
-						print(child.name)
-						child.queue_free()
-
-				var i = 1
+						dialog_options.remove_child(child)
+#						child.queue_free()
 				
 				for choice in passage.choices:
 					var menu_item = get_menu_item.instance()
@@ -48,9 +46,7 @@ func set_dialog():
 					var title = menu_item.get_node('title')
 					title.set_text(choice.dialog)
 					menu_item.call = choice.link
-					menu_item.name = 'menu_item_' + String(i)
 					menu_item.connect('item_focused', self, '_on_menu_select', [menu_item.call])
-					i += 1
 		
 				dialog_options.get_child(0).grab_focus()
 				print('dialog children ' + String(dialog_options.get_children().size()))
