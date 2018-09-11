@@ -13,3 +13,8 @@ func _input(event):
 
 func _on_dialog_box_popup_hide():
 	is_dialog_open = false
+	player.state = 'move'
+
+
+func _on_dialog_options_item_selected(index):
+	$dialog_box.hide()
