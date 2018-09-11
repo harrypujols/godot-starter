@@ -2,8 +2,8 @@ extends Control
 
 onready var player = get_node('../../../player')
 var data = functions.get_json('res://data/red.json')
-onready var dialog_label = $dialog_box/dialog_text
-onready var dialog_options = $dialog_box/dialog_options
+onready var dialog_label = get_node('dialog_box/dialog_text')
+onready var dialog_options = get_node('dialog_box/dialog_options')
 var dialog_open = 0
 var page = 'hello'
 var current_page = page
@@ -30,9 +30,19 @@ func set_dialog():
 	for passage in data.passages:
 		if current_page == passage.name:
 			if passage.has('choices'):
-				dialog_label.set_text('this is a choice dialog')
+#				dialog_label.set_text('this is a choice dialog.')
+#				next_page = 'end'
+				get_node('dialog_box/dialog_text').visible = false
+				get_node('dialog_box/dialog_options').visible = true
+				dialog_options.clear()
+				for choice in passage.choices:
+					dialog_options.add_item(choice.dialog)
+				dialog_options
 				next_page = 'end'
+				
 			else:
+				get_node('dialog_box/dialog_text').visible = true
+				get_node('dialog_box/dialog_options').visible = false
 				dialog_text = passage.dialog
 				next_page = passage.link
 				dialog_label.set_text(dialog_text)
