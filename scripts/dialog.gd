@@ -9,7 +9,6 @@ func _input(event):
 			is_dialog_open = true
 			player.state = 'interact'
 			$dialog_box.popup_centered()
-			$dialog_box.init()
 
 
 func _on_dialog_box_popup_hide():
