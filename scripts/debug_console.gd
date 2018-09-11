@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-onready var dialog = get_node('../interface/dialog')
+onready var dialog = get_node('../dialog')
 
 func _process(delta):
 	$clicks.set_text('clicks: ' + String(dialog.clicks))

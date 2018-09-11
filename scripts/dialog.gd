@@ -1,6 +1,6 @@
 extends Control
 
-onready var player = get_node('../../../player')
+onready var player = get_node('../../player')
 onready var dialog_label = get_node('dialog_box/dialog_text')
 onready var dialog_options = get_node('dialog_box/dialog_choices')
 var get_menu_item = load('res://interface/menu_item.tscn')
