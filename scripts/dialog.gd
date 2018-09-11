@@ -10,17 +10,17 @@ var page = 'hello'
 var current_page = page
 var next_page = page
 var dialog_text = '...'
+var clicks = 0
 	
 func _input(event):
 	if Input.is_action_pressed('ui_accept') && global.entered_dialog_zone:
-		print('--clicked--')
-		print('current_page ' + current_page)
-		print('next_page ' + next_page)
+		clicks += 1
 		match dialog_open:
 			1:
 				$dialog_box.hide()
 				player.state = 'move'
-				dialog_open = 0	
+				dialog_open = 0
+				clicks = 0
 			0:
 				$dialog_box.popup_centered()
 				player.state = 'interact'
@@ -49,8 +49,7 @@ func set_dialog():
 					menu_item.connect('item_focused', self, '_on_menu_select', [menu_item.call])
 		
 				dialog_options.get_child(0).grab_focus()
-				print('dialog children ' + String(dialog_options.get_children().size()))
-				next_page = 'end'
+				next_page = dialog_options.get_child(0).call
 				
 			else:
 				get_node('dialog_box/dialog_text').visible = true
@@ -69,5 +68,7 @@ func set_dialog():
 func _on_typing_effect_timeout():
 	dialog_label.set_visible_characters(dialog_label.get_visible_characters() + 1)
 
-func _on_menu_select(selection):
-	print(selection)
+func _on_menu_select(call):
+	next_page = call
+	print(next_page)
+	
