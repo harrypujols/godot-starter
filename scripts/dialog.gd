@@ -24,10 +24,11 @@ func _input(event):
 			0:
 				$dialog_box.popup_centered()
 				player.state = 'interact'
-				current_page = next_page
 				set_dialog()
 
 func set_dialog():
+	current_page = next_page
+	print('current page: ' + current_page)
 	for passage in data.passages:
 		if current_page == passage.name:
 			if passage.has('choices'):
@@ -49,7 +50,8 @@ func set_dialog():
 					menu_item.connect('item_focused', self, '_on_menu_select', [menu_item.call])
 		
 				dialog_options.get_child(0).grab_focus()
-				next_page = dialog_options.get_child(0).call
+#				next_page = dialog_options.get_child(0).call
+				print('next page: ' + next_page)
 				
 			else:
 				get_node('dialog_box/dialog_text').visible = true
@@ -70,5 +72,3 @@ func _on_typing_effect_timeout():
 
 func _on_menu_select(call):
 	next_page = call
-	print(next_page)
-	
