@@ -67,6 +67,12 @@ func set_dialog():
 				current_page = page
 				next_page = page
 
+func choice_navigation():
+	if Input.is_action_pressed('ui_up'):
+		pass
+	if Input.is_action_pressed('ui_down'):
+		pass
+	
 func _on_typing_effect_timeout():
 	dialog_label.set_visible_characters(dialog_label.get_visible_characters() + 1)
 
