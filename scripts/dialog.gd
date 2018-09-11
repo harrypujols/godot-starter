@@ -1,8 +1,9 @@
 extends Control
 
 onready var player = get_node('../../../player')
-var data = functions.get_json('res://data/npc.json')
+var data = functions.get_json('res://data/red.json')
 onready var dialog_label = $dialog_box/dialog_text
+onready var dialog_options = $dialog_box/dialog_options
 var dialog_open = 0
 var page = 'hello'
 var current_page = page
@@ -28,11 +29,16 @@ func _input(event):
 func set_dialog():
 	for passage in data.passages:
 		if current_page == passage.name:
-			dialog_text = passage.dialog
-			next_page = passage.link
-			dialog_label.set_text(dialog_text)
-			dialog_label.set_visible_characters(0)
-			$dialog_box/typing_effect.start()
+			if passage.has('choices'):
+				dialog_label.set_text('this is a choice dialog')
+				next_page = 'end'
+			else:
+				dialog_text = passage.dialog
+				next_page = passage.link
+				dialog_label.set_text(dialog_text)
+				dialog_label.set_visible_characters(0)
+				$dialog_box/typing_effect.start()
+				
 			if next_page == 'end':
 				dialog_open = 1
 				current_page = page
