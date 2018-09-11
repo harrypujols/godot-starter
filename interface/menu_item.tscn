@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/menu_item.gd" type="Script" id=2]
 [ext_resource path="res://sprites/arrow.png" type="Texture" id=3]
 
-[node name="menu_item" type="Button"]
+[node name="menu_item" type="Button" index="0"]
 
 light_mask = 0
 anchor_left = 0.0

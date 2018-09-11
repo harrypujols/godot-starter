@@ -1,9 +1,10 @@
 extends Control
 
 onready var player = get_node('../../../player')
-var data = functions.get_json('res://data/red.json')
 onready var dialog_label = get_node('dialog_box/dialog_text')
-onready var dialog_options = get_node('dialog_box/dialog_options')
+onready var dialog_options = get_node('dialog_box/dialog_choices')
+var get_menu_item = load('res://interface/menu_item.tscn')
+var data = functions.get_json('res://data/red.json')
 var dialog_open = 0
 var page = 'hello'
 var current_page = page
@@ -30,19 +31,34 @@ func set_dialog():
 	for passage in data.passages:
 		if current_page == passage.name:
 			if passage.has('choices'):
-#				dialog_label.set_text('this is a choice dialog.')
-#				next_page = 'end'
+
 				get_node('dialog_box/dialog_text').visible = false
-				get_node('dialog_box/dialog_options').visible = true
-				dialog_options.clear()
+				get_node('dialog_box/dialog_choices').visible = true
+
+				if dialog_options.get_children().size() > 0:
+					for child in dialog_options.get_children():
+						print(child.name)
+						child.queue_free()
+
+				var i = 1
+				
 				for choice in passage.choices:
-					dialog_options.add_item(choice.dialog)
-				dialog_options
+					var menu_item = get_menu_item.instance()
+					dialog_options.add_child(menu_item)
+					var title = menu_item.get_node('title')
+					title.set_text(choice.dialog)
+					menu_item.call = choice.link
+					menu_item.name = 'menu_item_' + String(i)
+					menu_item.connect('item_focused', self, '_on_menu_select', [menu_item.call])
+					i += 1
+		
+				dialog_options.get_child(0).grab_focus()
+				print('dialog children ' + String(dialog_options.get_children().size()))
 				next_page = 'end'
 				
 			else:
 				get_node('dialog_box/dialog_text').visible = true
-				get_node('dialog_box/dialog_options').visible = false
+				get_node('dialog_box/dialog_choices').visible = false
 				dialog_text = passage.dialog
 				next_page = passage.link
 				dialog_label.set_text(dialog_text)
@@ -56,3 +72,6 @@ func set_dialog():
 
 func _on_typing_effect_timeout():
 	dialog_label.set_visible_characters(dialog_label.get_visible_characters() + 1)
+
+func _on_menu_select(selection):
+	print(selection)
