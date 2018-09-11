@@ -24,6 +24,7 @@ _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "M
 
 [node name="dialog_box" type="PopupDialog" parent="." index="0"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -77,14 +78,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
-[node name="typing_effect" type="Timer" parent="dialog_box" index="2"]
-
-process_mode = 1
-wait_time = 0.01
-one_shot = false
-autostart = false
-
-[node name="dialog_choices" type="VBoxContainer" parent="dialog_box" index="3"]
+[node name="dialog_choices" type="VBoxContainer" parent="dialog_box" index="2"]
 
 visible = false
 anchor_left = 0.0
@@ -103,6 +97,13 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Margin" ]
+
+[node name="typing_effect" type="Timer" parent="dialog_box" index="3"]
+
+process_mode = 1
+wait_time = 0.01
+one_shot = false
+autostart = false
 
 [connection signal="timeout" from="dialog_box/typing_effect" to="." method="_on_typing_effect_timeout"]
 

@@ -21,6 +21,8 @@ func _input(event):
 				player.state = 'move'
 				dialog_open = 0
 				clicks = 0
+				current_page = page
+				next_page = page
 			0:
 				$dialog_box.popup_centered()
 				player.state = 'interact'
@@ -64,8 +66,6 @@ func set_dialog():
 				
 			if next_page == 'end':
 				dialog_open = 1
-				current_page = page
-				next_page = page
 
 func choice_navigation():
 	if Input.is_action_pressed('ui_up'):
@@ -77,4 +77,5 @@ func _on_typing_effect_timeout():
 	dialog_label.set_visible_characters(dialog_label.get_visible_characters() + 1)
 
 func _on_menu_select(call):
-	next_page = call
+	self.next_page = call
+	return self.next_page
