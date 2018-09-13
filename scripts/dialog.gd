@@ -29,7 +29,6 @@ func set_dialog():
 		player.state = 'move'
 		dialog_open = 0
 		clicks = 0
-		current_page = page
 		next_page = page
 		pass
 		

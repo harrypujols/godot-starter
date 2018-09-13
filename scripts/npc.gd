@@ -12,6 +12,7 @@ func _on_dialog_zone_area_entered(area):
 	global.entered_dialog_zone = true
 	$alert_bubble.visible = true
 	dialog.data = data
+	dialog.page = next_page
 	dialog.next_page = next_page
 
 func _on_dialog_zone_area_exited(area):
