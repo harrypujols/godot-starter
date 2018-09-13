@@ -6,7 +6,7 @@ var get_menu_item = load('res://interface/menu_item.tscn')
 var data = functions.get_json('res://data/red.json')
 var dialog_open = 0
 var page = 'hello'
-var current_page = page
+var current_page = ''
 var next_page = page
 var dialog_text = []
 var dialog_choice = []
@@ -32,6 +32,7 @@ func set_dialog():
 		current_page = page
 		next_page = page
 		pass
+		
 	current_page = next_page
 	dialog_text.clear()
 	dialog_choice.clear()
