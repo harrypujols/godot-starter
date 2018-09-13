@@ -63,8 +63,6 @@ func set_dialog():
 				
 				
 			for i in range(0, dialog_text.size()):
-				print(dialog_text[i])
-				print('The value of i is ' + String(i))
 				var menu_item = get_menu_item.instance()
 				dialog_options.add_child(menu_item)
 				var title = menu_item.get_node('title')
@@ -88,7 +86,6 @@ func _on_typing_effect_timeout():
 	title.set_visible_characters(title.get_visible_characters() + 1)
 
 func _on_menu_select(selection):
-	print(selection)
 	next_page = selection
 	if clicks > 1:
 		set_dialog()
