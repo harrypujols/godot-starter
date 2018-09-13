@@ -12,6 +12,7 @@ var next_page = page
 var dialog_text = []
 var dialog_choice = []
 var typing_effect = false
+var indicator_on = true
 var clicks = 0
 	
 func _input(event):
@@ -39,13 +40,17 @@ func set_dialog():
 					dialog_text.append(passage.dialog)
 					dialog_choice.append(passage.link)
 					typing_effect = false
+					indicator_on = true
 				
 			else:
 				dialog_text.append(passage.dialog)
 				dialog_choice.append(passage.link)
 				typing_effect = true
+				indicator_on = false
 				
-			for i in range(0, dialog_text.count()):
+				
+			for i in range(0, dialog_text.size()):
+				print(dialog_text[i])
 				var menu_item = get_menu_item.instance()
 				dialog_options.add_child(menu_item)
 				var title = menu_item.get_node('title')
@@ -58,6 +63,9 @@ func set_dialog():
 					$dialog_box/typing_effect.start()
 					
 			dialog_options.get_child(0).grab_focus()
+			if indicator_on == false:
+				var indicator = dialog_options.get_child(0).get_node('indicator')
+				indicator.visible = false
 				
 			if next_page == 'end':
 				$dialog_box.hide()
