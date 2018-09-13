@@ -79,12 +79,6 @@ func set_dialog():
 			if indicator_on == false:
 				var indicator = dialog_options.get_child(0).get_node('indicator')
 				indicator.visible = false
-
-func choice_navigation():
-	if Input.is_action_pressed('ui_up'):
-		pass
-	if Input.is_action_pressed('ui_down'):
-		pass
 	
 func _on_typing_effect_timeout():
 	var title =  dialog_options.get_child(0).get_node('title')
