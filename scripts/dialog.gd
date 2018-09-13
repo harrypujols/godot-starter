@@ -37,6 +37,7 @@ func set_dialog():
 	current_page = next_page
 	
 	if typing_effect == true:
+		dialog_options.margin_left = 20
 		$dialog_box/typing_effect.stop()
 		typing_effect = false
 	
@@ -67,7 +68,6 @@ func set_dialog():
 				var title = menu_item.get_node('title')
 				title.set_text(dialog_text[i])
 				menu_item.call = dialog_choice[i]
-#				how do I change the margin?
 				menu_item.connect('menu_selection', self, '_on_menu_select', [menu_item.call])
 				
 				if typing_effect == true:
@@ -78,6 +78,7 @@ func set_dialog():
 			
 			if indicator_on == false:
 				var indicator = dialog_options.get_child(0).get_node('indicator')
+				dialog_options.margin_left = 0
 				indicator.visible = false
 	
 func _on_typing_effect_timeout():
