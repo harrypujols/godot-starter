@@ -2,22 +2,15 @@
   "passages": [
     {
       "name": "start",
-      "dialog": [
-        {
-          "title": "Hello.",
-          "call": "welcome"
-        }
-      ]
+      "dialog": "Hello...",
+      "link": "welcome"
     },
 
     {
       "name": "welcome",
-      "dialog": [
-        {
-          "title": "Welcome to the dialog system.",
-          "call": "end"
-        }
-      ]
+      "dialog": "Welcome to the dialog system.",
+      "link": "end"
     }
+
    ]
 }

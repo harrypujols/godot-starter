@@ -3,9 +3,9 @@ extends Control
 onready var player = get_node('../../player')
 onready var dialog_options = get_node('dialog_box/dialog_choices')
 var get_menu_item = load('res://interface/menu_item.tscn')
-var data = functions.get_json('res://data/red.json')
+var data = functions.get_json('res://data/dialog.json')
 var dialog_open = 0
-var page = 'hello'
+var page = 'start'
 var current_page = ''
 var next_page = page
 var dialog_text = []
