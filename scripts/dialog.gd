@@ -1,7 +1,6 @@
 extends Control
 
 onready var player = get_node('../../player')
-onready var dialog_label = get_node('dialog_box/dialog_text')
 onready var dialog_options = get_node('dialog_box/dialog_choices')
 var get_menu_item = load('res://interface/menu_item.tscn')
 var data = functions.get_json('res://data/red.json')
@@ -25,8 +24,20 @@ func _input(event):
 			set_dialog()
 
 func set_dialog():
+	if next_page == 'end':
+		$dialog_box.hide()
+		player.state = 'move'
+		dialog_open = 0
+		clicks = 0
+		current_page = page
+		next_page = page
+		pass
 	current_page = next_page
 	dialog_text.clear()
+	dialog_choice.clear()
+	if typing_effect == true:
+		$dialog_box/typing_effect.stop()
+		typing_effect = false
 	
 	if dialog_options.get_children().size() > 0:
 		for child in dialog_options.get_children():
@@ -37,8 +48,8 @@ func set_dialog():
 			if passage.has('choices'):
 				
 				for choice in passage.choices:
-					dialog_text.append(passage.dialog)
-					dialog_choice.append(passage.link)
+					dialog_text.append(choice.dialog)
+					dialog_choice.append(choice.link)
 					typing_effect = false
 					indicator_on = true
 				
@@ -55,8 +66,9 @@ func set_dialog():
 				dialog_options.add_child(menu_item)
 				var title = menu_item.get_node('title')
 				title.set_text(dialog_text[i])
-				menu_item.connect('menu_selection', self, '_on_menu_select', [menu_item.call])
 				menu_item.call = dialog_choice[i]
+#				how do I change the margin?
+				menu_item.connect('menu_selection', self, '_on_menu_select', [menu_item.call])
 				
 				if typing_effect == true:
 					title.set_visible_characters(0)
@@ -66,14 +78,6 @@ func set_dialog():
 			if indicator_on == false:
 				var indicator = dialog_options.get_child(0).get_node('indicator')
 				indicator.visible = false
-				
-			if next_page == 'end':
-				$dialog_box.hide()
-				player.state = 'move'
-				dialog_open = 0
-				clicks = 0
-				current_page = page
-				next_page = page
 
 func choice_navigation():
 	if Input.is_action_pressed('ui_up'):
@@ -82,8 +86,10 @@ func choice_navigation():
 		pass
 	
 func _on_typing_effect_timeout():
-	var title = dialog_options.get_child(0).get_node('title')
+	var title =  dialog_options.get_child(0).get_node('title')
 	title.set_visible_characters(title.get_visible_characters() + 1)
 
 func _on_menu_select(selection):
+	print(selection)
 	next_page = selection
+	set_dialog()
