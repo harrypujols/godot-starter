@@ -1,9 +1,9 @@
 extends StaticBody2D
 
-onready var dialog_box = get_node('../hud/interface/dialog')
-onready var dialog_text = dialog_box.get_node('dialog_text')
+onready var dialog = get_node('../hud/dialog')
+#onready var dialog = dialog_box.get_node('dialog_text')
 export var character_name = 'red'
-var dialog = functions.get_json('res://data/'+ character_name +'.json')
+var data = functions.get_json('res://data/'+ character_name +'.json')
 
 func _ready():
 	pass

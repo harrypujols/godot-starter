@@ -8,7 +8,7 @@
 
     {
       "name": "story",
-      "dialog": "I'm evil you",
+      "dialog": "I'm evil you.",
       "link": "answer"
     },
 
@@ -16,12 +16,12 @@
       "name": "answer",
       "choices": [
         {
-          "dialog": "That's cool",
+          "dialog": "That's cool.",
           "link": "nice"
         },
 
         {
-          "dialog": "Ugh, I don't like evil",
+          "dialog": "Ugh, I don't like evil.",
           "link": "naughty"
         }
       ]
