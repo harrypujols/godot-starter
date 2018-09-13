@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/player.gd" type="Script" id=3]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/pause.gd" type="Script" id=7]
+[ext_resource path="res://fonts/main_font.tres" type="Theme" id=8]
+[ext_resource path="res://scripts/debug_console.gd" type="Script" id=9]
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
+
+_sections_unfolded = [ "Transform" ]
 
 [node name="walls" type="TileMap" parent="." index="0"]
 
@@ -27,7 +33,7 @@ collision_mask = 1
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 65536, 1, 0, 65562, 1, 0, 131072, 1, 0, 131098, 1, 0, 196608, 1, 0, 196634, 1, 0, 262144, 1, 0, 262170, 1, 0, 327680, 1, 0, 327699, 1, 0, 327700, 1, 0, 327701, 1, 0, 327702, 1, 0, 327703, 1, 0, 327704, 1, 0, 327705, 1, 0, 327706, 1, 0, 393216, 1, 0, 393235, 1, 0, 458752, 1, 0, 458771, 1, 0, 524288, 1, 0, 524307, 1, 0, 589824, 1, 0, 589843, 1, 0, 655360, 1, 0, 655379, 1, 0, 720896, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 786432, 1, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786447, 1, 0, 851975, 1, 0, 851976, 1, 0, 851977, 1, 0, 851978, 1, 0, 851979, 1, 0, 851980, 1, 0, 851981, 1, 0, 851982, 1, 0, 851983, 1, 0 )
-_sections_unfolded = [ "Cell", "Collision" ]
+_sections_unfolded = [ "Cell", "Collision", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -42,38 +48,106 @@ speed = 200
 
 position = Vector2( 1462.57, 202.394 )
 
-[node name="hud" type="CenterContainer" parent="." index="3"]
+[node name="hud" type="CanvasLayer" parent="." index="3"]
 
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="dialog" parent="hud" index="0" instance=ExtResource( 5 )]
+
+margin_left = 512.0
+margin_top = 300.0
+margin_right = 512.0
+margin_bottom = 300.0
+
+[node name="pause" parent="hud" index="1" instance=ExtResource( 6 )]
+
+pause_mode = 2
+visible = false
+script = ExtResource( 7 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Pause", "Rect", "Size Flags" ]
+
+[node name="debug_console" type="VBoxContainer" parent="hud" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 40.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-use_top_left = false
+theme = ExtResource( 8 )
+alignment = 0
+script = ExtResource( 9 )
+_sections_unfolded = [ "Margin", "Theme" ]
 
-[node name="interface" type="CanvasLayer" parent="hud" index="0"]
+[node name="clicks" type="Label" parent="hud/debug_console" index="0"]
 
-layer = 1
-offset = Vector2( 1, 1 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 1, 1 )
-_sections_unfolded = [ "Pause" ]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 142.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "clicks"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
-[node name="dialog" parent="hud/interface" index="0" instance=ExtResource( 5 )]
+[node name="current_page" type="Label" parent="hud/debug_console" index="1"]
 
-margin_left = 143.0
-margin_top = 175.0
-margin_right = 143.0
-margin_bottom = 175.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 142.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "current_page"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="next_page" type="Label" parent="hud/debug_console" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 48.0
+margin_right = 142.0
+margin_bottom = 68.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "next_page"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

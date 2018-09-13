@@ -1,0 +1,42 @@
+{
+  "passages": [
+    {
+      "name": "hello",
+      "dialog": "Hello...",
+      "link": "story"
+    },
+
+    {
+      "name": "story",
+      "dialog": "I'm evil you.",
+      "link": "answer"
+    },
+
+    {
+      "name": "answer",
+      "choices": [
+        {
+          "dialog": "That's cool.",
+          "link": "nice"
+        },
+
+        {
+          "dialog": "Ugh, I don't like evil.",
+          "link": "naughty"
+        }
+      ]
+    },
+
+    {
+      "name": "nice",
+      "dialog": "Evil has won. Muahahah.",
+      "link": "end"
+    },
+
+    {
+      "name": "naughty",
+      "dialog": "No one likes evil stuff. Sigh.",
+       "link": "end"
+    }
+  ]
+}

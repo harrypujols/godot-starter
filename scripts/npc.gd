@@ -1,17 +1,16 @@
 extends StaticBody2D
 
-onready var dialog_box = get_node('../hud/interface/dialog')
-onready var dialog_text = dialog_box.get_node('dialog_text')
-export var character_name = 'npc'
-var content = ['Hello...', 'I am evil you.']
-
-func _ready():
-	pass
+onready var dialog = get_node('../hud/dialog')
+export var character_name = 'character'
+var data = functions.get_json('res://data/'+ character_name +'.json')
+var next_page = 'hello'
 
 func _on_dialog_zone_area_entered(area):
 	global.entered_dialog_zone = true
-	dialog_text.content = content
 	$alert_bubble.visible = true
+	dialog.data = data
+	dialog.page = next_page
+	dialog.next_page = next_page
 
 func _on_dialog_zone_area_exited(area):
 	global.entered_dialog_zone = false
