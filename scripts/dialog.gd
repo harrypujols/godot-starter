@@ -33,9 +33,10 @@ func set_dialog():
 		next_page = page
 		pass
 		
-	current_page = next_page
 	dialog_text.clear()
 	dialog_choice.clear()
+	current_page = next_page
+	
 	if typing_effect == true:
 		$dialog_box/typing_effect.stop()
 		typing_effect = false
@@ -63,6 +64,7 @@ func set_dialog():
 				
 			for i in range(0, dialog_text.size()):
 				print(dialog_text[i])
+				print('The value of i is ' + String(i))
 				var menu_item = get_menu_item.instance()
 				dialog_options.add_child(menu_item)
 				var title = menu_item.get_node('title')
@@ -76,6 +78,7 @@ func set_dialog():
 					$dialog_box/typing_effect.start()
 					
 			dialog_options.get_child(0).grab_focus()
+			
 			if indicator_on == false:
 				var indicator = dialog_options.get_child(0).get_node('indicator')
 				indicator.visible = false
@@ -87,4 +90,5 @@ func _on_typing_effect_timeout():
 func _on_menu_select(selection):
 	print(selection)
 	next_page = selection
-	set_dialog()
+	if clicks > 1:
+		set_dialog()
