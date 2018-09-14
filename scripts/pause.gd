@@ -1,7 +1,7 @@
 extends Control
 
 func _input(event):
-	if Input.is_action_pressed('ui_pause'):
+	if Input.is_action_pressed('ui_pause') && global.pause_enabled:
 		match global.pause:
 			true:
 				get_tree().paused = false

@@ -20,6 +20,7 @@ func _input(event):
 		if dialog_open == 0:
 			$dialog_box.popup_centered()
 			player.state = 'interact'
+			global.pause_enabled = false
 			dialog_open = 1
 			set_dialog()
 
@@ -27,6 +28,7 @@ func set_dialog():
 	if next_page == 'end':
 		$dialog_box.hide()
 		player.state = 'move'
+		global.pause_enabled = true
 		dialog_open = 0
 		clicks = 0
 		next_page = page
