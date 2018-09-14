@@ -3,12 +3,13 @@
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/player.gd" type="Script" id=3]
-[ext_resource path="res://characters/npc.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/character.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/pause.gd" type="Script" id=7]
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=8]
 [ext_resource path="res://scripts/debug_console.gd" type="Script" id=9]
+
 
 [node name="stage" type="Node2D" index="0"]
 
