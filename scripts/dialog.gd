@@ -3,6 +3,7 @@ extends Control
 onready var player = get_node('../../player')
 onready var dialog_options = get_node('dialog_box/dialog_choices')
 var get_menu_item = load('res://interface/menu_item.tscn')
+var get_pause = load('res://interface/pause.tscn')
 var data = functions.get_json('res://data/dialog.json')
 var dialog_open = 0
 var page = 'start'
@@ -15,23 +16,29 @@ var indicator_on = true
 var clicks = 0
 	
 func _input(event):
-	if Input.is_action_pressed('ui_accept') && global.entered_dialog_zone:
+	if Input.is_action_just_pressed('ui_accept') && global.entered_dialog_zone:
 		clicks += 1
 		if dialog_open == 0:
 			$dialog_box.popup_centered()
 			player.state = 'interact'
 			dialog_open = 1
 			set_dialog()
-
+			
+	if Input.is_action_just_pressed('ui_cancel'):
+		reset_dialog()
+	
+func reset_dialog():
+	$dialog_box.hide()
+	player.state = 'move'
+	dialog_open = 0
+	clicks = 0
+	next_page = page
+	
 func set_dialog():
 	if next_page == 'end':
-		$dialog_box.hide()
-		player.state = 'move'
-		dialog_open = 0
-		clicks = 0
-		next_page = page
+		reset_dialog()
 		pass
-		
+	
 	dialog_text.clear()
 	dialog_choice.clear()
 	current_page = next_page
