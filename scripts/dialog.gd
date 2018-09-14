@@ -16,7 +16,7 @@ var indicator_on = true
 var clicks = 0
 	
 func _input(event):
-	if Input.is_action_pressed('ui_accept') && global.entered_dialog_zone:
+	if Input.is_action_just_pressed('ui_accept') && global.entered_dialog_zone:
 		clicks += 1
 		if dialog_open == 0:
 			$dialog_box.popup_centered()
@@ -24,10 +24,7 @@ func _input(event):
 			dialog_open = 1
 			set_dialog()
 			
-	if Input.is_action_pressed('ui_cancel') && dialog_open == 0:
-		reset_dialog()
-		
-	if Input.is_action_pressed('ui_pause') && dialog_open == 0:
+	if Input.is_action_just_pressed('ui_cancel'):
 		reset_dialog()
 	
 func reset_dialog():
