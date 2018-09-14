@@ -25,6 +25,8 @@ friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
 character_name = "red"
+file_name = "character"
+dialog_entry = "hello"
 
 [node name="npc_sprite" type="Sprite" parent="." index="0"]
 
@@ -38,6 +40,7 @@ _sections_unfolded = [ "Animation", "Offset", "Transform", "Visibility" ]
 
 [node name="dialog_zone" type="Area2D" parent="." index="1"]
 
+editor/display_folded = true
 scale = Vector2( 0.999999, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
