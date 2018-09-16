@@ -4,7 +4,7 @@ onready var menu = get_node('./hud/menu')
 var data = functions.get_json('res://data/menu.json')
 
 func _ready():
-	menu.data = data
+	menu.data = data.menu
 	menu.init()
 
 func _on_menu_select(selection):
