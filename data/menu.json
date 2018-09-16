@@ -4,6 +4,14 @@
     "call": "start"
   }, {
     "title": "Quit",
+    "call": "confirm"
+  }],
+
+  "confirm": [{
+    "title": "Quit?",
     "call": "quit"
+  }, {
+    "title": "Return",
+    "call": "return"
   }]
 }

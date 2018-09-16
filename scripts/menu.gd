@@ -5,6 +5,11 @@ var data = {}
 var get_menu_item = load('res://interface/menu_item.tscn')
 
 func init():
+	if self.get_children().size() > 0:
+		for child in self.get_children():
+			child.queue_free()
+			self.remove_child(child)
+			
 	for item in data:
 		var menu_item = get_menu_item.instance()
 		self.add_child(menu_item)
