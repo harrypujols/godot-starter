@@ -53,6 +53,7 @@ func set_dialog():
 	
 	if dialog_options.get_children().size() > 0:
 		for child in dialog_options.get_children():
+			child.queue_free()
 			dialog_options.remove_child(child)
 	
 	for passage in data.passages:
