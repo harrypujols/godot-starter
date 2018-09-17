@@ -14,6 +14,7 @@ var dialog_choice = []
 var typing_effect = false
 var indicator_on = true
 var clicks = 0
+var text_color = global.color.white
 	
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') && global.entered_dialog_zone:
@@ -65,12 +66,14 @@ func set_dialog():
 					dialog_choice.append(choice.link)
 					typing_effect = false
 					indicator_on = true
+					text_color = global.color.green
 				
 			else:
 				dialog_text.append(passage.dialog)
 				dialog_choice.append(passage.link)
 				typing_effect = true
 				indicator_on = false
+				text_color = global.color.white
 				
 				
 			for i in range(0, dialog_text.size()):
@@ -78,6 +81,7 @@ func set_dialog():
 				dialog_options.add_child(menu_item)
 				var title = menu_item.get_node('title')
 				title.set_text(dialog_text[i])
+				title.set('custom_colors/font_color', text_color)
 				menu_item.call = dialog_choice[i]
 				menu_item.connect('menu_selection', self, '_on_menu_select', [menu_item.call])
 				
