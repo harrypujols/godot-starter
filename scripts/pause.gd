@@ -19,6 +19,8 @@ func _on_menu_select(selection):
 			self.visible = false
 			global.pause = false
 		'reset':
+			get_tree().paused = false
+			global.pause = false
 			get_tree().change_scene('res://rooms/intro.tscn')
 		'confirm':
 			entry = 'reload'
