@@ -15,7 +15,7 @@ var indicator_on = true
 var clicks = 0
 	
 func _input(event):
-	if Input.is_action_just_pressed('ui_accept') && global.entered_dialog_zone:
+	if Input.is_action_just_pressed('ui_accept') and global.entered_dialog_zone:
 		clicks += 1
 		if dialog_open == 0:
 			init()
