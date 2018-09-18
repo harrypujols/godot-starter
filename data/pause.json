@@ -1,20 +1,4 @@
 {
-  "menu": [{
-    "label": "Start",
-    "call": "start"
-  }, {
-    "label": "Quit",
-    "call": "confirm"
-  }],
-
-  "confirm": [{
-    "label": "Quit",
-    "call": "quit"
-  }, {
-    "label": "Return",
-    "call": "return"
-  }],
-
   "pause": [{
     "label": "Unpause",
     "call": "unpause"

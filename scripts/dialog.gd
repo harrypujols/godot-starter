@@ -3,7 +3,6 @@ extends Control
 onready var player = get_node('../../player')
 onready var dialog_options = get_node('dialog_box/dialog_options')
 var get_menu_item = load('res://interface/menu_item.tscn')
-var get_pause = load('res://interface/pause.tscn')
 var data = functions.get_json('res://data/dialog.json')
 var dialog_open = 0
 var dialog_entry = 'start'
@@ -92,9 +91,12 @@ func set_dialog():
 			dialog_options.get_child(0).grab_focus()
 			
 			if indicator_on == false:
-				var indicator = dialog_options.get_child(0).get_node('indicator')
-				dialog_options.margin_left = 0
-				indicator.visible = false
+				indicator_off()
+	
+func indicator_off():
+	var indicator = dialog_options.get_child(0).get_node('indicator')
+	dialog_options.margin_left = 0
+	indicator.visible = false
 	
 func _on_typing_effect_timeout():
 	var label =  dialog_options.get_child(0).get_node('label')

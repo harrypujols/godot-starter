@@ -10,7 +10,6 @@ var get_menu_item = load('res://interface/menu_item.tscn')
 func _ready():
 	self.set('custom_constants/separation', 16)
 	
-
 func init():
 	if items.get_children().size() > 0:
 		for child in items.get_children():
