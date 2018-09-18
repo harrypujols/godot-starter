@@ -35,6 +35,7 @@ func _on_menu_select(selection):
 
 func _input(event):
 	if Input.is_action_pressed('ui_pause'):
+		print(String(global.pause))
 		match global.pause:
 			true:
 				get_tree().paused = false
@@ -46,4 +47,5 @@ func _input(event):
 				global.pause = true
 				title.visible = true
 				title.set_text(data.title.pause)
+				entry = 'pause'
 				setup_menu()

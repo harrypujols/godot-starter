@@ -3,7 +3,6 @@ extends Control
 onready var player = get_node('../../player')
 onready var dialog_options = get_node('dialog_box/dialog_options')
 var get_menu_item = load('res://interface/menu_item.tscn')
-var get_pause = load('res://interface/pause.tscn')
 var data = functions.get_json('res://data/dialog.json')
 var dialog_open = 0
 var dialog_entry = 'start'
@@ -19,6 +18,8 @@ var text_color = global.color.white
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') && global.entered_dialog_zone:
 		clicks += 1
+		print('click')
+		print(clicks)
 		if dialog_open == 0:
 			init()
 			
