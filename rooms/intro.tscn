@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/intro.gd" type="Script" id=1]
 [ext_resource path="res://interface/menu.tscn" type="PackedScene" id=2]
 
-[node name="intro" type="Control" index="0"]
+[node name="intro" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -35,8 +35,5 @@ size_flags_vertical = 1
 _sections_unfolded = [ "Margin", "Rect" ]
 
 [node name="menu" parent="hud" index="0" instance=ExtResource( 2 )]
-
-margin_right = 164.0
-margin_bottom = 24.0
 
 
