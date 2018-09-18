@@ -6,7 +6,7 @@ var data = functions.get_json('res://data/menu.json')
 var entry = 'menu'
 
 func _ready():
-	title.set_text(data.title)
+	title.set_text(data.title.confirm)
 	setup_menu()
 	
 func setup_menu():

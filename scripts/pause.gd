@@ -3,20 +3,15 @@ extends Control
 onready var menu = get_node('./hud/menu')
 onready var title = get_node('./hud/menu/title')
 var data = functions.get_json('res://data/pause.json')
-var entry = 'menu'
+var entry = 'pause'
 
 func _ready():
-	title.visible = true
-	title.set_text(data.titles[0])
-	setup_menu()
+	self.visible = false
 	
 func setup_menu():
 	menu.data = data[entry]
 	menu.init()
-	for menu_item in menu.get_node('./items').get_children():
-		menu_item.set('pause/mode', 'process')
-	menu.get_node('./items').get_child(0).grab_focus()
-
+	
 func _on_menu_select(selection):
 	match selection:
 		'unpause':
@@ -26,12 +21,12 @@ func _on_menu_select(selection):
 		'reset':
 			get_tree().change_scene('res://rooms/intro.tscn')
 		'confirm':
-			entry = 'confirm'
-			title.set_text(data.titles[1])
+			entry = 'reload'
+			title.set_text(data.title.menu)
 			setup_menu()
 		'return':
-			entry = 'menu'
-			title.set_text(data.titles[0])
+			entry = 'pause'
+			title.set_text(data.title.pause)
 			setup_menu()
 		_:
 			print(selection)
@@ -47,3 +42,6 @@ func _input(event):
 				get_tree().paused = true
 				self.visible = true
 				global.pause = true
+				title.visible = true
+				title.set_text(data.title.pause)
+				setup_menu()

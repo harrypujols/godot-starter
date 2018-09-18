@@ -25,4 +25,3 @@ func init():
 		menu_item.connect('menu_selection', parent, '_on_menu_select', [menu_item.call])
 		
 	items.get_child(0).grab_focus()
-	print(items.get_child(0).get_node('label').text)

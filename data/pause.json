@@ -1,13 +1,13 @@
 {
-  "menu": [{
-    "label": "Return to Game",
+  "pause": [{
+    "label": "Unpause",
     "call": "unpause"
   }, {
-    "label": "Return to Menu",
+    "label": "Main Menu",
     "call": "confirm"
   }],
 
-  "confirm": [{
+  "reload": [{
     "label": "Are you sure? Game won't be saved",
     "call": "reset"
   }, {
@@ -15,8 +15,9 @@
     "call": "return"
   }],
 
-  "titles": [
-    "Pause",
-    "Are you sure? Game won't be saved."
-  ]
+  "title": {
+    "pause": "Pause",
+    "menu": "Main Menu",
+    "confirm": "Are You Sure?"
+  }
 }

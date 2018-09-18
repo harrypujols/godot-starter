@@ -15,5 +15,25 @@
     "call": "return"
   }],
 
-  "title": "Are you sure?"
+  "pause": [{
+    "label": "Unpause",
+    "call": "unpause"
+  }, {
+    "label": "Main Menu",
+    "call": "confirm"
+  }],
+
+  "reload": [{
+    "label": "Are you sure? Game won't be saved",
+    "call": "reset"
+  }, {
+    "label": "Back",
+    "call": "return"
+  }],
+
+  "title": {
+    "pause": "Pause",
+    "menu": "Main Menu",
+    "confirm": "Are You Sure?"
+  }
 }
