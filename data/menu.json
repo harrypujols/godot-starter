@@ -8,10 +8,12 @@
   }],
 
   "confirm": [{
-    "label": "Quit?",
+    "label": "Quit",
     "call": "quit"
   }, {
     "label": "Return",
     "call": "return"
-  }]
+  }],
+
+  "title": "Are you sure?"
 }

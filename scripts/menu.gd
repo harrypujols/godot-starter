@@ -1,21 +1,28 @@
 extends VBoxContainer
 
-onready var parent = get_node('../../')
+export var parent_node = '../../'
+onready var parent = get_node(parent_node)
+onready var items = get_node('./items')
+onready var title = get_node('./title')
 var data = {}
 var get_menu_item = load('res://interface/menu_item.tscn')
 
+func _ready():
+	self.set('custom_constants/separation', 16)
+	
+
 func init():
-	if self.get_children().size() > 0:
-		for child in self.get_children():
+	if items.get_children().size() > 0:
+		for child in items.get_children():
 			child.queue_free()
-			self.remove_child(child)
+			items.remove_child(child)
 			
 	for item in data:
 		var menu_item = get_menu_item.instance()
-		self.add_child(menu_item)
+		items.add_child(menu_item)
 		var label = menu_item.get_node('label')
 		label.set_text(item.label)
 		menu_item.call = item.call
 		menu_item.connect('menu_selection', parent, '_on_menu_select', [menu_item.call])
 		
-	self.get_child(0).grab_focus()
+	items.get_child(0).grab_focus()
