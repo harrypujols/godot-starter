@@ -21,7 +21,9 @@ func init():
 		items.add_child(menu_item)
 		var label = menu_item.get_node('label')
 		label.set_text(item.label)
+		label.set('custom_colors/font_color', global.color.grey)
 		menu_item.call = item.call
 		menu_item.connect('menu_selection', parent, '_on_menu_select', [menu_item.call])
 		
 	items.get_child(0).grab_focus()
+	items.get_child(0).get_node('label').set('custom_colors/font_color', global.color.white)

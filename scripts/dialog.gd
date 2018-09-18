@@ -13,7 +13,6 @@ var dialog_choice = []
 var typing_effect = false
 var indicator_on = true
 var clicks = 0
-var text_color = global.color.white
 	
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') && global.entered_dialog_zone:
@@ -65,22 +64,19 @@ func set_dialog():
 					dialog_choice.append(choice.link)
 					typing_effect = false
 					indicator_on = true
-					text_color = global.color.green
 				
 			else:
 				dialog_text.append(passage.dialog)
 				dialog_choice.append(passage.link)
 				typing_effect = true
 				indicator_on = false
-				text_color = global.color.white
-				
 				
 			for i in range(0, dialog_text.size()):
 				var menu_item = get_menu_item.instance()
 				dialog_options.add_child(menu_item)
 				var label = menu_item.get_node('label')
 				label.set_text(dialog_text[i])
-				label.set('custom_colors/font_color', text_color)
+				label.set('custom_colors/font_color', global.color.grey)
 				menu_item.call = dialog_choice[i]
 				menu_item.connect('menu_selection', self, '_on_menu_select', [menu_item.call])
 				
@@ -89,6 +85,7 @@ func set_dialog():
 					$dialog_box/typing_effect.start()
 					
 			dialog_options.get_child(0).grab_focus()
+			dialog_options.get_child(0).get_node('label').set('custom_colors/font_color', global.color.white)
 			
 			if indicator_on == false:
 				indicator_off()
