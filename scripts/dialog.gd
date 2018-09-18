@@ -18,8 +18,6 @@ var text_color = global.color.white
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') && global.entered_dialog_zone:
 		clicks += 1
-		print('click')
-		print(clicks)
 		if dialog_open == 0:
 			init()
 			
@@ -93,9 +91,12 @@ func set_dialog():
 			dialog_options.get_child(0).grab_focus()
 			
 			if indicator_on == false:
-				var indicator = dialog_options.get_child(0).get_node('indicator')
-				dialog_options.margin_left = 0
-				indicator.visible = false
+				indicator_off()
+	
+func indicator_off():
+	var indicator = dialog_options.get_child(0).get_node('indicator')
+	dialog_options.margin_left = 0
+	indicator.visible = false
 	
 func _on_typing_effect_timeout():
 	var label =  dialog_options.get_child(0).get_node('label')
