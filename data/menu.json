@@ -1,17 +1,17 @@
 {
   "menu": [{
-    "title": "Start",
+    "label": "Start",
     "call": "start"
   }, {
-    "title": "Quit",
+    "label": "Quit",
     "call": "confirm"
   }],
 
   "confirm": [{
-    "title": "Quit?",
+    "label": "Quit?",
     "call": "quit"
   }, {
-    "title": "Return",
+    "label": "Return",
     "call": "return"
   }]
 }

@@ -79,14 +79,14 @@ func set_dialog():
 			for i in range(0, dialog_text.size()):
 				var menu_item = get_menu_item.instance()
 				dialog_options.add_child(menu_item)
-				var title = menu_item.get_node('title')
-				title.set_text(dialog_text[i])
-				title.set('custom_colors/font_color', text_color)
+				var label = menu_item.get_node('label')
+				label.set_text(dialog_text[i])
+				label.set('custom_colors/font_color', text_color)
 				menu_item.call = dialog_choice[i]
 				menu_item.connect('menu_selection', self, '_on_menu_select', [menu_item.call])
 				
 				if typing_effect == true:
-					title.set_visible_characters(0)
+					label.set_visible_characters(0)
 					$dialog_box/typing_effect.start()
 					
 			dialog_options.get_child(0).grab_focus()
@@ -97,8 +97,8 @@ func set_dialog():
 				indicator.visible = false
 	
 func _on_typing_effect_timeout():
-	var title =  dialog_options.get_child(0).get_node('title')
-	title.set_visible_characters(title.get_visible_characters() + 1)
+	var label =  dialog_options.get_child(0).get_node('label')
+	label.set_visible_characters(label.get_visible_characters() + 1)
 
 func _on_menu_select(selection):
 	next_page = selection

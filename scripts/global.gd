@@ -1,7 +1,9 @@
 extends Node
 
 var entered_dialog_zone = false
+
 var pause = false
+
 var color = {
 	'white': Color('#ffffff'),
 	'grey': Color('#aaaaaa'),
