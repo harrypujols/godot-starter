@@ -10,7 +10,6 @@ var get_menu_item = load('res://interface/menu_item.tscn')
 func _ready():
 	self.set('custom_constants/separation', 16)
 	
-
 func init():
 	if items.get_children().size() > 0:
 		for child in items.get_children():
@@ -26,3 +25,4 @@ func init():
 		menu_item.connect('menu_selection', parent, '_on_menu_select', [menu_item.call])
 		
 	items.get_child(0).grab_focus()
+	print(items.get_child(0).get_node('label').text)

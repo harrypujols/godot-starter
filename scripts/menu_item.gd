@@ -8,6 +8,7 @@ func _on_menu_item_pressed():
 
 func _on_menu_item_focus_entered():
 	$indicator.visible = true
+	print('foo')
 
 func _on_menu_item_focus_exited():
 	$indicator.visible = false

@@ -1,0 +1,22 @@
+{
+  "menu": [{
+    "label": "Return to Game",
+    "call": "unpause"
+  }, {
+    "label": "Return to Menu",
+    "call": "confirm"
+  }],
+
+  "confirm": [{
+    "label": "Are you sure? Game won't be saved",
+    "call": "reset"
+  }, {
+    "label": "Back",
+    "call": "return"
+  }],
+
+  "titles": [
+    "Pause",
+    "Are you sure? Game won't be saved."
+  ]
+}
