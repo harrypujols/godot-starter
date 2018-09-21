@@ -25,7 +25,7 @@ func _on_menu_select(selection):
 			get_tree().change_scene('res://rooms/intro.tscn')
 		'confirm':
 			entry = 'reload'
-			title.set_text(data.title.menu)
+			title.set_text(data.title.confirm)
 			setup_menu()
 		'return':
 			entry = 'pause'

@@ -8,7 +8,7 @@
   }],
 
   "reload": [{
-    "label": "Are you sure? Game won't be saved",
+    "label": "Game won't be saved",
     "call": "reset"
   }, {
     "label": "Back",
@@ -17,7 +17,6 @@
 
   "title": {
     "pause": "Pause",
-    "menu": "Main Menu",
     "confirm": "Are You Sure?"
   }
 }

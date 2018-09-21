@@ -1,10 +1,10 @@
 extends StaticBody2D
 
 onready var dialog = get_node('../hud/dialog')
-export var character_name = 'character'
 export var file_name = 'character'
 export var dialog_entry = 'hello'
 var data = functions.get_json('res://data/'+ file_name +'.json')
+var character_name = data.name
 
 
 func _on_dialog_zone_area_entered(area):
