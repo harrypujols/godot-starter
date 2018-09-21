@@ -2,6 +2,7 @@ extends Control
 
 onready var player = get_node('../../player')
 onready var dialog_options = get_node('dialog_box/dialog_options')
+onready var dialog_title = get_node('dialog_box/dialog_title')
 var get_menu_item = load('res://interface/menu_item.tscn')
 var data = functions.get_json('res://data/dialog.json')
 var dialog_open = 0
@@ -59,6 +60,7 @@ func set_dialog():
 		if current_page == passage.name:
 			if passage.has('choices'):
 				
+				dialog_title.set_text('player')
 				for choice in passage.choices:
 					dialog_text.append(choice.dialog)
 					dialog_choice.append(choice.link)
@@ -66,6 +68,7 @@ func set_dialog():
 					indicator_on = true
 				
 			else:
+				dialog_title.set_text(data.name)
 				dialog_text.append(passage.dialog)
 				dialog_choice.append(passage.link)
 				typing_effect = true
