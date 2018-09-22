@@ -1,4 +1,6 @@
 {
+  "name": "character",
+
   "passages": [
     {
       "name": "hello",

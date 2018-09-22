@@ -1,0 +1,22 @@
+{
+  "pause": [{
+    "label": "Unpause",
+    "call": "unpause"
+  }, {
+    "label": "Main Menu",
+    "call": "confirm"
+  }],
+
+  "reload": [{
+    "label": "Game won't be saved",
+    "call": "reset"
+  }, {
+    "label": "Back",
+    "call": "return"
+  }],
+
+  "title": {
+    "pause": "Pause",
+    "confirm": "Are You Sure?"
+  }
+}
