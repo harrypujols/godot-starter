@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://sprites/sprite.png" type="Texture" id=1]
+[ext_resource path="res://sprites/player.png" type="Texture" id=1]
 
 [sub_resource type="AtlasTexture" id=1]
 
@@ -30,7 +30,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 2 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -65,70 +65,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.00805192 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 2 ]
+"values": [ 2, 0 ]
 }
 
 [sub_resource type="Animation" id=6]
-
-resource_name = "push_down"
-length = 1.0
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("player_sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 8, 9 ]
-}
-
-[sub_resource type="Animation" id=7]
-
-resource_name = "push_right"
-length = 1.0
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("player_sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 12, 13 ]
-}
-
-[sub_resource type="Animation" id=8]
-
-resource_name = "push_up"
-length = 1.0
-loop = true
-step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("player_sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 10, 11 ]
-}
-
-[sub_resource type="Animation" id=9]
 
 resource_name = "walk_down"
 length = 1.0
@@ -144,10 +87,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 2, 3 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 
 resource_name = "walk_right"
 length = 1.0
@@ -166,7 +109,7 @@ tracks/0/keys = {
 "values": [ 4, 5 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=8]
 
 resource_name = "walk_up"
 length = 1.0
@@ -182,10 +125,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 2, 3 ]
+"values": [ 0, 1 ]
 }
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
@@ -199,11 +142,10 @@ collision/safe_margin = 0.08
 
 [node name="player_sprite" type="Sprite" parent="." index="0"]
 
-scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 normal_map = SubResource( 1 )
-vframes = 2
-hframes = 8
+hframes = 6
+frame = 2
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
@@ -253,14 +195,11 @@ playback_speed = 4.0
 anims/idle_down = SubResource( 3 )
 anims/idle_right = SubResource( 4 )
 anims/idle_up = SubResource( 5 )
-anims/push_down = SubResource( 6 )
-anims/push_right = SubResource( 7 )
-anims/push_up = SubResource( 8 )
-anims/walk_down = SubResource( 9 )
-anims/walk_right = SubResource( 10 )
-anims/walk_up = SubResource( 11 )
+anims/walk_down = SubResource( 6 )
+anims/walk_right = SubResource( 7 )
+anims/walk_up = SubResource( 8 )
 blend_times = [  ]
-_sections_unfolded = [ "Playback Options" ]
+_sections_unfolded = [ "Pause", "Playback Options" ]
 
 [node name="player_hitbox" type="Area2D" parent="." index="4"]
 
@@ -276,7 +215,7 @@ audio_bus_name = "Master"
 [node name="hitbox_area" type="CollisionShape2D" parent="player_hitbox" index="0"]
 
 scale = Vector2( 3, 4 )
-shape = SubResource( 12 )
+shape = SubResource( 9 )
 _sections_unfolded = [ "Transform" ]
 
 
