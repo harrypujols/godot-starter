@@ -1,6 +1,7 @@
 extends Node
 
 var known_controllers = []
+onready var button_icons = get_tree().get_nodes_in_group('button_icons')
 
 func _ready():
 	Input.connect('joy_connection_changed', self, '_on_connection_change')
@@ -19,3 +20,21 @@ func _on_connection_change(device_id, is_connected):
 			
 	else:
 		print('controller disconnected')
+
+func hide_button_icons():
+	for button in button_icons:
+		button.hide()
+		
+func _process(delta):
+	if Input.is_action_pressed('ui_right'):
+		hide_button_icons()
+		$right.show()
+	if Input.is_action_pressed('ui_left'):
+		hide_button_icons()
+		$left.show()
+	if Input.is_action_pressed('ui_down'):
+		hide_button_icons()
+		$down.show()
+	if Input.is_action_pressed('ui_up'):
+		hide_button_icons()
+		$up.show()
