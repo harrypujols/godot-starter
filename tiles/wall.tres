@@ -1,6 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=2]
 
-[ext_resource path="res://sprites/wall.png" type="Texture" id=2]
+[ext_resource path="res://sprites/textures/wall.png" type="Texture" id=2]
+
 
 [sub_resource type="AtlasTexture" id=1]
 

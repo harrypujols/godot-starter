@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alert_bubble.png-67323f734d02ae07199edf541a7e6ecc.stex"
+path="res://.import/wall.png-0e391a7c455498d285b972e7366bd88a.stex"
 
 [deps]
 
-source_file="res://sprites/alert_bubble.png"
-dest_files=[ "res://.import/alert_bubble.png-67323f734d02ae07199edf541a7e6ecc.stex" ]
+source_file="res://sprites/textures/wall.png"
+dest_files=[ "res://.import/wall.png-0e391a7c455498d285b972e7366bd88a.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
