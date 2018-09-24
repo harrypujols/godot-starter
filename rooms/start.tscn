@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/controls.gd" type="Script" id=7]
-[ext_resource path="res://sprites/interface/buttons_32.png" type="Texture" id=8]
 
 [node name="stage" type="Node2D" index="0"]
 
@@ -71,51 +70,9 @@ margin_bottom = 300.0
 
 script = ExtResource( 7 )
 
-[node name="up" type="Sprite" parent="hud/controls" index="0" groups=[
-"button_icons",
-]]
+[node name="action_pressed" type="Sprite" parent="hud/controls" index="0"]
 
-visible = false
-position = Vector2( 128, 96 )
-texture = ExtResource( 8 )
-hframes = 12
-frame = 7
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
-
-[node name="down" type="Sprite" parent="hud/controls" index="1" groups=[
-"button_icons",
-]]
-
-visible = false
-position = Vector2( 128, 96 )
-rotation = 3.14159
-texture = ExtResource( 8 )
-hframes = 12
-frame = 7
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
-
-[node name="right" type="Sprite" parent="hud/controls" index="2" groups=[
-"button_icons",
-]]
-
-visible = false
-position = Vector2( 128, 96 )
-rotation = 1.5708
-texture = ExtResource( 8 )
-hframes = 12
-frame = 7
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
-
-[node name="left" type="Sprite" parent="hud/controls" index="3" groups=[
-"button_icons",
-]]
-
-visible = false
-position = Vector2( 128, 96 )
-rotation = -1.5708
-texture = ExtResource( 8 )
-hframes = 12
-frame = 7
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+position = Vector2( 96, 96 )
+_sections_unfolded = [ "Transform" ]
 
 

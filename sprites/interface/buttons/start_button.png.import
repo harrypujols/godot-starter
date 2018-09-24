@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttons_32.png-356c5d0b102efaf62341f05ccfc75844.stex"
+path="res://.import/start_button.png-e6a00734d903d89d0c8aee8e25fa22b7.stex"
 
 [deps]
 
-source_file="res://sprites/interface/buttons_32.png"
-dest_files=[ "res://.import/buttons_32.png-356c5d0b102efaf62341f05ccfc75844.stex" ]
+source_file="res://sprites/interface/buttons/start_button.png"
+dest_files=[ "res://.import/start_button.png-e6a00734d903d89d0c8aee8e25fa22b7.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

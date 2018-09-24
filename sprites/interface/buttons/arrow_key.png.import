@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttons_64.png-8c69b19899f6ce45f2c60672de17f2a4.stex"
+path="res://.import/arrow_key.png-96d346c5155cd96ab9a462bbcee0fd92.stex"
 
 [deps]
 
-source_file="res://sprites/interface/buttons_64.png"
-dest_files=[ "res://.import/buttons_64.png-8c69b19899f6ce45f2c60672de17f2a4.stex" ]
+source_file="res://sprites/interface/buttons/arrow_key.png"
+dest_files=[ "res://.import/arrow_key.png-96d346c5155cd96ab9a462bbcee0fd92.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
