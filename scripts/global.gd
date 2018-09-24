@@ -30,6 +30,7 @@ var button = {
 var key = {
 	arrow = preload('res://sprites/interface/buttons/arrow_key.png'),
 	enter = preload('res://sprites/interface/buttons/enter_key.png'),
+	delete = preload('res://sprites/interface/buttons/delete_key.png'),
 	spacebar = preload('res://sprites/interface/buttons/spacebar.png'),
 	default = preload('res://sprites/interface/buttons/key.png')
 }
