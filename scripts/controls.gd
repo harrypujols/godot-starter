@@ -18,6 +18,14 @@ func _on_connection_change(device_id, is_connected):
 			
 			print(known_controllers)
 			
+			match Input.get_joy_name(0):
+				'XInput Gamepad':
+					print('is Xbox')
+				'PS3 Controller', 'PS4 Controller':
+					print('is Playstation')
+				_:
+					print(Input.get_joy_name(0))
+			
 	else:
 		print('controller disconnected')
 
