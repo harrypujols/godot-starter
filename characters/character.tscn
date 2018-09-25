@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/character.gd" type="Script" id=1]
-[ext_resource path="res://sprites/characters/cat.png" type="Texture" id=2]
-[ext_resource path="res://sprites/interface/alert_bubble.png" type="Texture" id=3]
+[ext_resource path="res://sprites/interface/alert_bubble.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -25,7 +24,8 @@ friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-file_name = "character"
+character_file = "character.json"
+character_image = "cat.png"
 dialog_entry = "hello"
 
 [node name="dialog_zone" type="Area2D" parent="." index="0"]
@@ -52,7 +52,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="character_sprite" type="Sprite" parent="." index="2"]
 
-texture = ExtResource( 2 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility" ]
 
 [node name="alert_bubble" type="Sprite" parent="." index="3"]
@@ -60,7 +59,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Tr
 visible = false
 position = Vector2( 0.864548, -66.5457 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="area_entered" from="dialog_zone" to="." method="_on_dialog_zone_area_entered"]
