@@ -24,6 +24,7 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 file_name = "character"
 dialog_entry = "hello"
 
@@ -51,7 +52,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="character_sprite" type="Sprite" parent="." index="2"]
 
-scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility" ]
 
