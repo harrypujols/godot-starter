@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-f534b8a02ffb80eefc72936296201445.stex"
+path="res://.import/enter_key.png-33e241723bb31336bcfaab85e3e5a239.stex"
 
 [deps]
 
-source_file="res://sprites/player.png"
-dest_files=[ "res://.import/player.png-f534b8a02ffb80eefc72936296201445.stex" ]
+source_file="res://sprites/interface/buttons/enter_key.png"
+dest_files=[ "res://.import/enter_key.png-33e241723bb31336bcfaab85e3e5a239.stex" ]
 
 [params]
 
