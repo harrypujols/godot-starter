@@ -24,6 +24,8 @@ func _on_dialog_zone_area_exited(area):
 func _ready():
 	$character_sprite.set_texture(sprite)
 	image_size = $character_sprite.texture.get_size()
+	image_size.x = image_size.x / 2
+	image_size.y = image_size.y / 2
 	$character_shape.shape.set_extents(image_size)
-	$dialog_zone/area.shape.set_radius(2 * image_size.y)
-	print(image_size)
+	$dialog_zone/area.shape.set_radius(4 * image_size.y)
+	print($character_shape.shape.get_extents())

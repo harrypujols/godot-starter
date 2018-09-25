@@ -11,7 +11,7 @@ radius = 150.0
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 1, 1 )
 
 [node name="character" type="StaticBody2D" index="0"]
 
