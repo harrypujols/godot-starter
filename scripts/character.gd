@@ -17,3 +17,11 @@ func _on_dialog_zone_area_entered(area):
 func _on_dialog_zone_area_exited(area):
 	global.entered_dialog_zone = false
 	$alert_bubble.visible = false
+	
+func _ready():
+	var image_size = $character_sprite.texture.get_size()
+	# temporary until I get real-size image
+	image_size.x = image_size.x * 2
+	image_size.y = image_size.y * 2
+	$character_shape.shape.set_extents(image_size)
+	$dialog_zone/area.shape.set_radius(4 * image_size.y)
