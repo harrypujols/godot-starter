@@ -2,7 +2,7 @@ extends Control
 
 onready var menu = get_node('./hud/menu')
 onready var title = get_node('./hud/menu/title')
-var data = functions.get_json('res://data/menu.json')
+var data = global.get_json('res://data/menu.json')
 var entry = 'menu'
 
 func _ready():
