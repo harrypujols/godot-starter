@@ -8,14 +8,14 @@ var pause_button = global.key.default
 func _ready():
 	Input.connect('joy_connection_changed', self, '_on_connection_change')
 
-func _on_connection_change(device_id, is_connected):
-	if is_connected:
-		print('controller connected')
-		set_controller_icons()
-			
-	else:
-		print('controller disconnected')
-		set_keyboard_icons()
+#func _on_connection_change(device_id, is_connected):
+#	if is_connected:
+#		print('controller connected')
+#		set_controller_icons()
+#
+#	else:
+#		print('controller disconnected')
+#		set_keyboard_icons()
 
 func set_controller_icons():
 	if Input.is_joy_known(0):
@@ -28,8 +28,8 @@ func set_controller_icons():
 				cancel_button = global.button.circle
 			_:
 				print(Input.get_joy_name(0))
-				accept_button = global.button.a
-				cancel_button = global.button.b
+				accept_button = global.button.b
+				cancel_button = global.button.a
 
 func set_keyboard_icons():
 	accept_button = global.key.spacebar
