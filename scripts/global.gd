@@ -24,6 +24,8 @@ var button = {
 	triangle = preload('res://sprites/interface/buttons/triangle_button.png'),
 	square = preload('res://sprites/interface/buttons/square_button.png'),
 	circle = preload('res://sprites/interface/buttons/circle_button.png'),
+	select = preload('res://sprites/interface/buttons/select_button.png'),
+	start = preload('res://sprites/interface/buttons/start_button.png'),
 	default = preload('res://sprites/interface/buttons/button.png')
 }
 
@@ -31,6 +33,8 @@ var key = {
 	arrow = preload('res://sprites/interface/buttons/arrow_key.png'),
 	enter = preload('res://sprites/interface/buttons/enter_key.png'),
 	delete = preload('res://sprites/interface/buttons/delete_key.png'),
+	escape = preload('res://sprites/interface/buttons/esc_key.png'),
 	spacebar = preload('res://sprites/interface/buttons/spacebar.png'),
+	bar = preload('res://sprites/interface/buttons/bar_key.png'),
 	default = preload('res://sprites/interface/buttons/key.png')
 }
