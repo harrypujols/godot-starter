@@ -29,4 +29,3 @@ func _on_menu_select(selection):
 			setup_menu()
 		_:
 			print(selection)
-

@@ -14,7 +14,6 @@ var color = {
 }
 
 # icons
-
 var button = {
 	a = preload('res://sprites/interface/buttons/a_button.png'),
 	b = preload('res://sprites/interface/buttons/b_button.png'),
@@ -38,9 +37,7 @@ var key = {
 	default = preload('res://sprites/interface/buttons/key.png')
 }
 
-
 # load json file
-
 static func get_json(path):
 	var file = File.new()
 	file.open(path, file.READ)

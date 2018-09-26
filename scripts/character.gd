@@ -28,4 +28,3 @@ func _ready():
 	image_size.y = image_size.y / 2
 	$character_shape.shape.set_extents(image_size)
 	$dialog_zone/area.shape.set_radius(4 * image_size.y)
-	print($character_shape.shape.get_extents())
