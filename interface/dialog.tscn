@@ -102,33 +102,33 @@ wait_time = 0.01
 one_shot = false
 autostart = false
 
-[node name="dialog_input" type="NinePatchRect" parent="dialog_box" index="4"]
+[node name="dialog_input" type="MarginContainer" parent="dialog_box" index="4"]
 
 anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-region_rect = Rect2( 32, 32, 32, 32 )
-patch_margin_left = 32
-patch_margin_top = 32
-patch_margin_right = 32
-patch_margin_bottom = 32
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Patch Margin", "Rect" ]
-
-[node name="divider" type="HBoxContainer" parent="dialog_box/dialog_input" index="0"]
-
-anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -240.0
-margin_top = -32.0
+margin_top = -60.0
+margin_bottom = -28.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 32
+custom_constants/margin_left = 32
+_sections_unfolded = [ "Anchor", "Axis Stretch", "Grow Direction", "Margin", "Patch Margin", "Rect" ]
+
+[node name="divider" type="HBoxContainer" parent="dialog_box/dialog_input" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_right = 680.0
+margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -137,7 +137,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 32
 alignment = 0
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "custom_constants" ]
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_constants" ]
 
 [node name="input_accept" parent="dialog_box/dialog_input/divider" index="0" instance=ExtResource( 3 )]
 
