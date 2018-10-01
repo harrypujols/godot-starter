@@ -3,7 +3,7 @@ extends Control
 onready var menu = get_node('./hud/menu')
 onready var title = get_node('./hud/menu/title')
 onready var dialog = get_node('../dialog')
-var data = functions.get_json('res://data/pause.json')
+var data = global.get_json('res://data/pause.json')
 var entry = 'pause'
 
 func _ready():

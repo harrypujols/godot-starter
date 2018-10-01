@@ -1,18 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/character.gd" type="Script" id=1]
-[ext_resource path="res://sprites/characters/cat.png" type="Texture" id=2]
-[ext_resource path="res://sprites/interface/alert_bubble.png" type="Texture" id=3]
+[ext_resource path="res://sprites/interface/alert_bubble.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 150.0
+radius = 10.0
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 1, 1 )
 
 [node name="character" type="StaticBody2D" index="0"]
 
@@ -24,12 +23,13 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
-file_name = "character"
+_sections_unfolded = [ "Transform" ]
+character_file = "character.json"
+character_image = "cat.png"
 dialog_entry = "hello"
 
 [node name="dialog_zone" type="Area2D" parent="." index="0"]
 
-editor/display_folded = true
 scale = Vector2( 0.999999, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -47,14 +47,11 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="character_shape" type="CollisionShape2D" parent="." index="1"]
 
-scale = Vector2( 3, 4 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="character_sprite" type="Sprite" parent="." index="2"]
 
-scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
 _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility" ]
 
 [node name="alert_bubble" type="Sprite" parent="." index="3"]
@@ -62,7 +59,7 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Tr
 visible = false
 position = Vector2( 0.864548, -66.5457 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="area_entered" from="dialog_zone" to="." method="_on_dialog_zone_area_entered"]
