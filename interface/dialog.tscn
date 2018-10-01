@@ -121,17 +121,24 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 1
 custom_constants/separation = 32
-alignment = 0
+alignment = 2
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "custom_constants" ]
 
 [node name="input_accept" parent="dialog_box/dialog_input" index="0" instance=ExtResource( 3 )]
 
-margin_right = 104.0
+margin_left = 4.0
+margin_right = 108.0
+grow_horizontal = 0
+alignment = 2
+_sections_unfolded = [ "Grow Direction", "Theme" ]
 
 [node name="input_close" parent="dialog_box/dialog_input" index="1" instance=ExtResource( 3 )]
 
-margin_left = 136.0
-margin_right = 240.0
+margin_left = 140.0
+margin_right = 244.0
+grow_horizontal = 0
+alignment = 2
+_sections_unfolded = [ "Grow Direction", "Theme" ]
 
 [connection signal="timeout" from="dialog_box/typing_effect" to="." method="_on_typing_effect_timeout"]
 
