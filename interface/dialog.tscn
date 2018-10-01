@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/dialog.gd" type="Script" id=2]
-[ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/dialog_input.gd" type="Script" id=3]
+[ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Theme" id=1]
 
@@ -108,12 +109,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -152.0
-margin_top = -44.0
-margin_right = 92.0
-margin_bottom = -4.0
+margin_left = -264.0
+margin_top = -60.0
+margin_right = -20.0
+margin_bottom = -20.0
+grow_horizontal = 0
 grow_vertical = 0
-rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -122,19 +123,20 @@ size_flags_horizontal = 2
 size_flags_vertical = 1
 custom_constants/separation = 32
 alignment = 2
+script = ExtResource( 3 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "custom_constants" ]
 
-[node name="input_accept" parent="dialog_box/dialog_input" index="0" instance=ExtResource( 3 )]
+[node name="input_accept" parent="dialog_box/dialog_input" index="0" instance=ExtResource( 4 )]
 
-margin_left = 4.0
-margin_right = 108.0
+margin_left = 148.0
+margin_right = 180.0
 grow_horizontal = 0
 alignment = 2
-_sections_unfolded = [ "Grow Direction", "Theme" ]
+_sections_unfolded = [ "Grow Direction", "Rect", "Theme" ]
 
-[node name="input_close" parent="dialog_box/dialog_input" index="1" instance=ExtResource( 3 )]
+[node name="input_cancel" parent="dialog_box/dialog_input" index="1" instance=ExtResource( 4 )]
 
-margin_left = 140.0
+margin_left = 212.0
 margin_right = 244.0
 grow_horizontal = 0
 alignment = 2

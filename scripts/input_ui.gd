@@ -23,15 +23,16 @@ func refresh_label():
 	self.add_child(input_label)
 	
 func refresh_icon():
+	$input_icon.set_texture(input_icon)
+	
+func _ready():
+	self.set('custom_constants/separation', input_icon_separation)
+	
 	if icon_color == 'white':
 		input_icon = global[input_icon_type]['inverse'][input_icon_name]
 	else:
 		input_icon = global[input_icon_type][input_icon_name]
 		
-	$input_icon.set_texture(input_icon)
-	
-func _ready():
-	self.set('custom_constants/separation', input_icon_separation)
 	refresh_icon()
 	
 	if input_text != 'unassigned':
