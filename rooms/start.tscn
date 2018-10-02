@@ -10,6 +10,9 @@
 [node name="stage" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="walls" type="TileMap" parent="." index="0"]
 

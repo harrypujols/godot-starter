@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-f534b8a02ffb80eefc72936296201445.stex"
+path="res://.import/delete_key.png-f3894e650c858ecd2b1bb9e948b94604.stex"
 
 [deps]
 
-source_file="res://sprites/player.png"
-dest_files=[ "res://.import/player.png-f534b8a02ffb80eefc72936296201445.stex" ]
+source_file="res://sprites/interface/inverse_buttons/delete_key.png"
+dest_files=[ "res://.import/delete_key.png-f3894e650c858ecd2b1bb9e948b94604.stex" ]
 
 [params]
 
