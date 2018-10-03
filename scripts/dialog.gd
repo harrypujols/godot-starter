@@ -14,6 +14,7 @@ var dialog_choice = []
 var typing_effect = false
 var indicator_on = true
 var clicks = 0
+signal next_entry
 	
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and global.entered_dialog_zone:
@@ -58,8 +59,12 @@ func set_dialog():
 	
 	for passage in data.passages:
 		if current_page == passage.name:
-			if passage.has('choices'):
+			
+			if passage.has('call'):
+				dialog_entry = passage.call
+				emit_signal('next_entry')
 				
+			if passage.has('choices'):
 				dialog_title.set_text('player')
 				for choice in passage.choices:
 					dialog_text.append(choice.dialog)
