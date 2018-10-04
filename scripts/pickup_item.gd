@@ -4,16 +4,18 @@ onready var dialog = get_node('../../hud/dialog')
 onready var items = self.get_parent()
 export var item_name = 'item'
 export var item_image = 'interface/buttons/button.png'
+
 signal collected
 var sprite = load('res://sprites/' + item_image)
 var image_size
 var dialog_entry = 'dialog'
+var dialog_text = 'I found one ' + item_name + '!'
 var dialog_data = {
   'name': 'player',
   'passages': [
     {
       'name': 'dialog',
-      'dialog': 'I found one ' + item_name + '!',
+      'dialog': dialog_text,
       'link': 'end'
     }
 
@@ -34,15 +36,18 @@ func set_item_dialog():
 	dialog.next_page = dialog_entry
 	dialog.clicks += 1
 	dialog.init()
+
+func init():
+	items.count += 1
+	set_item_dialog()
+	emit_signal('collected')
+	self.queue_free()
 	
 func _ready():
 	set_item_image()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
-	items.count += 1
-	set_item_dialog()
-	emit_signal('collected')
-	self.queue_free()
+	init()
 
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and global.entered_dialog_zone:
