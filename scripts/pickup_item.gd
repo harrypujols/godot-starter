@@ -4,6 +4,7 @@ onready var dialog = get_node('../../hud/dialog')
 onready var items = self.get_parent()
 export var item_name = 'item'
 export var item_image = 'interface/buttons/button.png'
+export var text_line = '...'
 
 signal collected
 var sprite = load('res://sprites/' + item_image)
@@ -44,6 +45,9 @@ func init():
 	self.queue_free()
 	
 func _ready():
+	if text_line != '...':
+		dialog_data.passages[0].dialog = text_line
+		
 	set_item_image()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
@@ -52,4 +56,4 @@ func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and global.entered_dialog_zone:
 		if dialog.dialog_open == 1:
-			reset_dialog()
+			dialog.reset_dialog()

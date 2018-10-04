@@ -14,6 +14,7 @@ position = Vector2( 1462.57, 202.394 )
 script = ExtResource( 1 )
 item_name = "item"
 item_image = "interface/buttons/button.png"
+text_line = "..."
 
 [node name="item_sprite" type="Sprite" parent="." index="0"]
 

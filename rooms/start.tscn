@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
 [ext_resource path="res://characters/cat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://items/items.tscn" type="PackedScene" id=4]
-[ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=5]
-[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=6]
-[ext_resource path="res://tiles/wall.tres" type="TileSet" id=7]
+[ext_resource path="res://items/pickup_item.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://tiles/wall.tres" type="TileSet" id=8]
 
 [node name="stage" type="Node2D" index="0"]
 
@@ -27,6 +28,11 @@ position = Vector2( 1472, 128 )
 
 [node name="items" parent="." index="2" instance=ExtResource( 4 )]
 
+[node name="item" parent="items" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 1136, 640 )
+text_line = "Found one!"
+
 [node name="hud" type="CanvasLayer" parent="." index="3"]
 
 editor/display_folded = true
@@ -36,19 +42,19 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="dialog" parent="hud" index="0" instance=ExtResource( 5 )]
+[node name="dialog" parent="hud" index="0" instance=ExtResource( 6 )]
 
 margin_left = 512.0
 margin_top = 300.0
 margin_right = 512.0
 margin_bottom = 300.0
 
-[node name="pause" parent="hud" index="1" instance=ExtResource( 6 )]
+[node name="pause" parent="hud" index="1" instance=ExtResource( 7 )]
 
 [node name="walls" type="TileMap" parent="." index="4"]
 
 mode = 0
-tile_set = ExtResource( 7 )
+tile_set = ExtResource( 8 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
