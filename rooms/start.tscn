@@ -7,7 +7,7 @@
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=5]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=6]
 
-[node name="stage" type="Node2D" index="0"]
+[node name="stage" type="Node2D"]
 
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -26,7 +26,6 @@ position = Vector2( 1462.57, 202.394 )
 
 [node name="hud" type="CanvasLayer" parent="." index="2"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -67,6 +66,7 @@ __meta__ = {
 
 [node name="background" type="ParallaxBackground" parent="." index="4"]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0

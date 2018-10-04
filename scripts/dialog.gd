@@ -14,6 +14,7 @@ var dialog_choice = []
 var typing_effect = false
 var indicator_on = true
 var clicks = 0
+
 signal next_entry
 	
 func _input(event):
