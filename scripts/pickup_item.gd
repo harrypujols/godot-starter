@@ -13,7 +13,7 @@ var dialog_data = {
   'passages': [
     {
       'name': 'dialog',
-      'dialog': 'You found one ' + item_name + '!',
+      'dialog': 'I found one ' + item_name + '!',
       'link': 'end'
     }
 
@@ -33,6 +33,7 @@ func set_item_dialog():
 	dialog.dialog_entry = dialog_entry
 	dialog.next_page = dialog_entry
 	dialog.clicks += 1
+	dialog.init()
 	
 func _ready():
 	set_item_image()
@@ -40,7 +41,6 @@ func _ready():
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 	items.count += 1
 	set_item_dialog()
-	dialog.init()
 	emit_signal('collected')
 	self.queue_free()
 
