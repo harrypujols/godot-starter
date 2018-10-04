@@ -13,6 +13,9 @@ func _ready():
 	$input_cancel.refresh_label()
 	
 	set_icons()
+	
+	self.rect_scale = Vector2(.6, .6)
+	self.rect_position = Vector2((712 - 206), (300 - 42))
 
 func set_icons():
 	$input_accept.input_icon = accept_button

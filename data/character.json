@@ -32,13 +32,27 @@
     {
       "name": "nice",
       "dialog": "Evil has won. Muahahah.",
-      "link": "end"
+      "link": "end",
+      "call": "again"
     },
 
     {
       "name": "naughty",
       "dialog": "No one likes evil stuff. Sigh.",
-       "link": "end"
+       "link": "end",
+       "call": "silent"
+    },
+
+    {
+      "name": "again",
+      "dialog": "Hello, again!",
+      "link": "end"
+    },
+
+    {
+      "name": "silent",
+      "dialog": "...",
+      "link": "end"
     }
   ]
 }
