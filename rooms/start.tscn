@@ -2,14 +2,14 @@
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
-[ext_resource path="res://characters/character.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/items.gd" type="Script" id=4]
+[ext_resource path="res://characters/cat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://items/items.tscn" type="PackedScene" id=4]
 [ext_resource path="res://items/pickup_item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=8]
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -22,17 +22,16 @@ position = Vector2( 499.102, 303.508 )
 script = ExtResource( 2 )
 speed = 200
 
-[node name="character" parent="." index="1" instance=ExtResource( 3 )]
+[node name="cat" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 1462.57, 202.394 )
+position = Vector2( 1472, 128 )
 
-[node name="items" type="Node" parent="." index="2"]
+[node name="items" parent="." index="2" instance=ExtResource( 4 )]
 
-script = ExtResource( 4 )
+[node name="item" parent="items" index="1" instance=ExtResource( 5 )]
 
-[node name="pickup_item" parent="items" index="0" instance=ExtResource( 5 )]
-
-position = Vector2( 768, 304 )
+position = Vector2( 1136, 640 )
+text_line = "Found one!"
 
 [node name="hud" type="CanvasLayer" parent="." index="3"]
 
@@ -104,5 +103,8 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 
