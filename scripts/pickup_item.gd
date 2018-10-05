@@ -9,8 +9,10 @@ export var collectible = true
 export var solid = true
 
 signal collected
+
 var sprite = load('res://sprites/' + item_image)
 var image_size
+
 var dialog_open = 0
 var dialog_entry = 'dialog'
 var dialog_text = 'I found one ' + item_name + '!'
@@ -26,13 +28,21 @@ var dialog_data = {
    ]
 }
 
-func set_item_image():
+func set_item_shape():
 	$item_sprite.set_texture(sprite)
 	image_size = $item_sprite.texture.get_size()
 	image_size.x = image_size.x / 2
 	image_size.y = image_size.y / 2
 	$item_area/item_shape.shape.set_extents(image_size)
-	$item_box/item_shape.shape.set_extents(image_size)
+	
+	if solid:
+		var body = StaticBody2D.new()
+		var shape = RectangleShape2D.new()
+		shape.set_extents(image_size)
+		var collision = CollisionShape2D.new()
+		collision.set_shape(shape)
+		self.add_child(body)
+		body.add_child(collision)
 
 func set_item_dialog():
 	dialog_open = 1
@@ -55,7 +65,7 @@ func _ready():
 	if text_line != '...':
 		dialog_data.passages[0].dialog = text_line
 		
-	set_item_image()
+	set_item_shape()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 	global.entered_dialog_zone = true

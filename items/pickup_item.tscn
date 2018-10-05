@@ -1,14 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/pickup_item.gd" type="Script" id=1]
 [ext_resource path="res://sprites/interface/buttons/button.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
@@ -41,20 +36,6 @@ audio_bus_name = "Master"
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="item_box" type="StaticBody2D" parent="." index="2"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="item_shape" type="CollisionShape2D" parent="item_box" index="0"]
-
-shape = SubResource( 2 )
 
 [connection signal="tree_exited" from="." to="." method="_on_item_tree_exited"]
 
