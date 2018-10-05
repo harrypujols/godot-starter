@@ -4,4 +4,6 @@
 
 [node name="character" instance=ExtResource( 1 )]
 
+[node name="cat" type="Node" parent="." index="4"]
+
 

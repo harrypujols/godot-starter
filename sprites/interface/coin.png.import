@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alert_bubble.png-912e1766c4acd62d4565e2138180b3aa.stex"
+path="res://.import/coin.png-bd1c8075a6fdf5667b1480aebef6748a.stex"
 
 [deps]
 
-source_file="res://sprites/interface/alert_bubble.png"
-dest_files=[ "res://.import/alert_bubble.png-912e1766c4acd62d4565e2138180b3aa.stex" ]
+source_file="res://sprites/interface/coin.png"
+dest_files=[ "res://.import/coin.png-bd1c8075a6fdf5667b1480aebef6748a.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
