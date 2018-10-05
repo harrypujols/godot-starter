@@ -36,13 +36,22 @@ func set_item_shape():
 	$item_area/item_shape.shape.set_extents(image_size)
 	
 	if solid:
-		var body = StaticBody2D.new()
-		var shape = RectangleShape2D.new()
-		shape.set_extents(image_size)
-		var collision = CollisionShape2D.new()
-		collision.set_shape(shape)
-		self.add_child(body)
-		body.add_child(collision)
+		add_item_body()
+
+func add_item_body():
+	var body = StaticBody2D.new()
+	var shape = RectangleShape2D.new()
+	shape.set_extents(image_size)
+	var collision = CollisionShape2D.new()
+	collision.set_shape(shape)
+	self.add_child(body)
+	body.name = 'item_body'
+	body.add_child(collision)
+		
+func remove_item_body():
+	if self.has_node('item_body'):
+		$item_body.queue_free
+		solid = false
 
 func set_item_dialog():
 	dialog_open = 1
