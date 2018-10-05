@@ -32,18 +32,18 @@ func set_item_image():
 	$item_area/item_shape.shape.set_extents(image_size)
 
 func set_item_dialog():
+	dialog_open = 1
 	dialog.data = dialog_data
 	dialog.dialog_entry = dialog_entry
 	dialog.next_page = dialog_entry
 	dialog.clicks += 1
+	dialog.dialog_open = 1
 	dialog.init()
 
 func init():
 	items.count += 1
-	if dialog_open == 1:
-		set_item_dialog()
-		emit_signal('collected')
-		self.queue_free()
+	set_item_dialog()
+	emit_signal('collected')
 	
 func _ready():
 	if text_line != '...':
@@ -52,11 +52,14 @@ func _ready():
 	set_item_image()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
-	dialog_open = 1
+	global.entered_dialog_zone = true
 	init()
-	
+
 func _input(event):
-	print(dialog_open)
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:
+		dialog_open = 0
 		dialog.reset_dialog()
-#		dialog_open = 0
+		self.queue_free()
+
+func _on_item_tree_exited():
+	global.entered_dialog_zone = false
