@@ -57,9 +57,14 @@ func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:
 		dialog_open = 0
 		items.count += 1
+		print(items.count)
 		emit_signal('collected')
 		dialog.reset_dialog()
 		self.queue_free()
 
 func _on_item_tree_exited():
+	global.entered_dialog_zone = false
+
+func _on_item_area_area_shape_exited(area_id, area, area_shape, self_shape):
+	dialog_open = 0
 	global.entered_dialog_zone = false
