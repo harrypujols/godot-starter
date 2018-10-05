@@ -41,9 +41,7 @@ func set_item_dialog():
 	dialog.init()
 
 func init():
-	items.count += 1
 	set_item_dialog()
-	emit_signal('collected')
 	
 func _ready():
 	if text_line != '...':
@@ -58,6 +56,8 @@ func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:
 		dialog_open = 0
+		items.count += 1
+		emit_signal('collected')
 		dialog.reset_dialog()
 		self.queue_free()
 
