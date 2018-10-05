@@ -30,6 +30,7 @@ func set_item_image():
 	image_size.x = image_size.x / 2
 	image_size.y = image_size.y / 2
 	$item_area/item_shape.shape.set_extents(image_size)
+	$item_box/item_shape.shape.set_extents(image_size)
 
 func set_item_dialog():
 	dialog_open = 1
