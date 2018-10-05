@@ -1,7 +1,6 @@
 extends Node2D
 
 onready var dialog = get_node('../../hud/dialog')
-onready var items = self.get_parent()
 export var item_name = 'item'
 export var item_image = 'interface/buttons/button.png'
 export var text_line = '...'
@@ -64,7 +63,6 @@ func set_item_dialog():
 	dialog.init()
 
 func collect_item():
-	items.count += 1
 	emit_signal('collected')
 	self.queue_free()
 
