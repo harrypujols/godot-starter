@@ -47,6 +47,7 @@ func add_item_body():
 	self.add_child(body)
 	body.name = 'item_body'
 	body.add_child(collision)
+	solid = true
 		
 func remove_item_body():
 	if self.has_node('item_body'):
