@@ -5,6 +5,8 @@ onready var items = self.get_parent()
 export var item_name = 'item'
 export var item_image = 'interface/buttons/button.png'
 export var text_line = '...'
+export var collectible = true
+export var solid = true
 
 signal collected
 var sprite = load('res://sprites/' + item_image)
@@ -41,6 +43,11 @@ func set_item_dialog():
 	dialog.dialog_open = 1
 	dialog.init()
 
+func collect_item():
+	items.count += 1
+	emit_signal('collected')
+	self.queue_free()
+
 func init():
 	set_item_dialog()
 	
@@ -56,12 +63,11 @@ func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:
+		if collectible:
+			collect_item()
 		dialog_open = 0
-		items.count += 1
-		print(items.count)
-		emit_signal('collected')
 		dialog.reset_dialog()
-		self.queue_free()
+		
 
 func _on_item_tree_exited():
 	global.entered_dialog_zone = false

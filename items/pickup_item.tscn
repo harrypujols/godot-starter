@@ -20,6 +20,8 @@ script = ExtResource( 1 )
 item_name = "item"
 item_image = "interface/buttons/button.png"
 text_line = "..."
+collectible = true
+solid = true
 
 [node name="item_sprite" type="Sprite" parent="." index="0"]
 
