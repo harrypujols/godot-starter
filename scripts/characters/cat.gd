@@ -32,4 +32,4 @@ func _on_item_collected():
 		if passage.name == 'quest' and items.count == items.total:
 			passage.call = 'again'
 		if passage.name == 'again' and items.count == items.total:
-			passage.link = 'again'
+			passage.call = 'again'
