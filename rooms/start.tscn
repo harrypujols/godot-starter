@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/characters/player.gd" type="Script" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=6]
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=8]
+[ext_resource path="res://scripts/input.gd" type="Script" id=9]
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -27,6 +28,8 @@ speed = 200
 position = Vector2( 1472, 128 )
 
 [node name="items" parent="." index="2" instance=ExtResource( 4 )]
+
+editor/display_folded = true
 
 [node name="item" parent="items" index="0" instance=ExtResource( 5 )]
 
@@ -116,5 +119,9 @@ color = Color( 1, 1, 1, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="input" type="Node" parent="." index="6"]
+
+script = ExtResource( 9 )
 
 
