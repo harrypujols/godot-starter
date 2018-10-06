@@ -9,8 +9,7 @@
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=8]
 
-
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -37,6 +36,11 @@ item_name = "coin"
 [node name="item2" parent="items" index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 720, 304 )
+item_name = "coin"
+
+[node name="item3" parent="items" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( 144, 80 )
 item_name = "coin"
 
 [node name="hud" type="CanvasLayer" parent="." index="3"]
