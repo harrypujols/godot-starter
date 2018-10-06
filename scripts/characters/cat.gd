@@ -18,5 +18,6 @@ func _on_item_collected():
 			passage.dialog = 'You have ' + String(items.count) + item_name
 		if passage.name == 'cat' and items.count > 0:
 			passage.link = 'items'
+			passage.call = 'items'
 		if passage.name == 'cat' and items.count == items.total:
 			passage.link = 'success'
