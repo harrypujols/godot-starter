@@ -11,11 +11,10 @@ signal collected
 var item_image = 'interface/coin.png'
 var sprite = load('res://sprites/' + item_image)
 var image_size
-
 var dialog_open = 0
 var dialog_entry = 'dialog'
-var dialog_text = 'I found one ' + item_name + '!'
-var dialog_data = {
+onready var dialog_text = 'I found one ' + item_name + '!'
+onready var dialog_data = {
   'name': 'player',
   'passages': [
     {
@@ -70,6 +69,8 @@ func init():
 	set_item_dialog()
 	
 func _ready():
+	dialog_text = 'I found one ' + item_name + '!'
+	
 	if text_line != '...':
 		dialog_data.passages[0].dialog = text_line
 		
