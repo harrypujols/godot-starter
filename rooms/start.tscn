@@ -9,7 +9,7 @@
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=7]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=8]
 
-[node name="stage" type="Node2D" index="0"]
+[node name="stage" type="Node2D"]
 
 _sections_unfolded = [ "Transform" ]
 __meta__ = {

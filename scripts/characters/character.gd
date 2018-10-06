@@ -8,6 +8,7 @@ var sprite = load('res://sprites/characters/' + character_image)
 var data = global.get_json('res://data/' + character_file)
 var character_name = data.name
 var image_size
+var interactions = 0
 
 func set_character_image():
 	$character_sprite.set_texture(sprite)
@@ -30,6 +31,7 @@ func _on_dialog_zone_area_exited(area):
 	
 func _on_dialog_next_entry():
 	dialog_entry = dialog.dialog_entry
+	interactions += 1
 	
 func _ready():
 	set_character_image()
