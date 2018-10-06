@@ -2,13 +2,13 @@ extends Node2D
 
 onready var dialog = get_node('../../hud/dialog')
 export var item_name = 'item'
-export var item_image = 'interface/buttons/button.png'
 export var text_line = '...'
 export var collectible = true
 export var solid = true
 
 signal collected
 
+var item_image = 'interface/coin.png'
 var sprite = load('res://sprites/' + item_image)
 var image_size
 
