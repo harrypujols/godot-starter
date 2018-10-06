@@ -5,7 +5,7 @@ var character_file = 'character.json'
 var character_image = 'cat.png'
 var dialog_entry = 'hello'
 var sprite = load('res://sprites/characters/' + character_image)
-var data = global.get_json('res://data/'+ character_file)
+var data = global.get_json('res://data/' + character_file)
 var character_name = data.name
 var image_size
 
