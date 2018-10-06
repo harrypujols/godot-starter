@@ -1,5 +1,6 @@
 {
   "name": "cat",
+  "items": 0,
 
   "passages": [
     {
@@ -12,6 +13,31 @@
       "name": "cat",
       "dialog": "I'm a cat.",
       "link": "end"
+    },
+
+    {
+      "name": "question",
+      "dialog": "Can you find all the items?",
+      "link": "end"
+    },
+
+    {
+      "name": "items",
+      "dialog": "placeholder",
+      "link": "end"
+    },
+
+    {
+      "name": "success",
+      "dialog": "You have all the items!",
+      "link": "complete"
+    },
+
+    {
+      "name": "complete",
+      "dialog": "You completed your quest.",
+      "link": "end",
+      "call": "complete"
     }
 
    ]

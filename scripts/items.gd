@@ -3,6 +3,8 @@ extends Node
 var total
 var count = 0
 
+signal item_collected
+
 func _ready():
 	total = self.get_children().size()
 	for child in self.get_children():
@@ -10,3 +12,4 @@ func _ready():
 
 func _on_item_collected():
 	count += 1
+	emit_signal('item_collected')
