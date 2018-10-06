@@ -55,9 +55,9 @@ const key = {
 
 var icon_type = 'key'
 var icon_color = 'dark'
-var input_accept = key[icon_color].spacebar
-var input_cancel = key[icon_color].delete_key
-var input_pause = key[icon_color].esc_key
+var input_accept
+var input_cancel
+var input_pause
 
 var direction = {
 		up = {
@@ -83,8 +83,8 @@ var direction = {
 
 func set_keyboard_icons(icon_color):
 	input_accept = key[icon_color].spacebar
-	input_cancel = key[icon_color].delete_key
-	input_pause = key[icon_color].esc_key
+	input_cancel = key[icon_color].delete
+	input_pause = key[icon_color].escape
 	
 func set_controller_icons(icon_color):
 	if Input.is_joy_known(0):
