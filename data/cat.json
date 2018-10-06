@@ -17,14 +17,14 @@
     {
       "name": "question",
       "dialog": "Can you find the items?",
-      "link": "end",
-      "call": "question"
+      "link": "items"
     },
 
     {
       "name": "items",
-      "dialog": "placeholder",
+      "dialog": "You have no items",
       "link": "end",
+      "call": "items"
     },
 
     {
