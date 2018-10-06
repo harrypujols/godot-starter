@@ -12,10 +12,10 @@ func _ready():
 func _on_item_collected():
 	for passage in cat.data.passages:
 		if passage.name == 'items':
-			var item = ' item'
+			var item_name = ' ' + items.pick
 			if items.count > 1:
-				item = ' items'
-			passage.dialog = 'You have ' + String(items.count) + item
+				item_name = item_name + 's'
+			passage.dialog = 'You have ' + String(items.count) + item_name
 		if passage.name == 'cat' and items.count > 0:
 			passage.link = 'items'
 		if passage.name == 'cat' and items.count == items.total:
