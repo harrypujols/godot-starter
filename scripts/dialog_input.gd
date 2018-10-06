@@ -1,7 +1,6 @@
 extends HBoxContainer
 
-var accept_button = global.key.inverse.spacebar
-var cancel_button = global.key.inverse.delete
+onready var input = get_node('../../../../input')
 
 func _ready():
 	$input_accept.input_text = 'accept'
@@ -15,35 +14,14 @@ func _ready():
 	set_icons()
 	
 	self.rect_scale = Vector2(.6, .6)
-	self.rect_position = Vector2((712 - 206), (300 - 42))
+	self.rect_position = Vector2((712 - 146), (300 - 42))
 
 func set_icons():
-	$input_accept.input_icon = accept_button
+	input.icon_color = 'light'
+	$input_accept.input_icon = input.input_accept
 	$input_accept.refresh_icon()
-	$input_cancel.input_icon = cancel_button
+	$input_cancel.input_icon = input.input_cancel
 	$input_cancel.refresh_icon()
-	
-func set_keyboard_icons():
-	accept_button = global.key.inverse.spacebar
-	cancel_button = global.key.inverse.delete
-	
-func set_controller_icons():
-	if Input.is_joy_known(0):
-		match Input.get_joy_name(0):
-			'XInput Gamepad':
-				accept_button = global.button.inverse.a
-				cancel_button = global.button.inverse.b
-			'PS3 Controller', 'PS4 Controller':
-				accept_button = global.button.inverse.x
-				cancel_button = global.button.inverse.circle
-			_:
-				accept_button = global.button.inverse.b
-				cancel_button = global.button.inverse.a
-	
+
 func _input(event):
-	if (event is InputEventJoypadButton) or (event is InputEventJoypadMotion):
-		set_controller_icons()
-		set_icons()
-	else:
-		set_keyboard_icons()
-		set_icons()
+	set_icons()

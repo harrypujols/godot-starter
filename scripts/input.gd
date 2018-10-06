@@ -98,9 +98,12 @@ func set_controller_icons(icon_color):
 			_:
 				input_accept = button[icon_color].b
 				input_cancel = button[icon_color].a
-	
+
 func _input(event):
 	if (event is InputEventJoypadButton) or (event is InputEventJoypadMotion):
 		set_controller_icons(icon_color)
 	else:
 		set_keyboard_icons(icon_color)
+		
+func _ready():
+	set_keyboard_icons(icon_color)
