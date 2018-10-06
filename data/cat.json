@@ -1,0 +1,51 @@
+{
+  "name": "cat",
+
+  "passages": [
+    {
+      "name": "hello",
+      "dialog": "Hello...",
+      "link": "cat"
+    },
+
+    {
+      "name": "cat",
+      "dialog": "I'm a cat.",
+      "link": "question"
+    },
+
+    {
+      "name": "question",
+      "dialog": "Can you find the items?",
+      "link": "end",
+      "call": "question"
+    },
+
+    {
+      "name": "items",
+      "dialog": "placeholder",
+      "link": "end",
+    },
+
+    {
+      "name": "success",
+      "dialog": "You found all the items!",
+      "link": "quest"
+    },
+
+    {
+      "name": "quest",
+      "dialog": "You completed your quest.",
+      "link": "end",
+      "call": "again"
+    },
+
+    {
+      "name": "again",
+      "dialog": "Hello, again!",
+      "link": "end",
+      "call": "again"
+    }
+
+   ]
+}
