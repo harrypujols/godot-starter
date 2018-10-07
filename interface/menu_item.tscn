@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
-[ext_resource path="res://scripts/menu_item.gd" type="Script" id=2]
+[ext_resource path="res://scripts/interface/menu_item.gd" type="Script" id=2]
 [ext_resource path="res://sprites/interface/arrow.png" type="Texture" id=3]
+
 
 [node name="menu_item" type="Button"]
 

@@ -22,7 +22,7 @@
 
     {
       "name": "items",
-      "dialog": "You have no items",
+      "dialog": "You have no items.",
       "link": "end",
       "call": "items"
     },
