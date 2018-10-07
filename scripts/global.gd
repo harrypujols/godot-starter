@@ -1,5 +1,6 @@
 extends Node
 
+var player_name = 'you'
 var entered_dialog_zone = false
 var pause = false
 

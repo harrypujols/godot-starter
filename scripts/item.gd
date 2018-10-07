@@ -15,7 +15,7 @@ var dialog_open = 0
 var dialog_entry = 'dialog'
 onready var dialog_text = 'I found one ' + item_name + '!'
 onready var dialog_data = {
-  'name': 'player',
+  'name': global.player_name,
   'passages': [
     {
       'name': 'dialog',
