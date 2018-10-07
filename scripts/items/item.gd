@@ -68,8 +68,8 @@ func set_item_dialog():
 	dialog.init()
 
 func collect_item():
-	emit_signal('collected')
 	self.queue_free()
+	emit_signal('collected')
 
 func set_text(dialog_text):
 	if text_line != '...':
@@ -92,7 +92,6 @@ func _input(event):
 		dialog_open = 0
 		dialog.reset_dialog()
 		
-
 func _on_item_tree_exited():
 	global.entered_dialog_zone = false
 
