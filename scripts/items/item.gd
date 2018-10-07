@@ -3,14 +3,15 @@ extends Node2D
 onready var dialog = get_node('/root/stage/hud/dialog')
 export var item_name = 'item'
 export var text_line = '...'
+export var item_image = 'interface/coin.png'
 export var collectible = true
 export var solid = true
 
 signal collected
 
-var item_image = 'interface/coin.png'
-var sprite = load('res://sprites/' + item_image)
+var sprite
 var image_size
+
 var dialog_open = 0
 var dialog_entry = 'dialog'
 onready var dialog_text = 'I found one ' + item_name + '!'
@@ -27,8 +28,10 @@ onready var dialog_data = {
 }
 
 func init():
+	sprite = load('res://sprites/' + item_image)
 	$item_sprite.set_texture(sprite)
 	image_size = $item_sprite.texture.get_size()
+	print(image_size)
 	image_size.x = image_size.x / 2
 	image_size.y = image_size.y / 2
 	$item_area/item_shape.shape.set_extents(image_size)
