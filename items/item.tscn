@@ -29,4 +29,8 @@ audio_bus_name = "Master"
 
 [connection signal="tree_exited" from="." to="." method="_on_item_tree_exited"]
 
+[connection signal="area_shape_entered" from="item_area" to="." method="_on_item_area_area_shape_entered"]
+
+[connection signal="area_shape_exited" from="item_area" to="." method="_on_item_area_area_shape_exited"]
+
 

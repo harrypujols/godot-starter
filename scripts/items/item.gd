@@ -38,8 +38,6 @@ func init():
 	item_collision.set_shape(item_shape)
 	
 	$item_area.add_child(item_collision)
-	$item_area.connect('area_shape_entered', self, '_on_item_area_area_shape_entered')
-	$item_area.connect('area_shape_exited', self, '_on_item_area_area_shape_exited')
 	
 	if solid:
 		add_item_body(image_size)
@@ -72,13 +70,15 @@ func set_item_dialog():
 func collect_item():
 	emit_signal('collected')
 	self.queue_free()
-	
-func _ready():
-	dialog_text = 'I found one ' + item_name + '!'
-	
+
+func set_text(dialog_text):
 	if text_line != '...':
 		dialog_data.passages[0].dialog = text_line
+	else:
+		dialog_data.passages[0].dialog = dialog_text
 		
+func _ready():
+	set_text(dialog_text)
 	init()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):

@@ -2,6 +2,9 @@ extends Node
 
 onready var cat = self.get_parent()
 onready var items = get_node('/root/stage/items')
+onready var dialog = get_node('/root/stage/hud/dialog')
+
+signal key_acquired
 
 func _ready():
 	cat.character_file = 'cat.json'
