@@ -25,7 +25,6 @@ script = ExtResource( 2 )
 
 [node name="dialog_box" type="PopupDialog" parent="." index="0"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -110,10 +109,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -264.0
-margin_top = -60.0
-margin_right = -20.0
-margin_bottom = -20.0
+margin_left = -152.0
+margin_top = -44.0
+margin_right = 92.0
+margin_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_scale = Vector2( 0.5, 0.5 )
