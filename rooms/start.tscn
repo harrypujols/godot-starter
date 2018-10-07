@@ -30,7 +30,22 @@ position = Vector2( 1472, 128 )
 position = Vector2( 1472, -224 )
 collectible = false
 
-[node name="items" parent="." index="3" instance=ExtResource( 5 )]
+[node name="exit" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="exit_region" type="CollisionPolygon2D" parent="exit" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 1408, -272, 1376, -272, 1376, -336, 1568, -336, 1568, -272, 1536, -272, 1536, -304, 1408, -304 )
+
+[node name="items" parent="." index="4" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 
@@ -49,7 +64,7 @@ item_name = "coin"
 position = Vector2( 800, 128 )
 item_name = "coin"
 
-[node name="hud" type="CanvasLayer" parent="." index="4"]
+[node name="hud" type="CanvasLayer" parent="." index="5"]
 
 editor/display_folded = true
 layer = 1
@@ -67,7 +82,7 @@ margin_bottom = 300.0
 
 [node name="pause" parent="hud" index="1" instance=ExtResource( 8 )]
 
-[node name="walls" type="TileMap" parent="." index="5"]
+[node name="walls" type="TileMap" parent="." index="6"]
 
 mode = 0
 tile_set = ExtResource( 9 )
@@ -90,7 +105,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="background" type="ParallaxBackground" parent="." index="6"]
+[node name="background" type="ParallaxBackground" parent="." index="7"]
 
 editor/display_folded = true
 layer = -1
@@ -123,7 +138,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="input" type="Node" parent="." index="7"]
+[node name="input" type="Node" parent="." index="8"]
 
 script = ExtResource( 10 )
 
