@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-onready var input = get_node('../../../../input')
+onready var input = get_node('/root/stage/input')
 
 func _ready():
 	$input_accept.input_text = 'accept'
