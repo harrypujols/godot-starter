@@ -12,6 +12,10 @@ signal collected
 var sprite
 var image_size
 
+var body = StaticBody2D.new()
+var shape = RectangleShape2D.new()
+var collision = CollisionShape2D.new()
+
 var dialog_open = 0
 var dialog_entry = 'dialog'
 onready var dialog_text = 'I found one ' + item_name + '!'
@@ -40,10 +44,7 @@ func init():
 		add_item_body()
 
 func add_item_body():
-	var body = StaticBody2D.new()
-	var shape = RectangleShape2D.new()
 	shape.set_extents(image_size)
-	var collision = CollisionShape2D.new()
 	collision.set_shape(shape)
 	self.add_child(body)
 	body.name = 'item_body'
