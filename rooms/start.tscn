@@ -10,7 +10,7 @@
 [ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=8]
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=9]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=10]
-[ext_resource path="res://scripts/interface/input.gd" type="Script" id=11]
+[ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=11]
 
 [node name="stage" type="Node2D"]
 

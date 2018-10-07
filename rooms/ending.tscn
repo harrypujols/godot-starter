@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
 [ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://interface/input_icons.tscn" type="PackedScene" id=3]
 
 [node name="stage" type="Control" index="0"]
 
@@ -74,5 +75,7 @@ margin_top = 496.0
 margin_right = 824.0
 margin_bottom = 536.0
 input_text = "finish"
+
+[node name="input_icons" parent="." index="3" instance=ExtResource( 3 )]
 
 
