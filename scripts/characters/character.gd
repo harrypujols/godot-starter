@@ -10,7 +10,7 @@ var character_name = data.name
 var image_size
 var interactions = 0
 
-func set_character_image():
+func set_character_shape():
 	$character_sprite.set_texture(sprite)
 	image_size = $character_sprite.texture.get_size()
 	image_size.x = image_size.x / 2
@@ -34,5 +34,5 @@ func _on_dialog_next_entry():
 	interactions += 1
 	
 func _ready():
-	set_character_image()
+	set_character_shape()
 	dialog.connect('next_entry', self, '_on_dialog_next_entry')
