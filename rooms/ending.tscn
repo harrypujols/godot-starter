@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scripts/intro.gd" type="Script" id=1]
-[ext_resource path="res://interface/menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
+[ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=2]
 
 [node name="stage" type="Control" index="0"]
 
@@ -15,8 +15,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Mouse", "Pause", "Size Flags", "Transform", "Visibility", "Z Index" ]
+theme = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Mouse", "Pause", "Size Flags", "Theme", "Transform", "Visibility", "Z Index" ]
 
 [node name="background_color" type="ColorRect" parent="." index="0"]
 
@@ -32,22 +32,47 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0, 0, 0, 1 )
 
-[node name="hud" type="MarginContainer" parent="." index="1"]
+[node name="end_dialog" type="CenterContainer" parent="." index="1"]
 
 anchor_left = 0.0
-anchor_top = 0.5
-anchor_right = 0.0
-anchor_bottom = 0.5
-margin_left = 32.0
-margin_right = 8.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Margin", "Rect" ]
+use_top_left = false
 
-[node name="menu" parent="hud" index="0" instance=ExtResource( 2 )]
+[node name="end_text" type="Label" parent="end_dialog" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 466.0
+margin_top = 290.0
+margin_right = 557.0
+margin_bottom = 310.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "You win!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="input_ui" parent="." index="2" instance=ExtResource( 2 )]
+
+margin_left = 784.0
+margin_top = 496.0
+margin_right = 824.0
+margin_bottom = 536.0
+input_text = "finish"
 
 
