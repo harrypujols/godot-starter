@@ -3,20 +3,24 @@ extends KinematicBody2D
 onready var dialog = get_node('/root/stage/hud/dialog')
 var character_file = 'character.json'
 var character_image = 'cat.png'
+var image_size
+var image_position
 var dialog_entry = 'hello'
 var sprite = load('res://sprites/characters/' + character_image)
 var data = global.get_json('res://data/' + character_file)
 var character_name = data.name
-var image_size
 var interactions = 0
 
 func set_character_shape():
 	$character_sprite.set_texture(sprite)
+	image_position = $character_sprite.position
 	image_size = $character_sprite.texture.get_size()
 	image_size.x = image_size.x / 2
 	image_size.y = image_size.y / 2
 	$character_body.shape.set_extents(image_size)
 	$dialog_zone/area.shape.set_radius(4 * image_size.y)
+	$alert_bubble.position.x = image_position.x
+	$alert_bubble.position.y = image_position.y - image_size.y - 32
 
 func _on_dialog_zone_area_entered(area):
 	global.entered_dialog_zone = true
