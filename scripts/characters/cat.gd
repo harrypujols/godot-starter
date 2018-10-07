@@ -1,7 +1,7 @@
 extends Node
 
 onready var cat = self.get_parent()
-onready var items = get_node('../../items')
+onready var items = get_node('/root/stage/items')
 
 func _ready():
 	cat.character_file = 'cat.json'

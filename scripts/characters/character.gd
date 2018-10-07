@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var dialog = get_node('../hud/dialog')
+onready var dialog = get_node('/root/stage/hud/dialog')
 var character_file = 'character.json'
 var character_image = 'cat.png'
 var dialog_entry = 'hello'

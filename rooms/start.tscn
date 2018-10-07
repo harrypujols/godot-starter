@@ -13,9 +13,6 @@
 [node name="stage" type="Node2D"]
 
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -28,8 +25,6 @@ speed = 200
 position = Vector2( 1472, 128 )
 
 [node name="items" parent="." index="2" instance=ExtResource( 4 )]
-
-editor/display_folded = true
 
 [node name="item" parent="items" index="0" instance=ExtResource( 5 )]
 
@@ -48,6 +43,7 @@ item_name = "coin"
 
 [node name="hud" type="CanvasLayer" parent="." index="3"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
