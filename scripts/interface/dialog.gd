@@ -1,6 +1,6 @@
 extends Control
 
-onready var player = get_node('../../player')
+onready var player = get_node('/root/stage/player')
 onready var dialog_options = get_node('dialog_box/dialog_options')
 onready var dialog_title = get_node('dialog_box/dialog_title')
 var get_menu_item = load('res://interface/menu_item.tscn')
@@ -66,7 +66,7 @@ func set_dialog():
 				emit_signal('next_entry')
 				
 			if passage.has('choices'):
-				dialog_title.set_text('player')
+				dialog_title.set_text(global.player_name)
 				for choice in passage.choices:
 					dialog_text.append(choice.dialog)
 					dialog_choice.append(choice.link)

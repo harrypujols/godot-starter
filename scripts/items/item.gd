@@ -1,21 +1,21 @@
 extends Node2D
 
-onready var dialog = get_node('../../hud/dialog')
+onready var dialog = get_node('/root/stage/hud/dialog')
 export var item_name = 'item'
 export var text_line = '...'
+export var item_image = 'interface/coin.png'
 export var collectible = true
 export var solid = true
 
 signal collected
 
-var item_image = 'interface/coin.png'
-var sprite = load('res://sprites/' + item_image)
-var image_size
+var sprite
+
 var dialog_open = 0
 var dialog_entry = 'dialog'
 onready var dialog_text = 'I found one ' + item_name + '!'
 onready var dialog_data = {
-  'name': 'player',
+  'name': global.player_name,
   'passages': [
     {
       'name': 'dialog',
@@ -26,21 +26,27 @@ onready var dialog_data = {
    ]
 }
 
-func set_item_shape():
+func init():
+	sprite = load('res://sprites/' + item_image)
 	$item_sprite.set_texture(sprite)
-	image_size = $item_sprite.texture.get_size()
+	var image_size = $item_sprite.texture.get_size()
+	var item_shape = RectangleShape2D.new()
+	var item_collision = CollisionShape2D.new()
 	image_size.x = image_size.x / 2
 	image_size.y = image_size.y / 2
-	$item_area/item_shape.shape.set_extents(image_size)
+	item_shape.set_extents(image_size)
+	item_collision.set_shape(item_shape)
+	
+	$item_area.add_child(item_collision)
 	
 	if solid:
-		add_item_body()
+		add_item_body(image_size)
 
-func add_item_body():
+func add_item_body(image_size):
 	var body = StaticBody2D.new()
 	var shape = RectangleShape2D.new()
-	shape.set_extents(image_size)
 	var collision = CollisionShape2D.new()
+	shape.set_extents(image_size)
 	collision.set_shape(shape)
 	self.add_child(body)
 	body.name = 'item_body'
@@ -62,23 +68,22 @@ func set_item_dialog():
 	dialog.init()
 
 func collect_item():
-	emit_signal('collected')
 	self.queue_free()
+	emit_signal('collected')
 
-func init():
-	set_item_dialog()
-	
-func _ready():
-	dialog_text = 'I found one ' + item_name + '!'
-	
+func set_text(dialog_text):
 	if text_line != '...':
 		dialog_data.passages[0].dialog = text_line
+	else:
+		dialog_data.passages[0].dialog = dialog_text
 		
-	set_item_shape()
+func _ready():
+	set_text(dialog_text)
+	init()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 	global.entered_dialog_zone = true
-	init()
+	set_item_dialog()
 
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:
@@ -87,7 +92,6 @@ func _input(event):
 		dialog_open = 0
 		dialog.reset_dialog()
 		
-
 func _on_item_tree_exited():
 	global.entered_dialog_zone = false
 

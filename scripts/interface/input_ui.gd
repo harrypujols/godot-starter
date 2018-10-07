@@ -1,11 +1,8 @@
 extends HBoxContainer
 
-export var input_icon_name = 'default'
-export var input_icon_type = 'button'
-export var icon_color = 'white'
 export var input_text = 'unassigned'
 export var text_color = 'white'
-var input_icon
+var input_icon = preload('res://sprites/interface/buttons/button.png')
 var input_text_color
 var input_icon_separation = 16
 var input_label = Label.new()
@@ -28,11 +25,6 @@ func refresh_icon():
 func _ready():
 	self.set('custom_constants/separation', input_icon_separation)
 	
-	if icon_color == 'white':
-		input_icon = global[input_icon_type]['inverse'][input_icon_name]
-	else:
-		input_icon = global[input_icon_type][input_icon_name]
-		
 	refresh_icon()
 	
 	if input_text != 'unassigned':
