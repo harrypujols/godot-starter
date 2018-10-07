@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var dialog = get_node('../../hud/dialog')
+onready var dialog = get_node('/root/stage/hud/dialog')
 export var item_name = 'item'
 export var text_line = '...'
 export var collectible = true
@@ -26,7 +26,7 @@ onready var dialog_data = {
    ]
 }
 
-func set_item_shape():
+func init():
 	$item_sprite.set_texture(sprite)
 	image_size = $item_sprite.texture.get_size()
 	image_size.x = image_size.x / 2
@@ -64,9 +64,6 @@ func set_item_dialog():
 func collect_item():
 	emit_signal('collected')
 	self.queue_free()
-
-func init():
-	set_item_dialog()
 	
 func _ready():
 	dialog_text = 'I found one ' + item_name + '!'
@@ -74,11 +71,11 @@ func _ready():
 	if text_line != '...':
 		dialog_data.passages[0].dialog = text_line
 		
-	set_item_shape()
+	init()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 	global.entered_dialog_zone = true
-	init()
+	set_item_dialog()
 
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:

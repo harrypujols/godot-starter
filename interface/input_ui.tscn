@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
-[ext_resource path="res://scripts/input_ui.gd" type="Script" id=2]
+[ext_resource path="res://scripts/interface/input_ui.gd" type="Script" id=2]
 [ext_resource path="res://sprites/interface/inverse_buttons/button.png" type="Texture" id=3]
+
 
 [node name="input_ui" type="HBoxContainer"]
 
