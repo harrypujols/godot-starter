@@ -30,18 +30,16 @@ func init():
 	sprite = load('res://sprites/' + item_image)
 	$item_sprite.set_texture(sprite)
 	var image_size = $item_sprite.texture.get_size()
-	var item_area = Area2D.new()
 	var item_shape = RectangleShape2D.new()
 	var item_collision = CollisionShape2D.new()
 	image_size.x = image_size.x / 2
 	image_size.y = image_size.y / 2
-	
 	item_shape.set_extents(image_size)
 	item_collision.set_shape(item_shape)
-	self.add_child(item_area)
-	item_area.add_child(item_collision)
-	item_area.connect('area_shape_entered', self, '_on_item_area_area_shape_entered')
-	item_area.connect('area_shape_exited', self, '_on_item_area_area_shape_exited')
+	
+	$item_area.add_child(item_collision)
+	$item_area.connect('area_shape_entered', self, '_on_item_area_area_shape_entered')
+	$item_area.connect('area_shape_exited', self, '_on_item_area_area_shape_exited')
 	
 	if solid:
 		add_item_body(image_size)
