@@ -125,7 +125,6 @@ size_flags_vertical = 1
 custom_constants/separation = 32
 alignment = 2
 script = ExtResource( 3 )
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "custom_constants" ]
 
 [node name="input_accept" parent="dialog_box/dialog_input" index="0" instance=ExtResource( 4 )]
 

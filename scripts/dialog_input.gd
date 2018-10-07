@@ -14,7 +14,6 @@ func _ready():
 	set_icons()
 	
 	self.rect_scale = Vector2(.6, .6)
-#	self.rect_position = Vector2((712 - 146), (300 - 42))
 
 func set_icons():
 	input.icon_color = 'light'
