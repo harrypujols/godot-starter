@@ -10,11 +10,6 @@ export var solid = true
 signal collected
 
 var sprite
-var image_size
-
-var body = StaticBody2D.new()
-var shape = RectangleShape2D.new()
-var collision = CollisionShape2D.new()
 
 var dialog_open = 0
 var dialog_entry = 'dialog'
@@ -34,16 +29,27 @@ onready var dialog_data = {
 func init():
 	sprite = load('res://sprites/' + item_image)
 	$item_sprite.set_texture(sprite)
-	image_size = $item_sprite.texture.get_size()
-	print(image_size)
+	var image_size = $item_sprite.texture.get_size()
+	var item_area = Area2D.new()
+	var item_shape = RectangleShape2D.new()
+	var item_collision = CollisionShape2D.new()
 	image_size.x = image_size.x / 2
 	image_size.y = image_size.y / 2
-	$item_area/item_shape.shape.set_extents(image_size)
+	
+	item_shape.set_extents(image_size)
+	item_collision.set_shape(item_shape)
+	self.add_child(item_area)
+	item_area.add_child(item_collision)
+	item_area.connect('area_shape_entered', self, '_on_item_area_area_shape_entered')
+	item_area.connect('area_shape_exited', self, '_on_item_area_area_shape_exited')
 	
 	if solid:
-		add_item_body()
+		add_item_body(image_size)
 
-func add_item_body():
+func add_item_body(image_size):
+	var body = StaticBody2D.new()
+	var shape = RectangleShape2D.new()
+	var collision = CollisionShape2D.new()
 	shape.set_extents(image_size)
 	collision.set_shape(shape)
 	self.add_child(body)

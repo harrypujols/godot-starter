@@ -1,19 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/items/item.gd" type="Script" id=1]
 [ext_resource path="res://sprites/interface/coin.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[node name="item" type="Node2D"]
+[node name="item" type="Node2D" index="0"]
 
 position = Vector2( 1462.57, 202.394 )
 script = ExtResource( 1 )
 item_name = "item"
 text_line = "..."
+item_image = "interface/coin.png"
 collectible = true
 solid = true
 
@@ -21,27 +17,6 @@ solid = true
 
 texture = ExtResource( 2 )
 
-[node name="item_area" type="Area2D" parent="." index="1"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="item_shape" type="CollisionShape2D" parent="item_area" index="0"]
-
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
-
 [connection signal="tree_exited" from="." to="." method="_on_item_tree_exited"]
-
-[connection signal="area_shape_entered" from="item_area" to="." method="_on_item_area_area_shape_entered"]
-
-[connection signal="area_shape_exited" from="item_area" to="." method="_on_item_area_area_shape_exited"]
-
-[connection signal="input_event" from="item_area" to="." method="_on_item_area_input_event"]
 
 
