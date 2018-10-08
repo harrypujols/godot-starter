@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/characters/player.gd" type="Script" id=2]
@@ -11,8 +11,9 @@
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=9]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=10]
 [ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=11]
+[ext_resource path="res://sounds/beepbox_tune.wav" type="AudioStream" id=12]
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -33,10 +34,12 @@ collectible = false
 
 [node name="exit" type="Node2D" parent="." index="3"]
 
+editor/display_folded = true
 script = ExtResource( 5 )
 
 [node name="exit_body" type="Area2D" parent="exit" index="0"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -146,6 +149,16 @@ __meta__ = {
 [node name="input" type="Node" parent="." index="8"]
 
 script = ExtResource( 11 )
+
+[node name="background_sound" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 12 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="area_shape_entered" from="exit/exit_body" to="exit" method="_on_exit_body_area_shape_entered"]
 
