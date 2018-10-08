@@ -88,7 +88,8 @@ func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:
 		if collectible:
-			$bleep.play() 
+			$bleep.stream
+			$bleep.play(0) 
 			collect_item()
 		dialog_open = 0
 		dialog.reset_dialog()
@@ -103,4 +104,3 @@ func _on_item_area_area_shape_exited(area_id, area, area_shape, self_shape):
 
 func _on_bleep_finished():
 	$bleep.stop()
-	pass
