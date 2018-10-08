@@ -13,8 +13,7 @@
 [ext_resource path="res://audio/beepbox_tune.wav" type="AudioStream" id=11]
 [ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=12]
 
-
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -32,6 +31,7 @@ position = Vector2( 1472, 128 )
 
 position = Vector2( 1472, -224 )
 collectible = false
+pickup_sound = false
 
 [node name="exit" type="Node2D" parent="." index="3"]
 

@@ -13,6 +13,7 @@ text_line = "..."
 item_image = "interface/coin.png"
 collectible = true
 solid = true
+pickup_sound = true
 
 [node name="item_sprite" type="Sprite" parent="." index="0"]
 
@@ -27,7 +28,6 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Audio Bus" ]
 
 [node name="bleep" type="AudioStreamPlayer" parent="." index="2"]
 
@@ -43,7 +43,5 @@ bus = "Master"
 [connection signal="area_shape_entered" from="item_area" to="." method="_on_item_area_area_shape_entered"]
 
 [connection signal="area_shape_exited" from="item_area" to="." method="_on_item_area_area_shape_exited"]
-
-[connection signal="finished" from="bleep" to="." method="_on_bleep_finished"]
 
 

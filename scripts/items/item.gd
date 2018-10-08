@@ -6,6 +6,7 @@ export var text_line = '...'
 export var item_image = 'interface/coin.png'
 export var collectible = true
 export var solid = true
+export var pickup_sound = true
 
 signal collected
 
@@ -82,14 +83,14 @@ func _ready():
 	init()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
+	if pickup_sound:
+		$bleep.play()
 	global.entered_dialog_zone = true
 	set_item_dialog()
 
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:
 		if collectible:
-			$bleep.stream
-			$bleep.play(0) 
 			collect_item()
 		dialog_open = 0
 		dialog.reset_dialog()
@@ -100,7 +101,3 @@ func _on_item_tree_exited():
 func _on_item_area_area_shape_exited(area_id, area, area_shape, self_shape):
 	dialog_open = 0
 	global.entered_dialog_zone = false
-
-
-func _on_bleep_finished():
-	$bleep.stop()
