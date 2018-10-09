@@ -1,18 +1,19 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/characters/player.gd" type="Script" id=2]
-[ext_resource path="res://characters/cat.tscn" type="PackedScene" id=3]
-[ext_resource path="res://items/keyhole.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/exit.gd" type="Script" id=5]
-[ext_resource path="res://items/pickup_items.tscn" type="PackedScene" id=6]
-[ext_resource path="res://items/item.tscn" type="PackedScene" id=7]
-[ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=8]
-[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=9]
-[ext_resource path="res://tiles/wall.tres" type="TileSet" id=10]
-[ext_resource path="res://audio/beepbox_tune.wav" type="AudioStream" id=11]
-[ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=12]
-[ext_resource path="res://audio/collect.wav" type="AudioStream" id=13]
+[ext_resource path="res://sprites/color_swicth_material.tres" type="Material" id=1]
+[ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/characters/player.gd" type="Script" id=3]
+[ext_resource path="res://characters/cat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://items/keyhole.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/exit.gd" type="Script" id=6]
+[ext_resource path="res://items/pickup_items.tscn" type="PackedScene" id=7]
+[ext_resource path="res://items/item.tscn" type="PackedScene" id=8]
+[ext_resource path="res://audio/collect.wav" type="AudioStream" id=9]
+[ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=10]
+[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=11]
+[ext_resource path="res://tiles/wall.tres" type="TileSet" id=12]
+[ext_resource path="res://audio/beepbox_tune.wav" type="AudioStream" id=13]
+[ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=1]
 
@@ -21,7 +22,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("collect:playing")
+tracks/0/path = NodePath("../items/collect:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -33,29 +34,32 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
-_sections_unfolded = [ "Transform" ]
+material = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform" ]
 
-[node name="player" parent="." index="0" instance=ExtResource( 1 )]
+[node name="player" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 499.102, 303.508 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 speed = 200
 
-[node name="cat" parent="." index="1" instance=ExtResource( 3 )]
+[node name="cat" parent="." index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 1472, 128 )
 
-[node name="keyhole" parent="." index="2" instance=ExtResource( 4 )]
+[node name="keyhole" parent="." index="2" instance=ExtResource( 5 )]
 
+material = null
+use_parent_material = true
 position = Vector2( 1472, -224 )
 collectible = false
 
 [node name="exit" type="Node2D" parent="." index="3"]
 
 editor/display_folded = true
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="exit_body" type="Area2D" parent="exit" index="0"]
 
@@ -73,24 +77,50 @@ audio_bus_name = "Master"
 build_mode = 0
 polygon = PoolVector2Array( 1408, -272, 1376, -272, 1376, -336, 1568, -336, 1568, -272, 1536, -272, 1536, -304, 1408, -304 )
 
-[node name="items" parent="." index="4" instance=ExtResource( 6 )]
+[node name="items" parent="." index="4" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 
-[node name="item" parent="items" index="0" instance=ExtResource( 7 )]
+[node name="item" parent="items" index="0" groups=[
+"coins",
+] instance=ExtResource( 8 )]
 
 position = Vector2( 1184, 624 )
 item_name = "coin"
 
-[node name="item2" parent="items" index="1" instance=ExtResource( 7 )]
+[node name="item2" parent="items" index="1" groups=[
+"coins",
+] instance=ExtResource( 8 )]
 
 position = Vector2( 48, 528 )
 item_name = "coin"
 
-[node name="item3" parent="items" index="2" instance=ExtResource( 7 )]
+[node name="item3" parent="items" index="2" groups=[
+"coins",
+] instance=ExtResource( 8 )]
 
 position = Vector2( 800, 128 )
 item_name = "coin"
+
+[node name="collect" type="AudioStreamPlayer" parent="items" index="3"]
+
+stream = ExtResource( 9 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+_sections_unfolded = [ "Pause" ]
+
+[node name="bleep" type="AnimationPlayer" parent="items" index="4"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/blop = SubResource( 1 )
+blend_times = [  ]
 
 [node name="hud" type="CanvasLayer" parent="." index="5"]
 
@@ -101,19 +131,23 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="dialog" parent="hud" index="0" instance=ExtResource( 8 )]
+[node name="dialog" parent="hud" index="0" groups=[
+"dialog",
+] instance=ExtResource( 10 )]
 
 margin_left = 512.0
 margin_top = 300.0
 margin_right = 512.0
 margin_bottom = 300.0
 
-[node name="pause" parent="hud" index="1" instance=ExtResource( 9 )]
+[node name="pause" parent="hud" index="1" instance=ExtResource( 11 )]
 
 [node name="walls" type="TileMap" parent="." index="6"]
 
+material = ExtResource( 1 )
+use_parent_material = true
 mode = 0
-tile_set = ExtResource( 10 )
+tile_set = ExtResource( 12 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -129,13 +163,13 @@ collision_mask = 1
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( -262125, 0, 0, -262124, 0, 0, -262123, 0, 0, -262120, 0, 0, -262119, 0, 0, -262118, 0, 0, -196589, 0, 0, -196582, 0, 0, -131053, 0, 0, -131046, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65510, 0, 0, 65533, 0, 0, 26, 0, 0, 131069, 0, 0, 65562, 0, 0, 196605, 0, 0, 131098, 0, 0, 262141, 0, 0, 196634, 0, 0, 327677, 0, 0, 262170, 0, 0, 393213, 0, 0, 327706, 0, 0, 458749, 0, 0, 393242, 0, 0, 524285, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 458778, 0, 0, 589821, 0, 0, 524308, 0, 0, 655357, 0, 0, 589844, 0, 0, 720893, 0, 0, 720894, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655380, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0 )
+_sections_unfolded = [ "Material" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="background" type="ParallaxBackground" parent="." index="7"]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -161,31 +195,12 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
+color = Color( 0.607843, 0.737255, 0.0588235, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="background_sound" type="AudioStreamPlayer" parent="background" index="1"]
-
-stream = ExtResource( 11 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-_sections_unfolded = [ "Pause" ]
-
-[node name="input" type="Node" parent="." index="8"]
-
-script = ExtResource( 12 )
-
-[node name="sounds" type="Node" parent="." index="9"]
-
-editor/display_folded = true
-_sections_unfolded = [ "Pause" ]
-
-[node name="collect" type="AudioStreamPlayer" parent="sounds" index="0"]
 
 stream = ExtResource( 13 )
 volume_db = 0.0
@@ -195,15 +210,9 @@ mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]
 
-[node name="bleep" type="AnimationPlayer" parent="sounds" index="1"]
+[node name="input" type="Node" parent="." index="8"]
 
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/blop = SubResource( 1 )
-blend_times = [  ]
+script = ExtResource( 14 )
 
 [connection signal="area_shape_entered" from="exit/exit_body" to="exit" method="_on_exit_body_area_shape_entered"]
 

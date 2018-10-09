@@ -1,8 +1,8 @@
 extends Control
 
 onready var player = get_node('/root/stage/player')
-onready var dialog_options = get_node('dialog_box/dialog_options')
-onready var dialog_title = get_node('dialog_box/dialog_title')
+onready var dialog_options = find_node('dialog_options')
+onready var dialog_title = find_node('dialog_title')
 var get_menu_item = load('res://interface/menu_item.tscn')
 var data = global.get_json('res://data/dialog.json')
 var dialog_open = 0
