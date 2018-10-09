@@ -33,7 +33,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -182,13 +182,12 @@ script = ExtResource( 12 )
 
 [node name="sounds" type="Node" parent="." index="9"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="collect" type="AudioStreamPlayer" parent="sounds" index="0"]
 
 stream = ExtResource( 13 )
-volume_db = 0.0
+volume_db = -20.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
