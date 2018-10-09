@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://sprites/textures/wall.png" type="Texture" id=1]
+[ext_resource path="res://sprites/color_swicth_material.tres" type="Material" id=1]
+[ext_resource path="res://sprites/textures/wall.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -13,8 +14,9 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="brick_wall" type="Sprite" parent="." index="0"]
 
-texture = ExtResource( 1 )
-_sections_unfolded = [ "Offset" ]
+material = ExtResource( 1 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Offset" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="brick_wall" index="0"]
 
