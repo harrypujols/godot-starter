@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/beepbox_tune.wav-103031ba7c9abf0e3253e51228862893.sample"
+path="res://.import/beepbox_tune.wav-f3cb98ce15628930bbbb95daf79399d2.sample"
 
 [deps]
 
-source_file="res://sounds/beepbox_tune.wav"
-dest_files=[ "res://.import/beepbox_tune.wav-103031ba7c9abf0e3253e51228862893.sample" ]
+source_file="res://audio/beepbox_tune.wav"
+dest_files=[ "res://.import/beepbox_tune.wav-f3cb98ce15628930bbbb95daf79399d2.sample" ]
 
 [params]
 

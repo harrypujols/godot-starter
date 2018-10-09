@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/characters/player.gd" type="Script" id=2]
@@ -10,10 +10,30 @@
 [ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=8]
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=9]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=10]
-[ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=11]
-[ext_resource path="res://sounds/beepbox_tune.wav" type="AudioStream" id=12]
+[ext_resource path="res://audio/beepbox_tune.wav" type="AudioStream" id=11]
+[ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=12]
+[ext_resource path="res://audio/collect.wav" type="AudioStream" id=13]
 
-[node name="stage" type="Node2D" index="0"]
+[sub_resource type="Animation" id=1]
+
+resource_name = "blop"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("collect:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="stage" type="Node2D"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -146,19 +166,44 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="input" type="Node" parent="." index="8"]
+[node name="background_sound" type="AudioStreamPlayer" parent="background" index="1"]
 
-script = ExtResource( 11 )
-
-[node name="background_sound" type="AudioStreamPlayer" parent="." index="9"]
-
-stream = ExtResource( 12 )
+stream = ExtResource( 11 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]
+
+[node name="input" type="Node" parent="." index="8"]
+
+script = ExtResource( 12 )
+
+[node name="sounds" type="Node" parent="." index="9"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Pause" ]
+
+[node name="collect" type="AudioStreamPlayer" parent="sounds" index="0"]
+
+stream = ExtResource( 13 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+_sections_unfolded = [ "Pause" ]
+
+[node name="bleep" type="AnimationPlayer" parent="sounds" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/blop = SubResource( 1 )
+blend_times = [  ]
 
 [connection signal="area_shape_entered" from="exit/exit_body" to="exit" method="_on_exit_body_area_shape_entered"]
 

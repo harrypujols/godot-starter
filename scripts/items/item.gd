@@ -10,7 +10,6 @@ export var solid = true
 signal collected
 
 var sprite
-
 var dialog_open = 0
 var dialog_entry = 'dialog'
 onready var dialog_text = 'I found one ' + item_name + '!'
