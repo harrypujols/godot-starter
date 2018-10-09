@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/items/item.gd" type="Script" id=1]
 [ext_resource path="res://sprites/interface/coin.png" type="Texture" id=2]
-[ext_resource path="res://audio/collect.wav" type="AudioStream" id=3]
 
-[node name="item" type="Node2D" index="0"]
+[node name="item" type="Node2D"]
 
 position = Vector2( 1462.57, 202.394 )
 script = ExtResource( 1 )
@@ -13,7 +12,6 @@ text_line = "..."
 item_image = "interface/coin.png"
 collectible = true
 solid = true
-pickup_sound = true
 
 [node name="item_sprite" type="Sprite" parent="." index="0"]
 
@@ -28,15 +26,6 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-
-[node name="bleep" type="AudioStreamPlayer" parent="." index="2"]
-
-stream = ExtResource( 3 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
 
 [connection signal="tree_exited" from="." to="." method="_on_item_tree_exited"]
 

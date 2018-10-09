@@ -1,5 +1,6 @@
 extends Node
 
+onready var bleep = get_node('/root/stage/sounds/bleep')
 var total
 var count = 0
 var pick = 'item'
@@ -12,6 +13,7 @@ func _ready():
 		child.connect('collected', self, '_on_item_collected', [child.item_name])
 
 func _on_item_collected(item):
+	bleep.play('blop')
 	count += 1
 	pick = item
 	emit_signal('item_collected')

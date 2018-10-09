@@ -6,12 +6,10 @@ export var text_line = '...'
 export var item_image = 'interface/coin.png'
 export var collectible = true
 export var solid = true
-export var pickup_sound = true
 
 signal collected
 
 var sprite
-
 var dialog_open = 0
 var dialog_entry = 'dialog'
 onready var dialog_text = 'I found one ' + item_name + '!'
@@ -83,8 +81,6 @@ func _ready():
 	init()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
-	if pickup_sound:
-		$bleep.play()
 	global.entered_dialog_zone = true
 	set_item_dialog()
 
