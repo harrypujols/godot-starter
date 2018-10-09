@@ -33,7 +33,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[node name="stage" type="Node2D" index="0"]
+[node name="stage" type="Node2D"]
 
 _sections_unfolded = [ "Transform" ]
 
