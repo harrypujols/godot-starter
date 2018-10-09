@@ -94,14 +94,15 @@ item_name = "coin"
 
 [node name="hud" type="CanvasLayer" parent="." index="5"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="dialog" parent="hud" index="0" instance=ExtResource( 8 )]
+[node name="dialog" parent="hud" index="0" groups=[
+"dialog",
+] instance=ExtResource( 8 )]
 
 margin_left = 512.0
 margin_top = 300.0
@@ -182,6 +183,7 @@ script = ExtResource( 12 )
 
 [node name="sounds" type="Node" parent="." index="9"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
 [node name="collect" type="AudioStreamPlayer" parent="sounds" index="0"]

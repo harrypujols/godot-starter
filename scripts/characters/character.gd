@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var dialog = get_node('/root/stage/hud/dialog')
+onready var dialog =  get_tree().get_nodes_in_group('dialog')[0]
 var character_file = 'character.json'
 var character_image = 'cat.png'
 var image_size
