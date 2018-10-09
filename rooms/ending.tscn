@@ -16,6 +16,7 @@ func _ready():
 	$input_ui.input_icon = $input_icons.input_accept
 	Input.connect('joy_connection_changed', self, '_on_joy_connection_changed')
 	$input_ui.refresh_icon()
+	print(get_tree().current_scene.name)
 
 func _input(event):
 	if (event is InputEventJoypadButton) or (event is InputEventJoypadMotion):

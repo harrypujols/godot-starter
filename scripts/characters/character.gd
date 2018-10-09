@@ -40,6 +40,5 @@ func _on_dialog_next_entry():
 	emit_signal('interacted')
 	
 func _ready():
-	print(get_tree().current_scene.name)
 	set_character_shape()
 	dialog.connect('next_entry', self, '_on_dialog_next_entry')
