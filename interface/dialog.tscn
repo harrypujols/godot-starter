@@ -9,7 +9,7 @@
 [sub_resource type="Theme" id=1]
 
 
-[node name="dialog" type="Control"]
+[node name="dialog" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -62,6 +62,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/panel = ExtResource( 3 )
+_sections_unfolded = [ "custom_styles" ]
 
 [node name="margin_container" type="MarginContainer" parent="dialog_box/background" index="0"]
 
