@@ -1,8 +1,8 @@
 extends Control
 
-onready var menu = get_node('./hud/menu')
-onready var title = get_node('./hud/menu/title')
-onready var dialog = get_node('../dialog')
+onready var menu = find_node('menu')
+onready var title = find_node('title')
+onready var dialog = get_tree().get_nodes_in_group('dialog')[0]
 var data = global.get_json('res://data/pause.json')
 var entry = 'pause'
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var dialog = get_node('/root/stage/hud/dialog')
+onready var dialog = get_tree().get_nodes_in_group('dialog')[0]
 export var item_name = 'item'
 export var text_line = '...'
 export var item_image = 'interface/coin.png'

@@ -124,7 +124,6 @@ blend_times = [  ]
 
 [node name="hud" type="CanvasLayer" parent="." index="5"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -170,6 +169,7 @@ __meta__ = {
 
 [node name="background" type="ParallaxBackground" parent="." index="7"]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0

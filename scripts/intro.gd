@@ -1,7 +1,7 @@
 extends Control
 
-onready var menu = get_node('./hud/menu')
-onready var title = get_node('./hud/menu/title')
+onready var menu = find_node('menu')
+onready var title = find_node('title')
 var data = global.get_json('res://data/menu.json')
 var entry = 'menu'
 

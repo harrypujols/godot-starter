@@ -1,9 +1,8 @@
 extends VBoxContainer
 
-export var parent_node = '../../'
-onready var parent = get_node(parent_node)
-onready var items = get_node('./items')
-onready var title = get_node('./title')
+onready var parent = get_node('/root/stage')
+onready var items = get_node('items')
+onready var title = get_node('title')
 var data = {}
 var get_menu_item = load('res://interface/menu_item.tscn')
 
