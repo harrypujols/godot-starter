@@ -87,7 +87,7 @@ func set_dialog():
 				label.set_text(dialog_text[i])
 				label.set('custom_colors/font_color', global.color.grey)
 				menu_item.call = dialog_choice[i]
-				menu_item.connect('menu_selection', self, '_on_menu_select', [menu_item.call])
+				menu_item.connect('menu_item_selection', self, '_on_menu_item_selection', [menu_item.call])
 				
 				if typing_effect == true:
 					label.set_visible_characters(0)
@@ -108,7 +108,7 @@ func _on_typing_effect_timeout():
 	var label =  dialog_options.get_child(0).get_node('label')
 	label.set_visible_characters(label.get_visible_characters() + 1)
 
-func _on_menu_select(selection):
+func _on_menu_item_selection(selection):
 	next_page = selection
 	if clicks > 1:
 		set_dialog()

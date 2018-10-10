@@ -1,10 +1,10 @@
 extends Button
 
 var call = 'unassigned'
-signal menu_selection
+signal menu_item_selection
 	
 func _on_menu_item_pressed():
-	emit_signal('menu_selection')
+	emit_signal('menu_item_selection')
 
 func _on_menu_item_focus_entered():
 	$indicator.visible = true

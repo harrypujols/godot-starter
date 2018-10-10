@@ -7,14 +7,15 @@ var entry = 'menu'
 
 func _ready():
 	title.set_text(data.title.confirm)
+	menu.connect('menu_selection', self, '_on_menu_selection')
 	setup_menu()
 	
 func setup_menu():
 	menu.data = data[entry]
 	menu.init()
 
-func _on_menu_select(selection):
-	match selection:
+func _on_menu_selection():
+	match menu.selection:
 		'start':
 			get_tree().change_scene('res://rooms/start.tscn')
 		'quit':
@@ -28,4 +29,4 @@ func _on_menu_select(selection):
 			title.visible = false
 			setup_menu()
 		_:
-			print(selection)
+			print(menu.selection)

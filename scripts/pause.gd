@@ -8,13 +8,14 @@ var entry = 'pause'
 
 func _ready():
 	self.visible = false
+	menu.connect('menu_selection', self, '_on_menu_selection')
 	
 func setup_menu():
 	menu.data = data[entry]
 	menu.init()
 	
-func _on_menu_select(selection):
-	match selection:
+func _on_menu_selection():
+	match menu.selection:
 		'unpause':
 			get_tree().paused = false
 			self.visible = false
@@ -32,7 +33,7 @@ func _on_menu_select(selection):
 			title.set_text(data.title.pause)
 			setup_menu()
 		_:
-			print(selection)
+			print(menu.selection)
 
 func _input(event):
 	if Input.is_action_pressed('ui_pause'):
