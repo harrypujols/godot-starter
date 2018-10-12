@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[node name="stage" type="Node2D" index="0"]
+[node name="stage" type="Node2D"]
 
 material = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
@@ -216,7 +216,15 @@ _sections_unfolded = [ "Pause" ]
 
 script = ExtResource( 14 )
 
-[node name="spawn_point" parent="." index="9" instance=ExtResource( 15 )]
+[node name="point_a" parent="." index="9" instance=ExtResource( 15 )]
+
+position = Vector2( 496, 144 )
+
+[node name="point_b" parent="." index="10" instance=ExtResource( 15 )]
+
+position = Vector2( -64, 576 )
+origin_name = "point-b"
+target_name = "point-a"
 
 [connection signal="area_shape_entered" from="exit/exit_body" to="exit" method="_on_exit_body_area_shape_entered"]
 
