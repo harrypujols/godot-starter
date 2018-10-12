@@ -225,6 +225,7 @@ position = Vector2( 496, 144 )
 position = Vector2( -64, 576 )
 origin_name = "point-b"
 target_name = "point-a"
+exit = true
 
 [connection signal="area_shape_entered" from="exit/exit_body" to="exit" method="_on_exit_body_area_shape_entered"]
 
