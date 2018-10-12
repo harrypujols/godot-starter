@@ -1,18 +1,18 @@
 extends Node2D
 
-var point_name = 'gate'
-var spawn_target = 'treasure'
+var spawn_points = get_tree().get_nodes_in_group('spawns')
+var origin_name = 'point-a'
+var target_name = 'point-b'
+var origin = self.get_pos()
+var target 
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
+	set_target()
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-
+func set_target():
+	for point in spawn_points:
+		if point.name == target_name:
+			target = point.get_pos()
 
 func _on_spawn_area_area_entered(area):
-	pass # replace with function body
+	print(area)
