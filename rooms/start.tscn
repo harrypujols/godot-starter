@@ -217,9 +217,9 @@ _sections_unfolded = [ "Pause" ]
 
 script = ExtResource( 14 )
 
-[node name="unlockable" parent="." index="9" instance=ExtResource( 15 )]
+[node name="chest" parent="." index="9" instance=ExtResource( 15 )]
 
-position = Vector2( 288, -880 )
+position = Vector2( 272, -784 )
 item_name = "chest"
 
 [node name="point_a" parent="." index="10" instance=ExtResource( 16 )]
