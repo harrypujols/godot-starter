@@ -18,8 +18,7 @@ func set_target():
 			target = warp
 
 func _on_spawn_area_area_entered(area):
-	print('hello!')
 	if area == player.get_node('player_hitbox'):
-		if target != null and exit:
-			player.set_pos(target.position)
+		if target and target.exit:
+			player.position = target.position
 		
