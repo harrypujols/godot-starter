@@ -22,3 +22,7 @@ func _on_spawn_area_area_entered(area):
 		if target and target.exit:
 			player.position = target.position
 		
+func _on_spawn_area_area_exited(area):
+	if exit:
+		exit = false
+		target.exit = true

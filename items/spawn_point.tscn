@@ -34,4 +34,6 @@ _sections_unfolded = [ "Z Index" ]
 
 [connection signal="area_entered" from="spawn_area" to="." method="_on_spawn_area_area_entered"]
 
+[connection signal="area_exited" from="spawn_area" to="." method="_on_spawn_area_area_exited"]
+
 
