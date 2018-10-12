@@ -10,6 +10,7 @@ export var solid = true
 signal collected
 
 var sprite
+var dialog_active = true
 var dialog_open = 0
 var dialog_entry = 'dialog'
 onready var dialog_text = 'I found one ' + item_name + '!'
@@ -35,7 +36,6 @@ func init():
 	image_size.y = image_size.y / 2
 	item_shape.set_extents(image_size)
 	item_collision.set_shape(item_shape)
-	
 	$item_area.add_child(item_collision)
 	
 	if solid:
@@ -82,7 +82,8 @@ func _ready():
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 	global.entered_dialog_zone = true
-	set_item_dialog()
+	if dialog_active:
+		set_item_dialog()
 
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:
