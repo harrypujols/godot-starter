@@ -16,6 +16,7 @@ var color = {
 
 # load json file
 static func get_json(path):
+	print(path)
 	var file = File.new()
 	file.open(path, file.READ)
 	var text = file.get_as_text()

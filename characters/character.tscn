@@ -17,7 +17,7 @@ radius = 10.0
 custom_solver_bias = 0.0
 extents = Vector2( 1, 1 )
 
-[node name="character" type="KinematicBody2D" index="0"]
+[node name="character" type="KinematicBody2D"]
 
 material = ExtResource( 1 )
 input_pickable = false
@@ -26,9 +26,9 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Transform" ]
-character_file = "character.json"
 dialog_entry = "hello"
 sprite = ExtResource( 3 )
+character_file = "character.json"
 
 [node name="dialog_zone" type="Area2D" parent="." index="0"]
 
