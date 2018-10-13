@@ -154,6 +154,7 @@ exit = true
 [node name="item" parent="." index="9" instance=ExtResource( 11 )]
 
 position = Vector2( 880, 128 )
+item_name = "coin"
 
 [connection signal="area_shape_entered" from="exit/exit_body" to="exit" method="_on_exit_body_area_shape_entered"]
 

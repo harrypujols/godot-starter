@@ -1,9 +1,8 @@
 extends Node2D
 
-#onready var dialog = get_tree().get_nodes_in_group('dialog')[0]
 export var item_name = 'item'
 export(Texture) var sprite
-export(String) var text_line
+export(String, MULTILINE) var text_line
 export var collectible = true
 export var solid = true
 
