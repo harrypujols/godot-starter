@@ -2,7 +2,6 @@ extends Control
 
 onready var menu = find_node('menu')
 onready var title = find_node('title')
-onready var dialog_boxes = get_tree().get_nodes_in_group('dialog')
 var data = global.get_json('res://data/pause.json')
 var entry = 'pause'
 
@@ -13,6 +12,14 @@ func _ready():
 func setup_menu():
 	menu.data = data[entry]
 	menu.init()
+	
+func return_to_dialog():
+	var dialog_boxes = get_tree().get_nodes_in_group('dialog')
+	for dialog in dialog_boxes:
+		if dialog.dialog_open == 1:
+			dialog.dialog_options.get_child(0).grab_focus()
+			if dialog.indicator_on == false:
+				dialog.indicator_off()
 
 func _on_menu_selection():
 	match menu.selection:
@@ -42,11 +49,8 @@ func _input(event):
 				get_tree().paused = false
 				self.visible = false
 				global.pause = false
-				for dialog in dialog_boxes:
-					if dialog.dialog_open == 1:
-						dialog.dialog_options.get_child(0).grab_focus()
-						if dialog.indicator_on == false:
-							dialog.indicator_off()
+				return_to_dialog()
+
 			false:
 				get_tree().paused = true
 				self.visible = true

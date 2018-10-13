@@ -83,7 +83,6 @@ func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
 	entered_dialog_zone = true
 	if dialog_active:
 		set_item_dialog()
-	print('I\'m here!')
 
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept') and dialog_open == 1:

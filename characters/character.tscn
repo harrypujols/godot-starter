@@ -26,9 +26,9 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Transform" ]
-dialog_entry = "hello"
 sprite = ExtResource( 3 )
 character_file = "character.json"
+dialog_entry = "hello"
 
 [node name="dialog_zone" type="Area2D" parent="." index="0"]
 

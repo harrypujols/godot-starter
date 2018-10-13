@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-export var dialog_entry = 'hello'
 export(Texture) var sprite
 export(String) var character_file
+export var dialog_entry = 'hello'
 onready var dialog =  find_node('dialog')
 onready var data = global.get_json('res://data/' + character_file)
 onready var character_name = data.name
