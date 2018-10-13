@@ -6,7 +6,6 @@ export var speed = 200
 var velocity = Vector2()
 var direction = 'down'
 var frame = 'idle'
-var state = 'move'
 signal open_global_dialog
 signal close_global_dialog
 
@@ -43,7 +42,7 @@ func frame_animation():
 		player_animation.play(current_animation)
 
 func _physics_process(delta):
-	match state:
+	match global.player.state:
 		'move':
 			top_down_move()
 			move_and_slide(velocity)

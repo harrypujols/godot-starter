@@ -1,7 +1,10 @@
 extends Node
 
-var player_name = 'you'
-var entered_dialog_zone = false
+var player = {
+	name = 'you',
+	state = 'move'
+}
+
 var pause = false
 
 var color = {

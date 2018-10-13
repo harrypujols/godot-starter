@@ -1,6 +1,5 @@
 extends Control
 
-#onready var player = get_node('/root/stage/player')
 onready var dialog_options = find_node('dialog_options')
 onready var dialog_title = find_node('dialog_title')
 var get_menu_item = load('res://interface/menu_item.tscn')
@@ -20,13 +19,13 @@ signal next_entry
 		
 func init():
 	$dialog_box.popup_centered()
-#	player.state = 'interact'
+	global.player.state = 'interact'
 	dialog_open = 1
 	set_dialog()
 	
 func reset_dialog():
 	$dialog_box.hide()
-#	player.state = 'move'
+	global.player.state = 'move'
 	dialog_open = 0
 	clicks = 0
 	next_page = dialog_entry
@@ -58,7 +57,7 @@ func set_dialog():
 				emit_signal('next_entry')
 				
 			if passage.has('choices'):
-				dialog_title.set_text(global.player_name)
+				dialog_title.set_text(global.player.name)
 				for choice in passage.choices:
 					dialog_text.append(choice.dialog)
 					dialog_choice.append(choice.link)
