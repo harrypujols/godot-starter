@@ -17,7 +17,7 @@ radius = 10.0
 custom_solver_bias = 0.0
 extents = Vector2( 1, 1 )
 
-[node name="character" type="KinematicBody2D" index="0"]
+[node name="character" type="KinematicBody2D"]
 
 material = ExtResource( 1 )
 input_pickable = false
@@ -32,6 +32,7 @@ character_file = "character.json"
 
 [node name="dialog_zone" type="Area2D" parent="." index="0"]
 
+editor/display_folded = true
 scale = Vector2( 0.999999, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

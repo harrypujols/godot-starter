@@ -1,21 +1,22 @@
 extends Node2D
 
-onready var dialog = get_tree().get_nodes_in_group('dialog')[0]
+#onready var dialog = get_tree().get_nodes_in_group('dialog')[0]
 export var item_name = 'item'
-export var text_line = '...'
-export var item_image = 'interface/coin.png'
+export(Texture) var sprite
+export(String) var text_line
 export var collectible = true
 export var solid = true
 
 signal collected
 
-var sprite
+var entered_dialog_zone = false
 var dialog_active = true
 var dialog_open = 0
 var dialog_entry = 'dialog'
+onready var dialog =  find_node('dialog')
 onready var dialog_text = 'I found one ' + item_name + '!'
 onready var dialog_data = {
-  'name': global.player_name,
+  'name': global.player.name,
   'passages': [
     {
       'name': 'dialog',
@@ -27,7 +28,6 @@ onready var dialog_data = {
 }
 
 func init():
-	sprite = load('res://sprites/' + item_image)
 	$item_sprite.set_texture(sprite)
 	var image_size = $item_sprite.texture.get_size()
 	var item_shape = RectangleShape2D.new()
@@ -71,7 +71,7 @@ func collect_item():
 	emit_signal('collected')
 
 func set_text(dialog_text):
-	if text_line != '...':
+	if text_line:
 		dialog_data.passages[0].dialog = text_line
 	else:
 		dialog_data.passages[0].dialog = dialog_text
@@ -81,7 +81,7 @@ func _ready():
 	init()
 
 func _on_item_area_area_shape_entered(area_id, area, area_shape, self_shape):
-	global.entered_dialog_zone = true
+	entered_dialog_zone = true
 	if dialog_active:
 		set_item_dialog()
 	print('I\'m here!')
@@ -94,8 +94,8 @@ func _input(event):
 		dialog.reset_dialog()
 		
 func _on_item_tree_exited():
-	global.entered_dialog_zone = false
+	entered_dialog_zone = false
 
 func _on_item_area_area_shape_exited(area_id, area, area_shape, self_shape):
 	dialog_open = 0
-	global.entered_dialog_zone = false
+	entered_dialog_zone = false

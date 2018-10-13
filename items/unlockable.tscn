@@ -6,6 +6,9 @@
 
 [node name="item" instance=ExtResource( 1 )]
 
+sprite = null
+text_line = null
+
 [node name="item_sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
