@@ -6,6 +6,8 @@ onready var item_area = item.get_node('item_area')
 var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
 var key_pressed = false
+var accumulator = 0
+var charge_time = 1
 
 func _ready():
 	item.dialog_active = false
@@ -14,10 +16,8 @@ func _ready():
 func _input(event):
 	if Input.is_action_pressed('ui_accept') and item.entered_dialog_zone:
 		key_pressed = true
-		$key_charge.start()
 	else:
 		key_pressed = false
-		$key_charge.stop()
 		
 func set_unlockable_area():
 	var image_size = item_sprite.texture.get_size()
@@ -29,7 +29,13 @@ func set_unlockable_area():
 	collision.set_shape(shape)
 	item_area.add_child(collision)
 
-func _on_key_charge_timeout():
-	print('timeout')
+func _process(delta):
 	if key_pressed:
-		print('ding ding!')
+		$key_progress.value += 1
+		if $key_progress.value == $key_progress.max_value:
+			print('baddabing!')
+			$key_progress.value = 0
+		accumulator += delta
+		if accumulator > charge_time: 
+			print('ding dong')
+			accumulator = 0
