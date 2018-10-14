@@ -8,9 +8,12 @@ var collision = CollisionShape2D.new()
 
 func _ready():
 	item.dialog_active = false
-	item.item_image = 'items/chest.png'
 	set_unlockable_area()
-	
+
+func _input(event):
+	if Input.is_action_pressed('ui_accept') and item.entered_dialog_zone and event.echo:
+		print('the key is pressed down')
+			
 func set_unlockable_area():
 	var image_size = item_sprite.texture.get_size()
 	shape.set_radius(2 * image_size.y)
