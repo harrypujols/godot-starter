@@ -16,4 +16,13 @@ texture = ExtResource( 2 )
 
 script = ExtResource( 3 )
 
+[node name="key_charge" type="Timer" parent="unlockable" index="0"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="unlockable/key_charge" to="unlockable" method="_on_key_charge_timeout"]
+
 
