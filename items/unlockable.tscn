@@ -12,8 +12,18 @@ sprite = null
 
 texture = ExtResource( 2 )
 
-[node name="unlockable" type="Node" parent="." index="2"]
+[node name="unlockable" type="Control" parent="." index="2"]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource( 3 )
 
 [node name="key_progress" type="ProgressBar" parent="unlockable" index="0"]
@@ -38,6 +48,5 @@ value = 0.0
 exp_edit = false
 rounded = false
 percent_visible = true
-_sections_unfolded = [ "Percent" ]
 
 

@@ -6,10 +6,10 @@
 [ext_resource path="res://characters/cat.tscn" type="PackedScene" id=4]
 [ext_resource path="res://items/keyhole.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sprites/items/keyhole.png" type="Texture" id=6]
-[ext_resource path="res://scripts/exit.gd" type="Script" id=7]
-[ext_resource path="res://items/pickup_items.tscn" type="PackedScene" id=8]
-[ext_resource path="res://items/unlockable.tscn" type="PackedScene" id=9]
-[ext_resource path="res://sprites/items/chest.png" type="Texture" id=10]
+[ext_resource path="res://items/unlockable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/items/chest.png" type="Texture" id=8]
+[ext_resource path="res://scripts/exit.gd" type="Script" id=9]
+[ext_resource path="res://items/pickup_items.tscn" type="PackedScene" id=10]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=11]
 [ext_resource path="res://audio/beepbox_tune.wav" type="AudioStream" id=12]
 [ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=13]
@@ -40,10 +40,18 @@ sprite = ExtResource( 6 )
 text_line = "It's locked."
 collectible = false
 
-[node name="exit" type="Node2D" parent="." index="3"]
+[node name="chest" parent="." index="3" instance=ExtResource( 7 )]
+
+position = Vector2( 288, -736 )
+item_name = "chest"
+sprite = ExtResource( 8 )
+text_line = "I found a secret item!"
+collectible = false
+
+[node name="exit" type="Node2D" parent="." index="4"]
 
 editor/display_folded = true
-script = ExtResource( 7 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -67,15 +75,7 @@ __meta__ = {
 build_mode = 0
 polygon = PoolVector2Array( 1408, -272, 1376, -272, 1376, -336, 1568, -336, 1568, -272, 1536, -272, 1536, -304, 1408, -304 )
 
-[node name="items" parent="." index="4" instance=ExtResource( 8 )]
-
-[node name="chest" parent="." index="5" instance=ExtResource( 9 )]
-
-position = Vector2( 288, -768 )
-_sections_unfolded = [ "Material", "Transform" ]
-item_name = "chest"
-sprite = ExtResource( 10 )
-collectible = false
+[node name="items" parent="." index="5" instance=ExtResource( 10 )]
 
 [node name="walls" type="TileMap" parent="." index="6"]
 

@@ -8,9 +8,8 @@
 [node name="item" type="Node2D"]
 
 material = ExtResource( 1 )
-position = Vector2( 1462.57, 202.394 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Material" ]
+_sections_unfolded = [ "Material", "Transform" ]
 item_name = "item"
 sprite = ExtResource( 3 )
 text_line = null
