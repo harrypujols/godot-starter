@@ -81,6 +81,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="character_dialog" type="CanvasLayer" parent="." index="4"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
