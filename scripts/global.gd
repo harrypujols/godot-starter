@@ -1,17 +1,20 @@
 extends Node
 
-var player_name = 'you'
-var entered_dialog_zone = false
+var player = {
+	name = 'you',
+	state = 'move'
+}
+
 var pause = false
 
 var color = {
 	'white': Color('#ffffff'),
 	'grey': Color('#aaaaaa'),
 	'black': Color('#000000'),
-	'light-green': Color('#9bbc0f'),
+	'light_green': Color('#9bbc0f'),
 	'green': Color('#8bac0f'),
-	'dark-green': Color('#306230'),
-	'pitch-dark-green': Color('#0f380f')
+	'dark_green': Color('#306230'),
+	'pitch_dark_green': Color('#0f380f')
 }
 
 # load json file

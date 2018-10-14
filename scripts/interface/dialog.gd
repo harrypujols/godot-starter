@@ -1,13 +1,13 @@
 extends Control
 
-onready var player = get_node('/root/stage/player')
 onready var dialog_options = find_node('dialog_options')
 onready var dialog_title = find_node('dialog_title')
 var get_menu_item = load('res://interface/menu_item.tscn')
 var data = global.get_json('res://data/dialog.json')
+var entered_dialog_zone = false
 var dialog_open = 0
-var dialog_entry = 'start'
-var current_page = ''
+var dialog_entry
+var current_page
 var next_page = dialog_entry
 var dialog_text = []
 var dialog_choice = []
@@ -16,25 +16,16 @@ var indicator_on = true
 var clicks = 0
 
 signal next_entry
-	
-func _input(event):
-	if Input.is_action_just_pressed('ui_accept') and global.entered_dialog_zone:
-		clicks += 1
-		if dialog_open == 0:
-			init()
-			
-	if Input.is_action_just_pressed('ui_cancel'):
-		reset_dialog()
 		
 func init():
 	$dialog_box.popup_centered()
-	player.state = 'interact'
+	global.player.state = 'interact'
 	dialog_open = 1
 	set_dialog()
 	
 func reset_dialog():
 	$dialog_box.hide()
-	player.state = 'move'
+	global.player.state = 'move'
 	dialog_open = 0
 	clicks = 0
 	next_page = dialog_entry
@@ -66,7 +57,7 @@ func set_dialog():
 				emit_signal('next_entry')
 				
 			if passage.has('choices'):
-				dialog_title.set_text(global.player_name)
+				dialog_title.set_text(global.player.name)
 				for choice in passage.choices:
 					dialog_text.append(choice.dialog)
 					dialog_choice.append(choice.link)
