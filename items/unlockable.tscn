@@ -28,6 +28,7 @@ script = ExtResource( 3 )
 
 [node name="key_progress" type="ProgressBar" parent="unlockable" index="0"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
