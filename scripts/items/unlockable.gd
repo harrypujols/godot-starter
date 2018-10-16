@@ -8,6 +8,12 @@ var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
 var key_pressed = false
 
+var center = get_size() / 2
+var radius = 40
+var angle_from = 0
+var angle_to = 0
+var color = global.color.pitch_dark_green
+
 func _ready():
 	item.dialog_active = false
 	set_unlockable_area()
@@ -38,16 +44,13 @@ func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
 	draw_polygon(points_arc, colors)
 
 func _draw():
-	var center = get_size() / 2
-	var radius = 40
-	var angle_from = 75
-	var angle_to = 195
-	var color = global.color.pitch_dark_green
 	draw_circle_arc_poly(center, radius, angle_from, angle_to, color)
 	
 func _process(delta):
 	if key_pressed:
 		$key_progress.value += delta * $key_progress.max_value
+		angle_to = $key_progress.value
+		update()
 		if $key_progress.value >= $key_progress.max_value:
 			print('baddabing!')
 			$key_progress.value = 0
