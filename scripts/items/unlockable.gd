@@ -49,8 +49,9 @@ func _draw():
 func _process(delta):
 	if key_pressed:
 		$key_progress.value += delta * $key_progress.max_value
-		angle_to = $key_progress.value
-		update()
 		if $key_progress.value >= $key_progress.max_value:
 			print('baddabing!')
 			$key_progress.value = 0
+	angle_to = $key_progress.value
+	update()
+
