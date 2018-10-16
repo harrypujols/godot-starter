@@ -35,7 +35,7 @@ func set_unlockable_area():
 	collision.set_shape(shape)
 	item_area.add_child(collision)
 	
-func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
+func draw_circle_arc_fill(center, radius, angle_from, angle_to, color):
 	var nb_points = 32
 	var points_arc = PoolVector2Array()
 	points_arc.push_back(center)
@@ -46,11 +46,11 @@ func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
 	draw_polygon(points_arc, colors)
 
 func _draw():
-	draw_circle_arc_poly(center, radius, angle_from, angle_to, color)
+	draw_circle_arc_fill(center, radius, angle_from, angle_to, color)
 	
 func _process(delta):
 	if key_pressed:
-		$key_progress.value += delta * $key_progress.max_value
+		$key_progress.value += delta * $key_progress.max_value * $key_progress.step
 		if $key_progress.value >= $key_progress.max_value:
 			emit_signal('charged')
 			$key_progress.value = 0
