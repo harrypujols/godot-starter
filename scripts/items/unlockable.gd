@@ -14,6 +14,8 @@ var angle_from = 0
 var angle_to = 0
 var color = global.color.pitch_dark_green
 
+signal charged
+
 func _ready():
 	item.dialog_active = false
 	set_unlockable_area()
@@ -50,7 +52,7 @@ func _process(delta):
 	if key_pressed:
 		$key_progress.value += delta * $key_progress.max_value
 		if $key_progress.value >= $key_progress.max_value:
-			print('baddabing!')
+			emit_signal('charged')
 			$key_progress.value = 0
 	angle_to = $key_progress.value
 	update()
