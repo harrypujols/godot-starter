@@ -7,14 +7,17 @@ var unlockable_position = Vector2(0,0)
 var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
 var key_pressed = false
-var accumulator = 0
-var charge_time = 1
+
+var center = get_size() / 2
+var radius = 40
+var angle_from = 0
+var angle_to = 0
+var color = global.color.pitch_dark_green
+
+signal charged
 
 func _ready():
 	item.dialog_active = false
-#	unlockable_position.x = item.position.x
-#	unlockable_position.y = item.position.y - item_sprite.texture.get_size().y - 32
-#	$key_progress.set_position(unlockable_position)
 	set_unlockable_area()
 
 func _input(event):
@@ -23,34 +26,34 @@ func _input(event):
 	else:
 		key_pressed = false
 		$key_progress.value = 0
-		accumulator = 0
-		
+	
 func set_unlockable_area():
 	var image_size = item_sprite.texture.get_size()
 	shape.set_radius(2 * image_size.y)
-	
 	for child in item_area.get_children():
 		child.queue_free()
-		
 	collision.set_shape(shape)
 	item_area.add_child(collision)
 	
+func draw_circle_arc_fill(center, radius, angle_from, angle_to, color):
+	var nb_points = 32
+	var points_arc = PoolVector2Array()
+	points_arc.push_back(center)
+	var colors = PoolColorArray([color])
+	for i in range(nb_points+1):
+		var angle_point = deg2rad(angle_from + i * (angle_to - angle_from) / nb_points - 90)
+		points_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
+	draw_polygon(points_arc, colors)
 
-#func _draw():
-#    var center = Vector2(item.position.x, item.position.y - item_sprite.texture.get_size().y - 32)
-#    var radius = 80
-#    var angle_from = 75
-#    var angle_to = 195
-#    var color = global.color.pitch_dark_green
-#    draw_circle_arc(center, radius, angle_from, angle_to, color)
-
+func _draw():
+	draw_circle_arc_fill(center, radius, angle_from, angle_to, color)
+	
 func _process(delta):
 	if key_pressed:
-		$key_progress.value += 1
-		if $key_progress.value == $key_progress.max_value:
-			print('baddabing!')
+		$key_progress.value += delta * $key_progress.max_value * $key_progress.step
+		if $key_progress.value >= $key_progress.max_value:
+			emit_signal('charged')
 			$key_progress.value = 0
-		accumulator += delta
-		if accumulator > charge_time: 
-			print('ding dong')
-			accumulator = 0
+	angle_to = $key_progress.value
+	update()
+

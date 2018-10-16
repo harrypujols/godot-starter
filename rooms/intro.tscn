@@ -16,7 +16,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Mouse", "Pause", "Size Flags", "Transform", "Visibility", "Z Index" ]
+_sections_unfolded = [ "Pause", "Transform", "Z Index" ]
 
 [node name="background_color" type="ColorRect" parent="." index="0"]
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://sprites/items/chest.png" type="Texture" id=2]
 [ext_resource path="res://scripts/items/unlockable.gd" type="Script" id=3]
 
-[node name="item" instance=ExtResource( 1 )]
+[node name="item" index="0" instance=ExtResource( 1 )]
 
 sprite = null
 
@@ -28,6 +28,7 @@ script = ExtResource( 3 )
 
 [node name="key_progress" type="ProgressBar" parent="unlockable" index="0"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -41,12 +42,13 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
 min_value = 0.0
-max_value = 100.0
+max_value = 360.0
 step = 1.0
 page = 0.0
 value = 0.0
 exp_edit = false
 rounded = false
 percent_visible = true
+_sections_unfolded = [ "Percent" ]
 
 
