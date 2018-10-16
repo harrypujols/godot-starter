@@ -7,8 +7,6 @@ var unlockable_position = Vector2(0,0)
 var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
 var key_pressed = false
-var accumulator = 0
-var charge_time = 1
 
 func _ready():
 	item.dialog_active = false
@@ -20,7 +18,6 @@ func _input(event):
 	else:
 		key_pressed = false
 		$key_progress.value = 0
-		accumulator = 0
 		
 func set_unlockable_area():
 	var image_size = item_sprite.texture.get_size()
@@ -34,11 +31,7 @@ func set_unlockable_area():
 	
 func _process(delta):
 	if key_pressed:
-		$key_progress.value += 1
-		if $key_progress.value == $key_progress.max_value:
+		$key_progress.value += delta * 100
+		if $key_progress.value >= $key_progress.max_value:
 			print('baddabing!')
 			$key_progress.value = 0
-		accumulator += delta
-		if accumulator > charge_time: 
-			print('ding dong')
-			accumulator = 0
