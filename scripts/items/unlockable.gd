@@ -12,9 +12,6 @@ var charge_time = 1
 
 func _ready():
 	item.dialog_active = false
-#	unlockable_position.x = item.position.x
-#	unlockable_position.y = item.position.y - item_sprite.texture.get_size().y - 32
-#	$key_progress.set_position(unlockable_position)
 	set_unlockable_area()
 
 func _input(event):
@@ -35,15 +32,6 @@ func set_unlockable_area():
 	collision.set_shape(shape)
 	item_area.add_child(collision)
 	
-
-#func _draw():
-#    var center = Vector2(item.position.x, item.position.y - item_sprite.texture.get_size().y - 32)
-#    var radius = 80
-#    var angle_from = 75
-#    var angle_to = 195
-#    var color = global.color.pitch_dark_green
-#    draw_circle_arc(center, radius, angle_from, angle_to, color)
-
 func _process(delta):
 	if key_pressed:
 		$key_progress.value += 1
