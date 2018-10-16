@@ -22,12 +22,13 @@ func _input(event):
 func set_unlockable_area():
 	var image_size = item_sprite.texture.get_size()
 	shape.set_radius(2 * image_size.y)
-	
 	for child in item_area.get_children():
 		child.queue_free()
-		
 	collision.set_shape(shape)
 	item_area.add_child(collision)
+
+func _draw():
+    draw_circle(get_size() / 2, 20, global.color.pitch_dark_green)
 	
 func _process(delta):
 	if key_pressed:
