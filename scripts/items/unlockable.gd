@@ -6,15 +6,15 @@ onready var item_area = item.get_node('item_area')
 var unlockable_position = Vector2(0,0)
 var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
-var key_pressed = false
 
+var key_pressed = false
 var center = get_size() / 2
 var radius = 40
 var angle_from = 0
 var angle_to = 0
 var color = global.color.pitch_dark_green
 
-signal charged
+signal press_charge
 
 func _ready():
 	item.dialog_active = false
@@ -52,7 +52,7 @@ func _process(delta):
 	if key_pressed:
 		$key_progress.value += delta * $key_progress.max_value * $key_progress.step
 		if $key_progress.value >= $key_progress.max_value:
-			emit_signal('charged')
+			emit_signal('press_charge')
 			$key_progress.value = 0
 	angle_to = $key_progress.value
 	update()
