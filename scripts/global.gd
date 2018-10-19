@@ -18,13 +18,13 @@ var color = {
 }
 
 var icon = {
-	'a_button': 'a',
-	'b_button': 'b',
-	'y_button': 'y',
-	'x_button': 'x',
-	'square_button': '[',
-	'circle_button': 'o',
-	'triangle_button': 't',
+	'a': 'a',
+	'b': 'b',
+	'y': 'y',
+	'x': 'x',
+	'square': '[',
+	'circle': 'o',
+	'triangle': 't',
 	'button': '0',
 	'select': 's',
 	'start': '>',
