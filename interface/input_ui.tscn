@@ -32,6 +32,10 @@ alignment = 0
 script = ExtResource( 2 )
 input_text = null
 text_color = "white"
+icon_color = "white"
+icon_separation = 16
+font_size = null
+icon_size = null
 
 [node name="input_icon" type="Label" parent="." index="0"]
 

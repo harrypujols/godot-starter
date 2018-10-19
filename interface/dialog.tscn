@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/interface/dialog.gd" type="Script" id=2]
 [ext_resource path="res://interface/dark_green_background.tres" type="StyleBox" id=3]
-[ext_resource path="res://scripts/interface/dialog_input.gd" type="Script" id=4]
-[ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Theme" id=1]
 
@@ -214,21 +213,30 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 16
 alignment = 0
-script = ExtResource( 4 )
 _sections_unfolded = [ "custom_constants" ]
 
-[node name="accept" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="0" instance=ExtResource( 5 )]
+[node name="accept" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="0" instance=ExtResource( 4 )]
 
 margin_right = 66.0
 margin_bottom = 40.0
 input_text = "accept"
+text_color = "grey"
+icon_color = "white"
+icon_separation = 8
+font_size = 12
+icon_size = 12
 
-[node name="cancel" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="1" instance=ExtResource( 5 )]
+[node name="cancel" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="1" instance=ExtResource( 4 )]
 
 margin_left = 82.0
 margin_right = 148.0
 margin_bottom = 40.0
 input_text = "cancel"
+text_color = "grey"
+icon_color = "white"
+icon_separation = 8
+font_size = 12
+icon_size = 12
 
 [connection signal="timeout" from="dialog_box/typing_effect" to="." method="_on_typing_effect_timeout"]
 
