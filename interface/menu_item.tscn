@@ -8,7 +8,7 @@
 
 size = 16
 use_mipmaps = false
-use_filter = false
+use_filter = true
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Resource", "Settings" ]
 
@@ -17,7 +17,7 @@ _sections_unfolded = [ "Font", "Resource", "Settings" ]
 default_font = SubResource( 1 )
 _sections_unfolded = [ "Resource" ]
 
-[node name="menu_item" type="Button" index="0"]
+[node name="menu_item" type="Button"]
 
 light_mask = 0
 anchor_left = 0.0
@@ -79,6 +79,7 @@ text = ">"
 percent_visible = 0.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
 
 [node name="label" type="Label" parent="wrapper" index="1"]
 

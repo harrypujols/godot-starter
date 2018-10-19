@@ -7,7 +7,7 @@
 [sub_resource type="Theme" id=1]
 
 
-[node name="dialog" type="Control" groups=[
+[node name="dialog" type="Control" index="0" groups=[
 "dialog",
 ]]
 
