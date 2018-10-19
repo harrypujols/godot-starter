@@ -19,7 +19,7 @@ func init():
 	for item in data:
 		var menu_item = get_menu_item.instance()
 		items.add_child(menu_item)
-		var label = menu_item.get_node('label')
+		var label = menu_item.find_node('label')
 		label.set_text(item.label)
 		label.set('custom_colors/font_color', global.color.grey)
 		menu_item.call = item.call
