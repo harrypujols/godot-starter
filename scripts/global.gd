@@ -1,8 +1,8 @@
 extends Node
 
 var player = {
-	name = 'you',
-	state = 'move'
+	'name': 'you',
+	'state': 'move'
 }
 
 var pause = false
