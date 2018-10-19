@@ -17,6 +17,27 @@ var color = {
 	'pitch_dark_green': Color('#0f380f')
 }
 
+var icon = {
+	'a_button': 'a',
+	'b_button': 'b',
+	'y_button': 'y',
+	'x_button': 'x',
+	'square_button': '[',
+	'circle_button': 'o',
+	'triangle_button': 't',
+	'button': '0',
+	'select': 's',
+	'start': '>',
+	'arrow_key': '^',
+	'key': 'k',
+	'delete': 'd',
+	'enter': '<',
+	'spacebar': 'u',
+	'esc': 'e',
+	'coin': '$',
+	'alert': '!'
+}
+
 # load json file
 static func get_json(path):
 	var file = File.new()
