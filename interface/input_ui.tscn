@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/interface/input_ui.gd" type="Script" id=2]
-[ext_resource path="res://fonts/icons.tres" type="Theme" id=3]
+[ext_resource path="res://fonts/game-icons/game-icons.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/coolville.tres" type="DynamicFont" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 24
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="input_ui" type="HBoxContainer"]
 
@@ -38,12 +47,12 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Theme" ]
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="input_label" type="Label" parent="." index="1"]
 
@@ -52,7 +61,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 28.0
-margin_top = 2.0
+margin_top = 3.0
 margin_right = 28.0
 margin_bottom = 22.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -61,9 +70,10 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Margin" ]
+_sections_unfolded = [ "custom_fonts" ]
 
 
