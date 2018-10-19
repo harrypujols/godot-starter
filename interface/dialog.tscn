@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/interface/dialog.gd" type="Script" id=2]
 [ext_resource path="res://interface/dark_green_background.tres" type="StyleBox" id=3]
-[ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/interface/dialog_input.gd" type="Script" id=4]
+[ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Theme" id=1]
 
@@ -77,7 +78,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/margin_right = 16
+custom_constants/margin_right = 32
 custom_constants/margin_top = 32
 custom_constants/margin_left = 16
 custom_constants/margin_bottom = 16
@@ -91,7 +92,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 16.0
 margin_top = 32.0
-margin_right = 696.0
+margin_right = 680.0
 margin_bottom = 284.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -108,7 +109,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 680.0
+margin_right = 664.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -124,8 +125,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 315.0
-margin_right = 364.0
+margin_left = 307.0
+margin_right = 356.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -148,7 +149,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 24.0
-margin_right = 680.0
+margin_right = 664.0
 margin_bottom = 248.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -167,7 +168,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 8.0
 margin_top = 16.0
-margin_right = 680.0
+margin_right = 664.0
 margin_bottom = 224.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -180,13 +181,12 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="footer" type="Container" parent="dialog_box/background/margin_container/content_container" index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 252.0
-margin_right = 680.0
+margin_right = 664.0
 margin_bottom = 252.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -213,15 +213,16 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_constants/separation = 16
 alignment = 0
+script = ExtResource( 4 )
 _sections_unfolded = [ "custom_constants" ]
 
-[node name="accept" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="0" instance=ExtResource( 4 )]
+[node name="accept" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="0" instance=ExtResource( 5 )]
 
 margin_right = 66.0
 margin_bottom = 40.0
 input_text = "accept"
 
-[node name="cancel" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="1" instance=ExtResource( 4 )]
+[node name="cancel" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="1" instance=ExtResource( 5 )]
 
 margin_left = 82.0
 margin_right = 148.0
