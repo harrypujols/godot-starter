@@ -26,7 +26,7 @@ func init():
 		menu_item.connect('menu_item_selection', self, '_on_menu_item_selected', [menu_item.call])
 		
 	items.get_child(0).grab_focus()
-	items.get_child(0).get_node('label').set('custom_colors/font_color', global.color.white)
+	items.get_child(0).find_node('label').set('custom_colors/font_color', global.color.white)
 
 func _on_menu_item_selected(call):
 	selection = call
