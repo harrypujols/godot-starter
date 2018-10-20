@@ -1,5 +1,7 @@
 extends Node
 
+signal icon_changed
+
 const icon = {
 	'a': 'a',
 	'b': 'b',
@@ -39,31 +41,34 @@ const direction = {
 		}
 }
 
-var input_accept
-var input_cancel
+var default = icon.button
+var accept = icon.spacebar
+var cancel = icon.delete
 
 func set_controller_icons():
 	if Input.is_joy_known(0):
 		match Input.get_joy_name(0):
 			'XInput Gamepad':
-				input_accept = icon.a
-				input_cancel = icon.b
+				accept = icon.a
+				cancel = icon.b
 			'PS3 Controller', 'PS4 Controller':
-				input_accept = icon.x
-				input_cancel = icon.circle
+				accept = icon.x
+				cancel = icon.circle
 			_:
-				input_accept = icon.b
-				input_cancel = icon.a
+				accept = icon.b
+				cancel = icon.a
 
 func set_keyboard_icons():
-	input_accept = icon.spacebar
-	input_cancel = icon.delete
+	accept = icon.spacebar
+	cancel = icon.delete
 
 func _input(event):
 	if (event is InputEventJoypadButton) or (event is InputEventJoypadMotion):
 		set_controller_icons()
+		emit_signal('icon_changed')
 	else:
 		set_keyboard_icons()
+		emit_signal('icon_changed')
 		
 func _ready():
 	Input.connect('joy_connection_changed', self, '_on_joy_connection_changed')

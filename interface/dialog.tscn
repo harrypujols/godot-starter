@@ -8,7 +8,7 @@
 [sub_resource type="Theme" id=1]
 
 
-[node name="dialog" type="Control" groups=[
+[node name="dialog" type="Control" index="0" groups=[
 "dialog",
 ]]
 
@@ -53,7 +53,6 @@ autostart = false
 
 [node name="background" type="Panel" parent="dialog_box" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -69,7 +68,6 @@ _sections_unfolded = [ "custom_styles" ]
 
 [node name="margin_container" type="MarginContainer" parent="dialog_box/background" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -88,7 +86,6 @@ _sections_unfolded = [ "Focus", "Size Flags", "custom_constants" ]
 
 [node name="content_container" type="VBoxContainer" parent="dialog_box/background/margin_container" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -184,7 +181,6 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="footer" type="Container" parent="dialog_box/background/margin_container/content_container" index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -228,6 +224,7 @@ text_color = "grey"
 icon_separation = 8
 font_size = 14
 icon_size = 20
+icon_name = "accept"
 
 [node name="cancel" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="1" instance=ExtResource( 4 )]
 
@@ -239,6 +236,7 @@ text_color = "grey"
 icon_separation = 8
 font_size = 14
 icon_size = 20
+icon_name = "cancel"
 
 [connection signal="timeout" from="dialog_box/typing_effect" to="." method="_on_typing_effect_timeout"]
 
