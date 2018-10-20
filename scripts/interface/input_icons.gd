@@ -57,22 +57,20 @@ func set_controller_icons():
 			_:
 				accept = icon.b
 				cancel = icon.a
+		emit_signal('icon_changed')
 
 func set_keyboard_icons():
 	accept = icon.spacebar
 	cancel = icon.delete
+	emit_signal('icon_changed')
 		
 func _ready():
 	if Input.get_connected_joypads().size() > 0:
 		set_controller_icons()
-		emit_signal('icon_changed')
-		
 	Input.connect('joy_connection_changed', self, '_on_joy_connection_changed')
 	
 func _on_joy_connection_changed(device_id, connected):
 	if connected:
 		set_controller_icons()
-		emit_signal('icon_changed')
 	else:
 		set_keyboard_icons()
-		emit_signal('icon_changed')
