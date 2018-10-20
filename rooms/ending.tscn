@@ -1,38 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
+[ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends Control
 
-var icon_color = 'light'
-
-func _ready():
-	$input_icons.icon_color = icon_color
-	$input_icons.set_keyboard_icons(icon_color)
-	$input_ui.input_icon = $input_icons.input_accept
-	Input.connect('joy_connection_changed', self, '_on_joy_connection_changed')
-	$input_ui.refresh_icon()
-	print(get_tree().current_scene.name)
-
 func _input(event):
-	if (event is InputEventJoypadButton) or (event is InputEventJoypadMotion):
-		$input_icons.set_controller_icons(icon_color)
-		$input_ui.input_icon = $input_icons.input_accept
-		$input_ui.refresh_icon()
-		
 	if Input.is_action_just_pressed('ui_accept'):
 		get_tree().change_scene('res://rooms/intro.tscn')
-		
-func _on_joy_connection_changed(device_id, connected):
-	if connected:
-		$input_icons.set_controller_icons(icon_color)
-		$input_ui.input_icon = $input_icons.input_accept
-		$input_ui.refresh_icon()
 "
 
-[node name="stage" type="Control"]
+[node name="stage" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -97,5 +77,18 @@ text = "You win!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="input_ui" parent="." index="2" instance=ExtResource( 2 )]
+
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -144.0
+margin_top = -56.0
+margin_right = -132.0
+margin_bottom = -39.0
+input_text = "finish"
+icon_name = "accept"
 
 
