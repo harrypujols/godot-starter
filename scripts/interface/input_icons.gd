@@ -63,6 +63,10 @@ func set_keyboard_icons():
 	cancel = icon.delete
 		
 func _ready():
+	if Input.get_connected_joypads().size() > 0:
+		set_controller_icons()
+		emit_signal('icon_changed')
+		
 	Input.connect('joy_connection_changed', self, '_on_joy_connection_changed')
 	
 func _on_joy_connection_changed(device_id, connected):

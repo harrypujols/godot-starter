@@ -12,7 +12,7 @@ func _input(event):
 		get_tree().change_scene('res://rooms/intro.tscn')
 "
 
-[node name="stage" type="Control" index="0"]
+[node name="stage" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0

@@ -30,3 +30,7 @@ func _on_menu_selection():
 			setup_menu()
 		_:
 			print(menu.selection)
+
+func _input(event):
+	if Input.is_action_just_pressed('ui_start'):
+		get_tree().change_scene('res://rooms/start.tscn')
