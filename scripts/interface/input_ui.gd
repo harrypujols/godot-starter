@@ -11,12 +11,15 @@ var icon
 
 
 func refresh_label():
-	$input_label.visible = true
-	$input_label.set_text(input_text)
-	$input_label.set('custom_colors/font_color', global.color[text_color])
+	if input_text:
+		$input_label.visible = true
+		$input_label.set_text(input_text)
+		$input_label.set('custom_colors/font_color', global.color[text_color])
+	else:
+		$input_label.visible = false
 	
 	if font_size:
-		$input_label.set('custom_fonts/settings/size', font_size)
+		$input_label.get_font('font').size = font_size
 	
 func refresh_icon():
 	$input_icon.set('custom_colors/font_color', global.color[icon_color])
@@ -24,14 +27,9 @@ func refresh_icon():
 	if icon:
 		$input_icon.set_text(icon)
 	if icon_size:
-		$input_icon.set('custom_fonts/settings/size', icon_size)
+		$input_icon.get_font('font').size = icon_size
 	
 func _ready():
 	self.set('custom_constants/separation', icon_separation)
-	
 	refresh_icon()
-	
-	if input_text:
-		refresh_label()
-	else:
-		$input_label.visible = false
+	refresh_label()

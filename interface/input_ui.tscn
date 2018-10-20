@@ -1,19 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/interface/input_ui.gd" type="Script" id=2]
-[ext_resource path="res://fonts/game-icons/game-icons.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/icons.tres" type="DynamicFont" id=3]
 [ext_resource path="res://fonts/coolville.tres" type="DynamicFont" id=4]
 
-[sub_resource type="DynamicFont" id=2]
-
-size = 24
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[node name="input_ui" type="HBoxContainer"]
+[node name="input_ui" type="HBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -51,7 +43,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "0"
 percent_visible = 1.0
 lines_skipped = 0
@@ -78,6 +70,5 @@ custom_fonts/font = ExtResource( 4 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
 

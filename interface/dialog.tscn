@@ -143,7 +143,6 @@ _sections_unfolded = [ "Margin", "Rect" ]
 
 [node name="body" type="MarginContainer" parent="dialog_box/background/margin_container/content_container" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -221,10 +220,9 @@ margin_right = 66.0
 margin_bottom = 40.0
 input_text = "accept"
 text_color = "grey"
-icon_color = "white"
 icon_separation = 8
-font_size = 12
-icon_size = 12
+font_size = 14
+icon_size = 20
 
 [node name="cancel" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="1" instance=ExtResource( 4 )]
 
@@ -233,10 +231,9 @@ margin_right = 148.0
 margin_bottom = 40.0
 input_text = "cancel"
 text_color = "grey"
-icon_color = "white"
 icon_separation = 8
-font_size = 12
-icon_size = 12
+font_size = 14
+icon_size = 20
 
 [connection signal="timeout" from="dialog_box/typing_effect" to="." method="_on_typing_effect_timeout"]
 
