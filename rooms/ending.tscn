@@ -89,6 +89,8 @@ margin_top = -56.0
 margin_right = -132.0
 margin_bottom = -39.0
 input_text = "finish"
+text_color = "grey"
+icon_color = "grey"
 icon_name = "accept"
 
 
