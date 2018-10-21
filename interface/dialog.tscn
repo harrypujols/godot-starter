@@ -8,7 +8,7 @@
 [sub_resource type="Theme" id=1]
 
 
-[node name="dialog" type="Control" groups=[
+[node name="dialog" type="Control" index="0" groups=[
 "dialog",
 ]]
 
@@ -223,7 +223,7 @@ input_text = "accept"
 text_color = "grey"
 icon_separation = 8
 font_size = 14
-icon_size = 20
+icon_size = 24
 icon_name = "accept"
 
 [node name="cancel" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="1" instance=ExtResource( 4 )]
@@ -235,7 +235,7 @@ input_text = "cancel"
 text_color = "grey"
 icon_separation = 8
 font_size = 14
-icon_size = 20
+icon_size = 24
 icon_name = "cancel"
 
 [connection signal="timeout" from="dialog_box/typing_effect" to="." method="_on_typing_effect_timeout"]
