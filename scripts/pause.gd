@@ -27,6 +27,7 @@ func _on_menu_selection():
 			get_tree().paused = false
 			self.visible = false
 			global.pause = false
+			return_to_dialog()
 		'reset':
 			get_tree().paused = false
 			global.pause = false
