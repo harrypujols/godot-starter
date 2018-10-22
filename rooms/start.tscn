@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://sprites/color_swicth_material.tres" type="Material" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -11,11 +11,10 @@
 [ext_resource path="res://items/pickup_items.tscn" type="PackedScene" id=9]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=10]
 [ext_resource path="res://audio/beepbox_tune.wav" type="AudioStream" id=11]
-[ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=12]
-[ext_resource path="res://items/spawn_point.tscn" type="PackedScene" id=13]
-[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=14]
+[ext_resource path="res://items/spawn_point.tscn" type="PackedScene" id=12]
+[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=13]
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 material = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
@@ -143,24 +142,20 @@ mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]
 
-[node name="input" type="Node" parent="." index="8"]
-
-script = ExtResource( 12 )
-
-[node name="point_a" parent="." index="9" instance=ExtResource( 13 )]
+[node name="point_a" parent="." index="8" instance=ExtResource( 12 )]
 
 position = Vector2( 496, 144 )
 origin_name = "a"
 target_name = "b"
 
-[node name="point_b" parent="." index="10" instance=ExtResource( 13 )]
+[node name="point_b" parent="." index="9" instance=ExtResource( 12 )]
 
 position = Vector2( 288, -608 )
 origin_name = "b"
 target_name = "a"
 exit = true
 
-[node name="hud" type="CanvasLayer" parent="." index="11"]
+[node name="hud" type="CanvasLayer" parent="." index="10"]
 
 editor/display_folded = true
 layer = 1
@@ -169,7 +164,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="pause" parent="hud" index="0" instance=ExtResource( 14 )]
+[node name="pause" parent="hud" index="0" instance=ExtResource( 13 )]
 
 [connection signal="area_shape_entered" from="exit/exit_body" to="exit" method="_on_exit_body_area_shape_entered"]
 
