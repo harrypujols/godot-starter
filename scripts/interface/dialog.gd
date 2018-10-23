@@ -39,9 +39,10 @@ func set_dialog():
 	dialog_choice.clear()
 	current_page = next_page
 	
-	if typing_effect == true:
+	if typing_effect:
 		$dialog_box/typing_effect.stop()
 		typing_effect = false
+		dialog_options.margin_left = 20
 	
 	if dialog_options.get_children().size() > 0:
 		for child in dialog_options.get_children():
@@ -92,6 +93,7 @@ func set_dialog():
 func indicator_off():
 	var indicator = dialog_options.get_child(0).find_node('indicator')
 	indicator.set_visible_characters(0)
+	dialog_options.margin_left = 0
 	
 func _on_typing_effect_timeout():
 	var label =  dialog_options.get_child(0).find_node('label')

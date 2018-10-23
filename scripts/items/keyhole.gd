@@ -13,4 +13,3 @@ func _on_key_acquired():
 	keyhole.collectible = true
 	keyhole.dialog_data.passages[0].dialog = open_door
 	keyhole.init()
-

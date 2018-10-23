@@ -53,7 +53,7 @@ func _process(delta):
 		$key_progress.value += delta * $key_progress.max_value * $key_progress.step
 		if $key_progress.value >= $key_progress.max_value:
 			emit_signal('press_charge')
+			item.set_item_dialog()
 			$key_progress.value = 0
 	angle_to = $key_progress.value
 	update()
-
