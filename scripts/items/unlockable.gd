@@ -19,6 +19,7 @@ signal press_charge
 func _ready():
 	item.dialog_active = false
 	set_unlockable_area()
+	set_prompt_position()
 
 func _input(event):
 	if Input.is_action_pressed('ui_accept') and item.entered_dialog_zone:
@@ -26,6 +27,13 @@ func _input(event):
 	else:
 		key_pressed = false
 		$key_progress.value = 0
+		
+func set_prompt_position():
+	var image_size = item_sprite.texture.get_size()
+	var image_position = item_sprite.position
+	$prompt.position.x = image_position.x
+	$prompt.position.y = image_position.y - image_size.y - 32
+	$prompt.visible = false
 	
 func set_unlockable_area():
 	var image_size = item_sprite.texture.get_size()
@@ -57,3 +65,8 @@ func _process(delta):
 			$key_progress.value = 0
 	angle_to = $key_progress.value
 	update()
+	
+	if item.entered_dialog_zone:
+		$prompt.visible = true
+	else:
+		$prompt.visible = false
