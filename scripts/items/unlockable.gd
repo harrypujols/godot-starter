@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 onready var item = get_parent()
 onready var item_sprite = item.find_node('item_sprite')
@@ -10,7 +10,7 @@ var collision = CollisionShape2D.new()
 var key_pressed = false
 var unlocked = false
 
-var center = get_size() / 2
+var center = self.position / 2
 var radius = 40
 var angle_from = 0
 var angle_to = 0
@@ -21,7 +21,7 @@ signal press_completed
 func _ready():
 	item.dialog_active = false
 	set_unlockable_area()
-	set_prompt_position()
+	set_position()
 
 func _input(event):
 	if Input.is_action_pressed('ui_accept') and item.entered_dialog_zone and unlocked == false:
@@ -30,12 +30,12 @@ func _input(event):
 		key_pressed = false
 		$key_progress.value = 0
 		
-func set_prompt_position():
+func set_position():
 	var image_size = item_sprite.texture.get_size()
 	var image_position = item_sprite.position
-	$prompt.position.x = image_position.x
-	$prompt.position.y = image_position.y - image_size.y - 32
-	$prompt.visible = false
+	self.position.x = image_position.x
+	self.position.y = image_position.y - image_size.y - 32
+	$input_ui.visible = false
 	
 func set_unlockable_area():
 	var image_size = item_sprite.texture.get_size()
@@ -70,6 +70,6 @@ func _process(delta):
 	update()
 	
 	if item.entered_dialog_zone and unlocked == false:
-		$prompt.visible = true
+		$input_ui.visible = true
 	else:
-		$prompt.visible = false
+		$input_ui.visible = false

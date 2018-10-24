@@ -11,18 +11,8 @@
 
 texture = ExtResource( 2 )
 
-[node name="unlockable" type="Control" parent="." index="2"]
+[node name="unlockable" type="Node2D" parent="." index="2"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource( 3 )
 
 [node name="key_progress" type="ProgressBar" parent="unlockable" index="0"]
@@ -50,9 +40,7 @@ rounded = false
 percent_visible = true
 _sections_unfolded = [ "Percent" ]
 
-[node name="prompt" type="Node2D" parent="unlockable" index="1"]
-
-[node name="input_ui" parent="unlockable/prompt" index="0" instance=ExtResource( 4 )]
+[node name="input_ui" parent="unlockable" index="1" instance=ExtResource( 4 )]
 
 icon_color = "pitch_dark_green"
 icon_separation = 0
