@@ -1,31 +1,41 @@
-extends Control
+extends Node2D
 
 onready var item = get_parent()
-onready var item_sprite = item.get_node('item_sprite')
-onready var item_area = item.get_node('item_area')
-var unlockable_position = Vector2(0,0)
+onready var item_sprite = item.find_node('item_sprite')
+onready var item_area = item.find_node('item_area')
+
 var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
 
 var key_pressed = false
-var center = get_size() / 2
+var unlocked = false
+
+var center = self.position / 2
 var radius = 40
 var angle_from = 0
 var angle_to = 0
 var color = global.color.pitch_dark_green
 
-signal press_charge
+signal press_completed
 
 func _ready():
 	item.dialog_active = false
 	set_unlockable_area()
+	set_position()
 
 func _input(event):
-	if Input.is_action_pressed('ui_accept') and item.entered_dialog_zone:
+	if Input.is_action_pressed('ui_accept') and item.entered_dialog_zone and unlocked == false:
 		key_pressed = true
 	else:
 		key_pressed = false
 		$key_progress.value = 0
+		
+func set_position():
+	var image_size = item_sprite.texture.get_size()
+	var image_position = item_sprite.position
+	self.position.x = image_position.x
+	self.position.y = image_position.y - image_size.y - 32
+	$input_ui.visible = false
 	
 func set_unlockable_area():
 	var image_size = item_sprite.texture.get_size()
@@ -52,8 +62,14 @@ func _process(delta):
 	if key_pressed:
 		$key_progress.value += delta * $key_progress.max_value * $key_progress.step
 		if $key_progress.value >= $key_progress.max_value:
-			emit_signal('press_charge')
+			emit_signal('press_completed')
 			item.set_item_dialog()
+			unlocked = true
 			$key_progress.value = 0
 	angle_to = $key_progress.value
 	update()
+	
+	if item.entered_dialog_zone and unlocked == false:
+		$input_ui.visible = true
+	else:
+		$input_ui.visible = false
