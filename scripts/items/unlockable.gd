@@ -1,9 +1,9 @@
 extends Control
 
 onready var item = get_parent()
-onready var item_sprite = item.get_node('item_sprite')
-onready var item_area = item.get_node('item_area')
-#var unlockable_position = Vector2(0,0)
+onready var item_sprite = item.find_node('item_sprite')
+onready var item_area = item.find_node('item_area')
+
 var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
 
@@ -16,7 +16,7 @@ var angle_from = 0
 var angle_to = 0
 var color = global.color.pitch_dark_green
 
-signal press_charge
+signal press_completed
 
 func _ready():
 	item.dialog_active = false
@@ -62,7 +62,7 @@ func _process(delta):
 	if key_pressed:
 		$key_progress.value += delta * $key_progress.max_value * $key_progress.step
 		if $key_progress.value >= $key_progress.max_value:
-			emit_signal('press_charge')
+			emit_signal('press_completed')
 			item.set_item_dialog()
 			unlocked = true
 			$key_progress.value = 0
