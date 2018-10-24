@@ -3,11 +3,13 @@ extends Control
 onready var item = get_parent()
 onready var item_sprite = item.get_node('item_sprite')
 onready var item_area = item.get_node('item_area')
-var unlockable_position = Vector2(0,0)
+#var unlockable_position = Vector2(0,0)
 var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
 
 var key_pressed = false
+var unlocked = false
+
 var center = get_size() / 2
 var radius = 40
 var angle_from = 0
@@ -22,7 +24,7 @@ func _ready():
 	set_prompt_position()
 
 func _input(event):
-	if Input.is_action_pressed('ui_accept') and item.entered_dialog_zone:
+	if Input.is_action_pressed('ui_accept') and item.entered_dialog_zone and unlocked == false:
 		key_pressed = true
 	else:
 		key_pressed = false
@@ -62,11 +64,12 @@ func _process(delta):
 		if $key_progress.value >= $key_progress.max_value:
 			emit_signal('press_charge')
 			item.set_item_dialog()
+			unlocked = true
 			$key_progress.value = 0
 	angle_to = $key_progress.value
 	update()
 	
-	if item.entered_dialog_zone:
+	if item.entered_dialog_zone and unlocked == false:
 		$prompt.visible = true
 	else:
 		$prompt.visible = false
