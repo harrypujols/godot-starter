@@ -44,7 +44,7 @@ _sections_unfolded = [ "Percent" ]
 
 icon_color = "pitch_dark_green"
 icon_separation = 0
-icon_size = 32
+icon_size = "large"
 icon_name = "accept"
 
 
