@@ -14,7 +14,7 @@
 [ext_resource path="res://items/spawn_point.tscn" type="PackedScene" id=12]
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=13]
 
-[node name="stage" type="Node2D" index="0"]
+[node name="stage" type="Node2D"]
 
 material = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
@@ -150,7 +150,7 @@ target_name = "b"
 
 [node name="point_b" parent="." index="9" instance=ExtResource( 12 )]
 
-position = Vector2( 288, -608 )
+position = Vector2( 288, -544 )
 origin_name = "b"
 target_name = "a"
 exit = true

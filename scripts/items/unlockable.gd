@@ -33,8 +33,9 @@ func _input(event):
 func set_position():
 	var image_size = item_sprite.texture.get_size()
 	var image_position = item_sprite.position
-	self.position.x = image_position.x
-	self.position.y = image_position.y - image_size.y - 32
+	self.position.x = center.x
+	self.position.y = center.y - image_size.y - 32
+	$input_ui.margin_left = -( $input_ui.icon.get('custom_fonts/font').get_size() / 2)
 	$input_ui.visible = false
 	
 func set_unlockable_area():
