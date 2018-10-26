@@ -7,7 +7,7 @@ var player = {
 
 var pause = false
 
-var color = {
+const color = {
 	'white': Color('#ffffff'),
 	'grey': Color('#aaaaaa'),
 	'black': Color('#000000'),
@@ -16,6 +16,8 @@ var color = {
 	'dark_green': Color('#306230'),
 	'pitch_dark_green': Color('#0f380f')
 }
+
+var secret_item = false
 
 # load json file
 static func get_json(path):

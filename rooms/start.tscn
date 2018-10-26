@@ -1,21 +1,34 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://sprites/color_swicth_material.tres" type="Material" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/cat.tscn" type="PackedScene" id=3]
 [ext_resource path="res://items/keyhole.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/items/keyhole.png" type="Texture" id=5]
-[ext_resource path="res://items/unlockable.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sprites/items/chest.png" type="Texture" id=7]
-[ext_resource path="res://sprites/items/chest_open.png" type="Texture" id=8]
-[ext_resource path="res://scripts/exit.gd" type="Script" id=9]
+[ext_resource path="res://scripts/exit.gd" type="Script" id=6]
+[ext_resource path="res://items/unlockable.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/items/chest.png" type="Texture" id=8]
+[ext_resource path="res://sprites/items/chest_open.png" type="Texture" id=9]
 [ext_resource path="res://items/pickup_items.tscn" type="PackedScene" id=10]
 [ext_resource path="res://tiles/wall.tres" type="TileSet" id=11]
 [ext_resource path="res://audio/beepbox_tune.wav" type="AudioStream" id=12]
 [ext_resource path="res://items/spawn_point.tscn" type="PackedScene" id=13]
 [ext_resource path="res://interface/pause.tscn" type="PackedScene" id=14]
 
-[node name="stage" type="Node2D" index="0"]
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+onready var unlockable = find_node('unlockable')
+
+func _ready():
+	unlockable.connect('item_unlocked', self, '_on_item_unlocked')
+
+func _on_item_unlocked():
+	global.secret_item = true
+"
+
+[node name="stage" type="Node2D"]
 
 material = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
@@ -34,30 +47,19 @@ character_file = "cat.json"
 position = Vector2( 1472, -224 )
 item_name = "keyhole"
 sprite = ExtResource( 5 )
-state_sprite = null
 text_line = "It's locked."
 collectible = false
 
-[node name="chest" parent="." index="3" instance=ExtResource( 6 )]
-
-position = Vector2( 288, -736 )
-item_name = "chest"
-sprite = ExtResource( 7 )
-state_sprite = ExtResource( 8 )
-text_line = "I found a secret item!"
-collectible = false
-
-[node name="exit" type="Node2D" parent="." index="4"]
+[node name="exit" type="Node2D" parent="." index="3"]
 
 editor/display_folded = true
-script = ExtResource( 9 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="exit_body" type="Area2D" parent="exit" index="0"]
 
-editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -73,6 +75,19 @@ __meta__ = {
 
 build_mode = 0
 polygon = PoolVector2Array( 1408, -272, 1376, -272, 1376, -336, 1568, -336, 1568, -272, 1536, -272, 1536, -304, 1408, -304 )
+
+[node name="secret_item" type="Node" parent="." index="4"]
+
+script = SubResource( 1 )
+
+[node name="chest" parent="secret_item" index="0" instance=ExtResource( 7 )]
+
+position = Vector2( 288, -736 )
+item_name = "chest"
+sprite = ExtResource( 8 )
+state_sprite = ExtResource( 9 )
+text_line = "I found a secret item!"
+collectible = false
 
 [node name="items" parent="." index="5" instance=ExtResource( 10 )]
 
