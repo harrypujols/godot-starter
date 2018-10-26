@@ -11,10 +11,16 @@ onready var end_label = find_node('end_text')
 var end_text = ['you win!']
 var page = 0
 
+func set_finish_label():
+	if page == end_text.size() -1:
+		$input_ui.label.set_text('finish')
+		
 func _ready():
 	if global.secret_item:
 		end_text.push_back('and you collected the secret item!')
 		end_text.push_back('game over')
+		
+	set_finish_label()
 		
 func _input(event):
 	if Input.is_action_just_pressed('ui_accept'):
@@ -23,6 +29,7 @@ func _input(event):
 		else:
 			page += 1
 			end_label.set_text(end_text[page])
+			set_finish_label()
 "
 
 [node name="stage" type="Control" index="0"]
@@ -100,7 +107,7 @@ margin_left = -144.0
 margin_top = -56.0
 margin_right = -132.0
 margin_bottom = -39.0
-input_text = "finish"
+input_text = "next"
 text_color = "grey"
 icon_color = "grey"
 icon_name = "accept"
