@@ -2,7 +2,7 @@
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/interface/input_ui.gd" type="Script" id=2]
-[ext_resource path="res://fonts/icons.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/icons_s.tres" type="DynamicFont" id=3]
 [ext_resource path="res://fonts/coolville.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scripts/interface/input_icons.gd" type="Script" id=5]
 
@@ -27,12 +27,11 @@ text_color = "white"
 icon_color = "white"
 icon_separation = 16
 font_size = null
-icon_size = null
+icon_size = "medium"
 icon_name = "default"
 
 [node name="wrapper" type="HBoxContainer" parent="." index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
