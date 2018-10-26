@@ -4,6 +4,8 @@ onready var item = get_parent()
 onready var item_sprite = item.find_node('item_sprite')
 onready var item_area = item.find_node('item_area')
 
+export(Texture) var unlocked_sprite
+
 var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
 
@@ -16,7 +18,7 @@ var angle_from = 0
 var angle_to = 0
 var color = global.color.pitch_dark_green
 
-signal press_completed
+signal item_unlocked
 
 func _ready():
 	item.dialog_active = false
@@ -33,9 +35,11 @@ func _input(event):
 func set_position():
 	var image_size = item_sprite.texture.get_size()
 	var image_position = item_sprite.position
+	var icon_size = $input_ui.icon.get('custom_fonts/font').get_size()
 	self.position.x = center.x
-	self.position.y = center.y - image_size.y - 32
-	$input_ui.margin_left = -( $input_ui.icon.get('custom_fonts/font').get_size() / 2)
+	self.position.y = center.y - image_size.y - (icon_size / 4)
+	$input_ui.margin_left = -(icon_size / 2)
+	$input_ui.margin_top = -(icon_size / 2)
 	$input_ui.visible = false
 	
 func set_unlockable_area():
@@ -63,10 +67,13 @@ func _process(delta):
 	if key_pressed:
 		$key_progress.value += delta * $key_progress.max_value * $key_progress.step
 		if $key_progress.value >= $key_progress.max_value:
-			emit_signal('press_completed')
+			emit_signal('item_unlocked')
 			item.set_item_dialog()
 			unlocked = true
 			$key_progress.value = 0
+			
+			if unlocked_sprite:
+				item_sprite.set_texture(unlocked_sprite)
 	angle_to = $key_progress.value
 	update()
 	

@@ -33,9 +33,6 @@ func refresh_icon(icon_name):
 	icon.set('custom_colors/font_color', global.color[icon_color])
 	icon.set_text(input_icons[icon_name])
 	icon.add_font_override('font', icon_font[icon_size])
-	
-#	if icon_size:
-#		icon.get_font('font').size = icon_size
 		
 func set_separation(separation):
 	wrapper.set('custom_constants/separation', separation)

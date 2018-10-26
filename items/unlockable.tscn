@@ -14,6 +14,7 @@ texture = ExtResource( 2 )
 [node name="unlockable" type="Node2D" parent="." index="2"]
 
 script = ExtResource( 3 )
+unlocked_sprite = null
 
 [node name="key_progress" type="ProgressBar" parent="unlockable" index="0"]
 
@@ -42,6 +43,7 @@ _sections_unfolded = [ "Percent" ]
 
 [node name="input_ui" parent="unlockable" index="1" instance=ExtResource( 4 )]
 
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect" ]
 icon_color = "pitch_dark_green"
 icon_separation = 0
 icon_size = "large"
