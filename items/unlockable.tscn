@@ -5,7 +5,9 @@
 [ext_resource path="res://scripts/items/unlockable.gd" type="Script" id=3]
 [ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=4]
 
-[node name="item" index="0" instance=ExtResource( 1 )]
+[node name="item" instance=ExtResource( 1 )]
+
+state_sprite = null
 
 [node name="item_sprite" parent="." index="0"]
 
@@ -14,7 +16,6 @@ texture = ExtResource( 2 )
 [node name="unlockable" type="Node2D" parent="." index="2"]
 
 script = ExtResource( 3 )
-unlocked_sprite = null
 
 [node name="key_progress" type="ProgressBar" parent="unlockable" index="0"]
 
@@ -43,7 +44,7 @@ _sections_unfolded = [ "Percent" ]
 
 [node name="input_ui" parent="unlockable" index="1" instance=ExtResource( 4 )]
 
-_sections_unfolded = [ "Grow Direction", "Margin", "Rect" ]
+visible = false
 icon_color = "pitch_dark_green"
 icon_separation = 0
 icon_size = "large"

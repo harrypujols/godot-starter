@@ -4,8 +4,6 @@ onready var item = get_parent()
 onready var item_sprite = item.find_node('item_sprite')
 onready var item_area = item.find_node('item_area')
 
-export(Texture) var unlocked_sprite
-
 var shape = CircleShape2D.new()
 var collision = CollisionShape2D.new()
 
@@ -72,8 +70,8 @@ func _process(delta):
 			unlocked = true
 			$key_progress.value = 0
 			
-			if unlocked_sprite:
-				item_sprite.set_texture(unlocked_sprite)
+			if item.state_sprite:
+				item_sprite.set_texture(item.state_sprite)
 	angle_to = $key_progress.value
 	update()
 	

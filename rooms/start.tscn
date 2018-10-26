@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://sprites/color_swicth_material.tres" type="Material" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -7,14 +7,15 @@
 [ext_resource path="res://sprites/items/keyhole.png" type="Texture" id=5]
 [ext_resource path="res://items/unlockable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sprites/items/chest.png" type="Texture" id=7]
-[ext_resource path="res://scripts/exit.gd" type="Script" id=8]
-[ext_resource path="res://items/pickup_items.tscn" type="PackedScene" id=9]
-[ext_resource path="res://tiles/wall.tres" type="TileSet" id=10]
-[ext_resource path="res://audio/beepbox_tune.wav" type="AudioStream" id=11]
-[ext_resource path="res://items/spawn_point.tscn" type="PackedScene" id=12]
-[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/items/chest_open.png" type="Texture" id=8]
+[ext_resource path="res://scripts/exit.gd" type="Script" id=9]
+[ext_resource path="res://items/pickup_items.tscn" type="PackedScene" id=10]
+[ext_resource path="res://tiles/wall.tres" type="TileSet" id=11]
+[ext_resource path="res://audio/beepbox_tune.wav" type="AudioStream" id=12]
+[ext_resource path="res://items/spawn_point.tscn" type="PackedScene" id=13]
+[ext_resource path="res://interface/pause.tscn" type="PackedScene" id=14]
 
-[node name="stage" type="Node2D"]
+[node name="stage" type="Node2D" index="0"]
 
 material = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
@@ -33,6 +34,7 @@ character_file = "cat.json"
 position = Vector2( 1472, -224 )
 item_name = "keyhole"
 sprite = ExtResource( 5 )
+state_sprite = null
 text_line = "It's locked."
 collectible = false
 
@@ -41,13 +43,14 @@ collectible = false
 position = Vector2( 288, -736 )
 item_name = "chest"
 sprite = ExtResource( 7 )
+state_sprite = ExtResource( 8 )
 text_line = "I found a secret item!"
 collectible = false
 
 [node name="exit" type="Node2D" parent="." index="4"]
 
 editor/display_folded = true
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -71,14 +74,14 @@ __meta__ = {
 build_mode = 0
 polygon = PoolVector2Array( 1408, -272, 1376, -272, 1376, -336, 1568, -336, 1568, -272, 1536, -272, 1536, -304, 1408, -304 )
 
-[node name="items" parent="." index="5" instance=ExtResource( 9 )]
+[node name="items" parent="." index="5" instance=ExtResource( 10 )]
 
 [node name="walls" type="TileMap" parent="." index="6"]
 
 material = ExtResource( 1 )
 use_parent_material = true
 mode = 0
-tile_set = ExtResource( 10 )
+tile_set = ExtResource( 11 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -134,7 +137,7 @@ __meta__ = {
 
 [node name="background_sound" type="AudioStreamPlayer" parent="background" index="1"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 12 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -142,13 +145,13 @@ mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]
 
-[node name="point_a" parent="." index="8" instance=ExtResource( 12 )]
+[node name="point_a" parent="." index="8" instance=ExtResource( 13 )]
 
 position = Vector2( -96, 32 )
 origin_name = "a"
 target_name = "b"
 
-[node name="point_b" parent="." index="9" instance=ExtResource( 12 )]
+[node name="point_b" parent="." index="9" instance=ExtResource( 13 )]
 
 position = Vector2( 288, -544 )
 origin_name = "b"
@@ -164,7 +167,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="pause" parent="hud" index="0" instance=ExtResource( 13 )]
+[node name="pause" parent="hud" index="0" instance=ExtResource( 14 )]
 
 [connection signal="area_shape_entered" from="exit/exit_body" to="exit" method="_on_exit_body_area_shape_entered"]
 

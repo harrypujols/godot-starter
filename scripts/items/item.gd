@@ -2,6 +2,7 @@ extends Node2D
 
 export var item_name = 'item'
 export(Texture) var sprite
+export(Texture) var state_sprite
 export(String, MULTILINE) var text_line
 export var collectible = true
 export var solid = true

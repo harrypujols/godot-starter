@@ -12,6 +12,7 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Transform" ]
 item_name = "item"
 sprite = ExtResource( 3 )
+state_sprite = null
 text_line = null
 collectible = true
 solid = true
