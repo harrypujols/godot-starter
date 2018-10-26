@@ -1,24 +1,33 @@
 extends Control
 
-onready var menu = get_node('./hud/menu')
-onready var title = get_node('./hud/menu/title')
-onready var dialog = get_node('../dialog')
+onready var menu = find_node('menu')
+onready var title = find_node('title')
 var data = global.get_json('res://data/pause.json')
 var entry = 'pause'
 
 func _ready():
 	self.visible = false
-	
+	menu.connect('menu_selection', self, '_on_menu_selection')
+
 func setup_menu():
 	menu.data = data[entry]
 	menu.init()
 	
-func _on_menu_select(selection):
-	match selection:
+func return_to_dialog():
+	var dialog_boxes = get_tree().get_nodes_in_group('dialog')
+	for dialog in dialog_boxes:
+		if dialog.dialog_open == 1:
+			dialog.dialog_options.get_child(0).grab_focus()
+			if dialog.indicator_on == false:
+				dialog.indicator_off()
+
+func _on_menu_selection():
+	match menu.selection:
 		'unpause':
 			get_tree().paused = false
 			self.visible = false
 			global.pause = false
+			return_to_dialog()
 		'reset':
 			get_tree().paused = false
 			global.pause = false
@@ -32,7 +41,7 @@ func _on_menu_select(selection):
 			title.set_text(data.title.pause)
 			setup_menu()
 		_:
-			print(selection)
+			print(menu.selection)
 
 func _input(event):
 	if Input.is_action_pressed('ui_pause'):
@@ -41,10 +50,8 @@ func _input(event):
 				get_tree().paused = false
 				self.visible = false
 				global.pause = false
-				if dialog.dialog_open == 1:
-					dialog.dialog_options.get_child(0).grab_focus()
-					if dialog.indicator_on == false:
-						dialog.indicator_off()
+				return_to_dialog()
+
 			false:
 				get_tree().paused = true
 				self.visible = true

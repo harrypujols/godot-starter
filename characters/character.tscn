@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scripts/characters/character.gd" type="Script" id=1]
-[ext_resource path="res://sprites/interface/alert.png" type="Texture" id=2]
+[ext_resource path="res://sprites/color_swicth_material.tres" type="Material" id=1]
+[ext_resource path="res://scripts/characters/character.gd" type="Script" id=2]
+[ext_resource path="res://sprites/characters/cat.png" type="Texture" id=3]
+[ext_resource path="res://sprites/interface/alert.png" type="Texture" id=4]
+[ext_resource path="res://scripts/characters/character_dialog.gd" type="Script" id=5]
+[ext_resource path="res://interface/dialog.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -13,10 +17,18 @@ radius = 10.0
 custom_solver_bias = 0.0
 extents = Vector2( 1, 1 )
 
-[node name="character" type="Node2D"]
+[node name="character" type="KinematicBody2D"]
 
-script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+material = ExtResource( 1 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Transform" ]
+sprite = ExtResource( 3 )
+character_file = "character.json"
+dialog_entry = "hello"
 
 [node name="dialog_zone" type="Area2D" parent="." index="0"]
 
@@ -38,14 +50,18 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="character_sprite" type="Sprite" parent="." index="1"]
 
+material = ExtResource( 1 )
+use_parent_material = true
 _sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility" ]
 
 [node name="alert_bubble" type="Sprite" parent="." index="2"]
 
 visible = false
+material = ExtResource( 1 )
+use_parent_material = true
 position = Vector2( 0.864548, -66.5457 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="character_body" type="StaticBody2D" parent="." index="3"]
 
@@ -62,6 +78,18 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="character_dialog" type="CanvasLayer" parent="." index="4"]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+script = ExtResource( 5 )
+
+[node name="dialog" parent="character_dialog" index="0" instance=ExtResource( 6 )]
 
 [connection signal="area_entered" from="dialog_zone" to="." method="_on_dialog_zone_area_entered"]
 

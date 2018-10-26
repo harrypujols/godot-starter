@@ -2,13 +2,15 @@
 
 [ext_resource path="res://fonts/main_font.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/interface/dialog.gd" type="Script" id=2]
-[ext_resource path="res://scripts/interface/dialog_input.gd" type="Script" id=3]
+[ext_resource path="res://interface/dark_green_background.tres" type="StyleBox" id=3]
 [ext_resource path="res://interface/input_ui.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Theme" id=1]
 
 
-[node name="dialog" type="Control"]
+[node name="dialog" type="Control" groups=[
+"dialog",
+]]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -42,7 +44,14 @@ theme = SubResource( 1 )
 popup_exclusive = false
 _sections_unfolded = [ "Anchor", "Margin", "Material", "Popup", "Theme", "Visibility" ]
 
-[node name="background" type="ColorRect" parent="dialog_box" index="0"]
+[node name="typing_effect" type="Timer" parent="dialog_box" index="0"]
+
+process_mode = 1
+wait_time = 0.01
+one_shot = false
+autostart = false
+
+[node name="background" type="Panel" parent="dialog_box" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -54,16 +63,70 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-color = Color( 0, 0, 0, 1 )
-_sections_unfolded = [ "Margin" ]
+custom_styles/panel = ExtResource( 3 )
+_sections_unfolded = [ "custom_styles" ]
 
-[node name="dialog_title" type="Label" parent="dialog_box" index="1"]
+[node name="margin_container" type="MarginContainer" parent="dialog_box/background" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+_sections_unfolded = [ "Focus", "Size Flags", "custom_constants" ]
+
+[node name="content_container" type="VBoxContainer" parent="dialog_box/background/margin_container" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 16.0
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 680.0
+margin_bottom = 284.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="header" type="CenterContainer" parent="dialog_box/background/margin_container/content_container" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 664.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+use_top_left = false
+
+[node name="dialog_title" type="Label" parent="dialog_box/background/margin_container/content_container/header" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 307.0
+margin_right = 356.0
 margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -78,16 +141,35 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "Rect" ]
 
-[node name="dialog_options" type="VBoxContainer" parent="dialog_box" index="2"]
+[node name="body" type="MarginContainer" parent="dialog_box/background/margin_container/content_container" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 664.0
+margin_bottom = 248.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 16
+_sections_unfolded = [ "custom_constants" ]
+
+[node name="dialog_options" type="VBoxContainer" parent="dialog_box/background/margin_container/content_container/body" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 16.0
-margin_top = 64.0
-margin_right = 16.0
-margin_bottom = 16.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 664.0
+margin_bottom = 224.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -95,54 +177,66 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
-_sections_unfolded = [ "Margin" ]
+_sections_unfolded = [ "Rect" ]
 
-[node name="typing_effect" type="Timer" parent="dialog_box" index="3"]
+[node name="footer" type="Container" parent="dialog_box/background/margin_container/content_container" index="2"]
 
-process_mode = 1
-wait_time = 0.01
-one_shot = false
-autostart = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 252.0
+margin_right = 664.0
+margin_bottom = 252.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect" ]
 
-[node name="dialog_input" type="HBoxContainer" parent="dialog_box" index="4"]
+[node name="dialog_input" type="HBoxContainer" parent="dialog_box/background/margin_container/content_container/footer" index="0"]
 
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -152.0
-margin_top = -44.0
-margin_right = 92.0
-margin_bottom = -4.0
+margin_left = -148.0
+margin_top = -40.0
 grow_horizontal = 0
-grow_vertical = 0
-rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 2
+size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_constants/separation = 32
-alignment = 2
-script = ExtResource( 3 )
+custom_constants/separation = 16
+alignment = 0
+_sections_unfolded = [ "custom_constants" ]
 
-[node name="input_accept" parent="dialog_box/dialog_input" index="0" instance=ExtResource( 4 )]
+[node name="accept" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="0" instance=ExtResource( 4 )]
 
-margin_left = 148.0
-margin_right = 180.0
-grow_horizontal = 0
-alignment = 2
-_sections_unfolded = [ "Grow Direction", "Rect", "Theme" ]
+margin_right = 66.0
+margin_bottom = 40.0
+input_text = "accept"
+text_color = "grey"
+icon_separation = 8
+font_size = 14
+icon_size = "small"
+icon_name = "accept"
 
-[node name="input_cancel" parent="dialog_box/dialog_input" index="1" instance=ExtResource( 4 )]
+[node name="cancel" parent="dialog_box/background/margin_container/content_container/footer/dialog_input" index="1" instance=ExtResource( 4 )]
 
-margin_left = 212.0
-margin_right = 244.0
-grow_horizontal = 0
-alignment = 2
-_sections_unfolded = [ "Grow Direction", "Theme" ]
+margin_left = 82.0
+margin_right = 148.0
+margin_bottom = 40.0
+input_text = "cancel"
+text_color = "grey"
+icon_separation = 8
+font_size = 14
+icon_size = "small"
+icon_name = "cancel"
 
 [connection signal="timeout" from="dialog_box/typing_effect" to="." method="_on_typing_effect_timeout"]
 
