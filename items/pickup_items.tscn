@@ -5,7 +5,7 @@
 [ext_resource path="res://audio/collect.wav" type="AudioStream" id=3]
 [ext_resource path="res://audio/blop.tres" type="Animation" id=4]
 
-[node name="items" type="Node"]
+[node name="items" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -14,7 +14,6 @@ script = ExtResource( 1 )
 ] instance=ExtResource( 2 )]
 
 position = Vector2( 1184, 624 )
-_sections_unfolded = [ "Material", "Transform" ]
 item_name = "coin"
 
 [node name="item2" parent="." index="1" groups=[
@@ -22,7 +21,6 @@ item_name = "coin"
 ] instance=ExtResource( 2 )]
 
 position = Vector2( 32, 560 )
-_sections_unfolded = [ "Material", "Transform" ]
 item_name = "coin"
 
 [node name="item3" parent="." index="2" groups=[

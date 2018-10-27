@@ -16,7 +16,7 @@
 
     {
       "name": "question",
-      "dialog": "Can you find the %s?",
+      "dialog": "Can you find the {items}?",
       "link": "items"
     },
 
@@ -29,7 +29,7 @@
 
     {
       "name": "success",
-      "dialog": "You found all the %s!",
+      "dialog": "You found all the {items}!",
       "link": "quest"
     },
 
