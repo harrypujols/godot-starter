@@ -101,7 +101,7 @@ text = "menu item"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Margin", "custom_colors", "custom_fonts", "custom_styles" ]
+_sections_unfolded = [ "Anchor", "Margin" ]
 
 [connection signal="focus_entered" from="." to="." method="_on_menu_item_focus_entered"]
 

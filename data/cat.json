@@ -16,20 +16,20 @@
 
     {
       "name": "question",
-      "dialog": "Can you find the items?",
+      "dialog": "Can you find the %s?",
       "link": "items"
     },
 
     {
       "name": "items",
-      "dialog": "You have no items.",
+      "dialog": "You have {count} {items}.",
       "link": "end",
       "call": "items"
     },
 
     {
       "name": "success",
-      "dialog": "You found all the items!",
+      "dialog": "You found all the %s!",
       "link": "quest"
     },
 
