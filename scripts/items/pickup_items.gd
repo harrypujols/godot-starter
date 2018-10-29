@@ -5,6 +5,7 @@ var total
 var count = 0
 var item_name
 
+signal items_ready
 signal item_collected
 
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 	for coin in coins:
 		coin.connect('collected', self, '_on_item_collected')
 		item_name = coin.item_name
+	emit_signal('items_ready')
 
 func _on_item_collected():
 	$bleep.play('blop')

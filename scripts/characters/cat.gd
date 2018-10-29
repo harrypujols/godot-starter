@@ -6,10 +6,11 @@ onready var items = get_node('/root/stage/items')
 signal key_acquired
 
 func interpolate_data():
+	var data = global.get_json('res://data/' + cat.character_file)
 	var item_name = items.item_name + 's'
 	var count = 'no'
 	
-	for passage in cat.data.passages:
+	for passage in data.passages:
 		if passage.name == 'question' or passage.name == 'success':
 			passage.dialog = passage.dialog.format({'items': item_name})
 			
@@ -21,13 +22,18 @@ func interpolate_data():
 			else:
 				item_name = items.item_name + 's'
 			passage.dialog = passage.dialog.format({'count': count, 'items': item_name})
+			
+	cat.data = data
 
 func _ready():
 	cat.connect('interacted', self, '_on_cat_interaction')
 	items.connect('item_collected', self, '_on_item_collected')
+	items.connect('items_ready', self, '_on_items_ready')
 
+func _on_items_ready():
+	interpolate_data()
+	
 func _on_item_collected():
-	print(items.count)
 	interpolate_data()
 
 	if items.count == items.total and cat.interactions > 0:
