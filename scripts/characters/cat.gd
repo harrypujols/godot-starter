@@ -23,6 +23,9 @@ func interpolate_data():
 				item_name = items.item_name + 's'
 			passage.dialog = passage.dialog.format({'count': count, 'items': item_name})
 			
+		if passage.name == 'cat' and items.count == items.total:
+			passage.link = 'success'
+			
 	cat.data = data
 
 func _ready():
@@ -35,7 +38,6 @@ func _on_items_ready():
 	
 func _on_item_collected():
 	interpolate_data()
-
 	if items.count == items.total and cat.interactions > 0:
 		cat.dialog_entry = 'success'
 
