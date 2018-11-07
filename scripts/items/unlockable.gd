@@ -34,6 +34,7 @@ func set_position():
 	var image_size = item_sprite.texture.get_size()
 	var image_position = item_sprite.position
 	var icon_size = $input_ui.icon.get('custom_fonts/font').get_size()
+	radius = icon_size
 	self.position.x = center.x
 	self.position.y = center.y - image_size.y - (icon_size / 4)
 	$input_ui.margin_left = -(icon_size / 2)
