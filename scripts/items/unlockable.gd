@@ -21,7 +21,7 @@ signal item_unlocked
 func _ready():
 	item.dialog_active = false
 	set_unlockable_area()
-	set_position()
+	set_unlockable_position()
 
 func _input(event):
 	if Input.is_action_pressed('ui_accept') and item.entered_dialog_zone and unlocked == false:
@@ -30,7 +30,7 @@ func _input(event):
 		key_pressed = false
 		$key_progress.value = 0
 		
-func set_position():
+func set_unlockable_position():
 	var image_size = item_sprite.texture.get_size()
 	var image_position = item_sprite.position
 	var icon_size = $input_ui.icon.get('custom_fonts/font').get_size()
